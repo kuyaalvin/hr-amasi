@@ -8,7 +8,7 @@ class Login extends Model
 {
     protected $primaryKey = 'login_id';
     public $timestamps = false;
-    protected $guarded = ['token'];
+    protected $guarded = ['login_id', 'token'];
     protected $hidden = ['password', 'token'];
     
 }

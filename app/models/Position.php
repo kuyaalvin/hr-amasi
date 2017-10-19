@@ -9,7 +9,8 @@ class Position extends Model
 {
     protected $primaryKey = 'position_id';
     public $timestamps = false;
-
+protected $guarded = ['position_id'];
+    
     public function employees()
     {
     return $this->hasMany(Employee::class);

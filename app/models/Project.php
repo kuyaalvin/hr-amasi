@@ -8,7 +8,7 @@ class Project extends Model
 {
     protected $primaryKey = 'project_id';
     public $timestamps = false;
-    protected $guarded = ['active'];
+    protected $guarded = ['project_id', 'active'];
     
     public function employees()
     {
