@@ -1,35 +1,38 @@
 database schema 
 
+Notes:
+nvarchar in mysql is varchar with predefined utf8 character set
+int = int(10)
+boolean = tinyint(1)
+tinyint = tinyint(3)
+incomplete tables are not yet implemented
+
 employees table
 employee_id (int) (auto increment) (pk)
 id_number (unique) (char) (10) (only number) (not null)
-biometric_id (char) (int) (255) (numbers only)
-account_number (char) (int) (25) (not null) (unique) (numbers only)
-lastname (nvarchar) (50) (not null)
-firstname (nvarchar) (100) (not null)
-middlename (nvarchar) (50) (not null)
+biometric_id (char) (255) (unique) (numbers only)
+account_number (char) (25) (not null) (unique) (numbers only)
+last_name (nvarchar) (50) (not null)
+first_name (nvarchar) (100) (not null)
+middle_name (nvarchar) (50) (not null)
 city_address (nvarchar) (255) (not null)
 provincial_address (nvarchar) (255)
 birthdate (date) (should be greater than today) (not null)
 civil_status (enum- single, married) (not null)
 number_of_dependencies (tinyint unsigned) 
 citizenship (nvarchar) (30) (not null)()
-religion (nvarchar) (30) (not null)
-<<<<<<< HEAD
-gender (enum- Male, Female) (not null)
-=======
+religion (nvarchar) (30)
 gender (nvarchar) (enum- male, female) (not null)
->>>>>>> Changed gender enum
 sss_id (char) (20) (number only server side)
 tin_no (char) (20) (number only server side)
-phil-health_mp (char) (20) (number only server side)
-position (nvarchar)(50) (not null) (fk)
+phil_health_mp (char) (20) (number only server side)
+position_id (fk) (references positions table)
 payroll_type (enum- weekly, monthly) (not null)
 date_started (date) (not null)
-active (tinyint (1)) (not null) (if date started greater than today = 0 else = 1)
+active (boolean) (not null) (if date started greater than today = 0 else = 1)
 regular (boolean) (not null) 
 agency (boolean) (not null)
-project_id (fk) 
+project_id (fk) (references projects table)
 
 logins table
 login_id (int) (auto increment) (pk)
@@ -37,20 +40,21 @@ username (nvarchar)(16) (unique) (not null)(no symbols)
 password (nvarchar)(255) (not null)(hash)
 token (nvarchar)(255)
 
-
 projects table
 project_id (int) (auto increment) (pk) 
-project_name (nvarchar) (200) (not null) (unique)
-project_address (nvarchar) (255)
-project_time-in (timestamp)
-project_time-out (timestamp) (greater than time in)
-
-attendances table
-attendance_id(int) (auto increment) (pk)
-employee_id (int)(fk) (not null)
-timelogged (timestamp)
+name (nvarchar) (200) (not null) (unique)
+address (nvarchar) (255)
+time-in (time)
+time-out (time) (greater than time in)
+active (boolean) (default = 1)
 
 positions table
 position_id (int) ((auto increment)   (not null) (pk)
-position_name (nvarchar)(50)(not null) 
+name (nvarchar)(50)(not null) 
 
+attendances table (incomplete)
+attendance_id(int) (auto increment) (pk)
+employee_id (int)(fk) (not null)
+timelogged (time)
+
+payrolls table (incomplete)
