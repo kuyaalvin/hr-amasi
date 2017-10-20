@@ -37,8 +37,8 @@ class CreateEmployeesTable extends Migration
             $table->boolean('agency');
             $table->boolean('regular');
             $table->boolean('active');
-            $table->unsignedInteger('position_id');
-            $table->unsignedInteger('project_id');
+            $table->unsignedInteger('position_id')->nullable();
+            $table->unsignedInteger('project_id')->nullable();
         });
     }
 
