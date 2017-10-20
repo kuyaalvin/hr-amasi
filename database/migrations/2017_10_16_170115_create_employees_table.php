@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->string('provincial_address', 255)->nullable();
             $table->date('birthdate');
             $table->enum('civil_status', ['Single', 'Married']);
-            $table->unsignedTinyInteger('number_of_dependencies');
+            $table->unsignedTinyInteger('number_of_dependencies')->nullable();
             $table->string('citizenship', 30);
             $table->string('religion', 30)->nullable();
             $table->enum('gender', ['Male', 'Female']);
