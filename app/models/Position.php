@@ -12,5 +12,16 @@ protected $guarded = ['position_id'];
     {
     return $this->hasMany(Employee::class);
     }
+
+    public function validate($data)
+    {
+        $rules = [
+            'name'=>['required', $this->uniqueRule('positions', 'name', $this->name), 'string', 'max:50'],
+        ];
+        
+        $validator = validator($data, $rules, $messages);
+        $this->errors = $validator->errors();
+        return $validator->passes();
+    }
     
 }
