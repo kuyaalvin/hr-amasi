@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Project extends Model
+class Project extends GlobalModel
 {
     protected $primaryKey = 'project_id';
     public $timestamps = false;

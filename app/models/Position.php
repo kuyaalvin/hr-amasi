@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
-
-class Position extends Model
+class Position extends GlobalModel
 {
     protected $primaryKey = 'position_id';
     public $timestamps = false;
