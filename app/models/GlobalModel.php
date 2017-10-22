@@ -14,9 +14,9 @@ class GlobalModel extends Model
         return $this->errors;
     }
 
-    protected function uniqueRule($table, $col, $value)
+    protected function uniqueRule($col, $value)
     {
-$rule = Rule::unique($table);
+$rule = Rule::unique($this->table);
 return $this->exists && $this->isClean([$col]) ? $rule ->ignore($value, $col) : $rule;
     }
     

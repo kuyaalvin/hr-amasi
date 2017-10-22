@@ -23,9 +23,9 @@ class Employee extends GlobalModel
     public function validate($data)
     {
         $rules = [
-            'id_number'=>['required', $this->uniqueRule('employees', 'id_number', $this->id_number), 'digits_between:1,10'],
-            'biomentric_id'=>['nullable', $this->uniqueRule('employees', 'biometric_id', $this->biometric_id), 'digits_between:1,255'],
-            'account_number'=>['required', $this->uniqueRule('employees', 'account_number', $this->account_number), 'digits_between:1,25'],
+            'id_number'=>['required', $this->uniqueRule('id_number', $this->id_number), 'digits_between:1,10'],
+            'biomentric_id'=>['nullable', $this->uniqueRule('biometric_id', $this->biometric_id), 'digits_between:1,255'],
+            'account_number'=>['required', $this->uniqueRule('account_number', $this->account_number), 'digits_between:1,25'],
             'last_name'=>['required', 'string', 'max:50'],
             'middle_name'=>['required', 'string', 'max:100'],
             'first_name'=>['required', 'string', 'max:50'],
