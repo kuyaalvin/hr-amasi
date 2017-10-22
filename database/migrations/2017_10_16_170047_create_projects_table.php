@@ -17,8 +17,8 @@ class CreateProjectsTable extends Migration
             $table->increments('project_id');
             $table->string('name', 200)->unique();
             $table->string('address', 255);
-            $table->time('time_in');
-            $table->time('time_out');
+            $table->time('time_in')->nullable();
+            $table->time('time_out')->nullable();
             $table->boolean('active')->default(1);
         });
     }
