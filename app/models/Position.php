@@ -13,7 +13,7 @@ protected $guarded = ['position_id'];
     return $this->hasMany(Employee::class);
     }
 
-    public function validate($data)
+    public function validate(array $data)
     {
         $rules = [
             'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],

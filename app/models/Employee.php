@@ -12,7 +12,7 @@ class Employee extends GlobalModel
     protected $dateFormat = 'Y-m-d';
     protected $guarded = ['employee_id', 'active'];
 
-    public function setDateStartedAttribute($value)
+    public function setDateStartedAttribute(string $value)
     {
 $this->attributes['date_started'] = $value;
 $dateValue = Carbon::parse($value);
@@ -29,7 +29,7 @@ $this->attributes['active'] = $dateValue->isFuture() ? 0 : 1;
         return $this->belongsTo(Project::class, 'project_id');
     }
     
-    public function validate($data)
+    public function validate(array $data)
     {
         $rules = [
             'id_number'=>['required', $this->uniqueRule(), 'digits_between:1,10'],
