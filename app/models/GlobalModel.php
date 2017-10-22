@@ -16,7 +16,7 @@ class GlobalModel extends Model
 
     protected function uniqueRule()
     {
-$rule = Rule::unique($this->table);
+$rule = Rule::unique($this->getTable());
 return $this->exists ? $rule ->ignore($this->getKey(), $this->getKeyName()) : $rule;
     }
     
