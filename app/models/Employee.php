@@ -61,9 +61,15 @@ $this->attributes['active'] = $dateValue->isFuture() ? 0 : 1;
             'birthdate.before' => 'The birthdate must be a date before today.',
             'birthdate.date_format'=>'The birthdate does not match the format YYYY-MM-DD.',
             'date_started.date_format'=>'The date started does not match the format YYYY-MM-DD.',
+            'regular.different'=>'Agency and regular cannot both be selected.',
         ];
         
         $validator = validator($data, $rules, $messages);
+$validator->sometimes('regular', 'different:agency', function($input)
+    {
+    return $input->agency === 1;
+});
+
         $this->errors = $validator->errors();
         return $validator->passes();
     }
