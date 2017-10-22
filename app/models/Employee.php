@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+
 class Employee extends GlobalModel
 {
     protected $primaryKey = 'employee_id';
@@ -9,6 +11,13 @@ class Employee extends GlobalModel
     protected $dates = ['birthdate', 'date_started'];
     protected $dateFormat = 'Y-m-d';
     protected $guarded = ['employee_id', 'active'];
+
+    public function setDateStartedAttribute($value)
+    {
+$this->attributes['date_started'] = $value;
+$dateValue = Carbon::parse($value);
+$this->attributes['active'] = $dateValue->isFuture() ? 0 : 1;
+    }
     
     public function position()
     {
