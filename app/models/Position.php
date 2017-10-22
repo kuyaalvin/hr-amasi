@@ -19,7 +19,7 @@ protected $guarded = ['position_id'];
             'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],
         ];
         
-        $validator = validator($data, $rules, $messages);
+        $validator = validator($data, $rules);
         $this->errors = $validator->errors();
         return $validator->passes();
     }
