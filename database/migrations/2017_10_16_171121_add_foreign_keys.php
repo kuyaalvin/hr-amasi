@@ -14,8 +14,8 @@ class AddForeignKeys extends Migration
     public function up()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->foreign('position_id')->references('position_id')->on('positions')->nullable();
-            $table->foreign('project_id')->references('project_id')->on('projects')->nullable();
+            $table->foreign('position_id')->references('position_id')->on('positions')->nullable()->onDelete('set null');
+            $table->foreign('project_id')->references('project_id')->on('projects')->nullable()->onDelete('set null');
         });
     }
 
