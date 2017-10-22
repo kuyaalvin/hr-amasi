@@ -14,10 +14,10 @@ class GlobalModel extends Model
         return $this->errors;
     }
 
-    protected function uniqueRule($ignoredValue)
+    protected function uniqueRule()
     {
 $rule = Rule::unique($this->table);
-return $this->exists ? $rule ->ignore($ignoredValue, $this->primaryKey) : $rule;
+return $this->exists ? $rule ->ignore($this->getKey(), $this->primaryKey) : $rule;
     }
     
 }

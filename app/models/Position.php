@@ -16,7 +16,7 @@ protected $guarded = ['position_id'];
     public function validate($data)
     {
         $rules = [
-            'name'=>['required', $this->uniqueRule($this->name), 'string', 'max:50'],
+            'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],
         ];
         
         $validator = validator($data, $rules, $messages);
