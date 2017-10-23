@@ -31,8 +31,7 @@ protected $dateFormat = 'H:i:s';
         ];
         
         $validator = validator($data, $rules, $messages);
-        $validator->sometimes('time_out', 'after:time_in', function($input) use(&$validator)
-        {
+        $validator->sometimes('time_out', 'after:time_in', function($input) use(&$validator) {
             return $validator->validateDateFormat('time_in', $input->time_in, [$this->getDateFormat()]);
         });
         

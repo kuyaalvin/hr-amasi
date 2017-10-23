@@ -65,8 +65,7 @@ $this->attributes['active'] = $dateValue->isFuture() ? 0 : 1;
         ];
         
         $validator = validator($data, $rules, $messages);
-$validator->sometimes('regular', 'different:agency', function($input)
-    {
+$validator->sometimes('regular', 'different:agency', function($input) {
     return $input->agency === 1;
 });
 
