@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;;
 use App\Models\Project;
 use App\Models\Employee;
+use Illuminate\Database\Connection;
 
 class ProjectController extends GlobalController
 {
@@ -91,10 +92,10 @@ class ProjectController extends GlobalController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Connection $con, Project $project)
     {
         $employee = new Employee();
-        \DB::transaction(function() use($project, $employee) {
+        $con->transaction(function() use($project, $employee) {
             $employee->where('project_id', $project->project_id)->update(['project_id', null]);
             $project->active = 0;
             $project->save();
