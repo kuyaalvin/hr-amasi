@@ -12,14 +12,14 @@ class ResetDB extends Command
      *
      * @var string
      */
-    protected $signature = 'ResetDB';
+    protected $signature = 'db:fresh';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Drops and recreates the current database then migrate tables';
+    protected $description = 'Drop everything and re-run all migrations';
 
     /**
      * Create a new command instance.
@@ -38,15 +38,8 @@ class ResetDB extends Command
      */
     public function handle()
     {
-        $db = env('DB_DATABASE');
-$this->info("dropping: $db");
-        DB::unprepared("Drop database $db");
-        $this->info("Dropped: $db");
-        $this->info("Creating: $db");
-        DB::unprepared("create database $db");
-        $this->info("Created: $db");
-        DB::unprepared("use $db");
-        $this->info("Using $db");
-        $this->call('migrate');
+        DB::unprepared('drop event if exists set_active_employees');
+$this->info('Dropped set_active_employees event successfully.');
+        $this->call('migrate:fresh');
     }
 }
