@@ -38,6 +38,7 @@ logins table
 login_id (int) (auto increment) (pk)
 username (nvarchar)(16) (unique) (not null)(no symbols)
 password (nvarchar)(255) (not null)(hash)
+session_id (nvarchar)(255)
 
 projects table
 project_id (int) (auto increment) (pk) 

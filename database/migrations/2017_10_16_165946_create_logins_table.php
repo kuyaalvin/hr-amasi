@@ -17,6 +17,7 @@ class CreateLoginsTable extends Migration
             $table->increments('login_id');
             $table->string('username', 16);
             $table->string('password', 255);
+            $table->string('session_id', 255)->nullable();
         });
     }
 
