@@ -23,5 +23,7 @@ class Login extends GlobalModel implements Authenticatable
      $this->errors = $validator->errors();
      return $validator->passes();
  }
+
+ public function getRememberTokenName() { }
  
 }

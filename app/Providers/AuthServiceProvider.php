@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Auth\AuthManager;
+use App\Models\Login;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,10 +23,12 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(AuthManager $auth)
     {
         $this->registerPolicies();
 
-        //
+$auth->provider('login', function($app, array $config) {
+    return new LoginProvider($app->make('hash'), Login::class);
+});
     }
 }
