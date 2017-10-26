@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;;
+use Illuminate\Http\Request;;;
 use App\Models\Login;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Hashing\Hasher;
 
 class LoginController extends GlobalController
 {
-    private $auth;
-    
-    public function __construct(AuthManager $auth)
-    {
-        $this->auth = $auth;
-    }
     
     /**
      * Display a listing of the resource.
@@ -54,20 +48,20 @@ $data['password'] = $hasher->make($data['password']);
         //
     }
 
-    public function login(Request $request)
+    public function login(Request $request, AuthManager $auth)
     {
-        if ($this->auth->attempt(['username'=>$request->input('username'), 'password'=>$request->input('password')]))
+        if ($auth->attempt(['username'=>$request->input('username'), 'password'=>$request->input('password')]))
 {
-    $login = $this->auth->user();
+    $login = $auth->user();
     $login->session_id = $request->session()->getId();
     $login->save();
 }
 // 
     }
 
-    public function logout()
+    public function logout(AuthManager $auth)
     {
-        $login = $this->auth->user();
+        $login = $auth->user();
         $login->session_id = null;
  $this->auth->logout();
         $login->save();
