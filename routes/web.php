@@ -13,5 +13,5 @@
 
 Route::view('/', 'pages/index');
 
-    Route::get('/login', 'LoginController@index');
+    Route::get('/login', 'LoginController@index')->name('login');
         
