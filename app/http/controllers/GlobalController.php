@@ -8,6 +8,12 @@ use App\Models\GlobalModel;
 class GlobalController extends Controller
 {
 
+    public function __construct()
+    {
+    // $this->middleware(['authenticate', 'token']);
+    }
+    
+    
 protected function sendResponse(Request $request, GlobalModel $model, bool $status, string $redirect = null, string $statusMessage = null)
 {
     $router = app('router');
