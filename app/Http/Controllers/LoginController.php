@@ -53,7 +53,7 @@ $data['password'] = $hasher->make($data['password']);
         if ($auth->attempt(['username'=>$request->input('username'), 'password'=>$request->input('password')]))
 {
     $login = $auth->user();
-    $login->session_id = $request->session()->getId();
+    $login->token = encrypt(time());
     $login->save();
 }
 // 
@@ -62,7 +62,7 @@ $data['password'] = $hasher->make($data['password']);
     public function logout(AuthManager $auth)
     {
         $login = $auth->user();
-        $login->session_id = null;
+        $login->token = null;
  $this->auth->logout();
         $login->save();
         // 

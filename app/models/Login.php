@@ -9,8 +9,8 @@ class Login extends GlobalModel implements Authenticatable
     use \Illuminate\Auth\Authenticatable;
     protected $primaryKey = 'login_id';
     public $timestamps = false;
-    protected $guarded = ['login_id', 'session_id'];
-    protected $hidden = ['password', 'session_id'];
+    protected $guarded = ['login_id', 'token'];
+    protected $hidden = ['password', 'token'];
  
  public function validate(array $data)
  {
