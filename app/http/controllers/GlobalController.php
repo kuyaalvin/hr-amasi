@@ -14,7 +14,7 @@ class GlobalController extends Controller
     }
     
     
-protected function sendResponse(Request $request, GlobalModel $model, bool $status, string $redirect = null, string $statusMessage = null)
+protected function sendResponse(Request $request, GlobalModel $model, bool $status, string $redirect = null, string $message = null)
 {
     $router = app('router');
     $isNamedRoute = $router->has($redirect);
@@ -41,9 +41,9 @@ $statusCode = 422;
         $response = back()->withErrors($errors)->withInput();
     }
 }
-if (isset($statusMessage))
+if (isset($message))
 {
-    $request->session()->flash('status', $statusMessage);
+    $request->session()->flash('message', $message);
 }
 return $response;
 }

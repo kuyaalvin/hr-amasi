@@ -14,4 +14,14 @@
 Route::view('/', 'pages/index');
 
     Route::get('/login', 'LoginController@index')->name('login');
-        
+
+    Route::prefix('positions')->group(function() {
+        Route::get('/', 'PositionController@index');
+        Route::get('create', 'PositionController@create');
+        Route::post('/', 'PositionController@store');
+        Route::get('/{position}/edit', 'PositionController@edit');
+        Route::patch('/{position}', 'PositionController@update');
+        Route::delete('/{position}', 'PositionController@destroy');
+
+    });
+    

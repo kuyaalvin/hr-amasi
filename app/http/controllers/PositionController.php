@@ -14,7 +14,9 @@ class PositionController extends GlobalController
      */
     public function index()
     {
-        //
+$position = new Position();
+$positions = $position->all();
+return view('pages/view_positions')->with('positions', $positions);
     }
 
     /**
@@ -24,7 +26,7 @@ class PositionController extends GlobalController
      */
     public function create()
     {
-        //
+return view('pages/add_position');
     }
 
     /**
@@ -40,19 +42,9 @@ $data = $request->all();
 if ($position->validate($data))
 {
     $position->create($data);
+    return $this->sendResponse($request, $position, true, 'positions', 'Successfully added position');
 }
-//
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    return $this->sendResponse($request, $position, false);
     }
 
     /**
@@ -61,9 +53,9 @@ if ($position->validate($data))
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Position $position)
     {
-        //
+return view('pages/edit_position')->with('position', $position);
     }
 
     /**
@@ -79,8 +71,9 @@ if ($position->validate($data))
         if ($position->validate($data))
         {
             $position->update($data);
+    return $this->sendResponse($request, $position, true, 'positions', 'Successfully edited position');
         }
-        //
+    return $this->sendResponse($request, $position, false);
     }
 
     /**
@@ -89,9 +82,9 @@ if ($position->validate($data))
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy(Request $request, Position $position)
     {
         $position->delete();
-        //
+    return $this->sendResponse($request, $position, true, 'positions', 'Successfully deleted position');
     }
 }
