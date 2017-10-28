@@ -1,0 +1,17 @@
+@extends('layouts.app')
+
+@section('content')
+	
+
+	<form>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="positionName">Position Name</label>
+				<input type="text" class="form-control" name="name" placeholder="add position here">
+			</div>
+		</div>
+		<input type="submit">
+	</form>
+
+	
+@endsection
