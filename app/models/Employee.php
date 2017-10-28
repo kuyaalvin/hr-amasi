@@ -33,7 +33,7 @@ $this->attributes['active'] = $dateValue->isFuture() ? 0 : 1;
     {
         $rules = [
             'id_number'=>['required', $this->uniqueRule(), 'digits_between:1,10'],
-            'biomentric_id'=>['nullable', $this->uniqueRule(), 'digits_between:1,255'],
+            'biometric_id'=>['nullable', $this->uniqueRule(), 'digits_between:1,255'],
             'account_number'=>['required', $this->uniqueRule(), 'digits_between:1,25'],
             'last_name'=>['required', 'string', 'max:50'],
             'middle_name'=>['required', 'string', 'max:100'],
