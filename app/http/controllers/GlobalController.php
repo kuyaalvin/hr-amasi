@@ -13,39 +13,39 @@ class GlobalController extends Controller
     // $this->middleware(['authenticate', 'token']);
     }
     
-    
-protected function sendResponse(Request $request, GlobalModel $model, bool $status, string $redirect = null, string $message = null)
+protected function successResponse(Request $request, string $redirect, string $message = null)
 {
+    $response;
     $router = app('router');
     $isNamedRoute = $router->has($redirect);
-    $errors = $model->errors();
-    $response;
 if ($request->ajax() || $request->wantsJson())
-{
-$responseData;
-$statusCode;
-if ($status)
 {
     $responseData = ['redirect'=>($isNamedRoute) ? route($redirect) : url($redirect)];
     $statusCode = 200;
-} else {
-    $responseData = $errors;
-$statusCode = 422;
-}
     $response = response()->json($responseData, $statusCode);
 } else {
-    if ($status)
-    {
         $response = $isNamedRoute ? redirect()->route($redirect) : redirect($redirect);
-    } else {
-        $response = back()->withErrors($errors)->withInput();
-    }
 }
 if (isset($message))
 {
     $request->session()->flash('message', $message);
 }
 return $response;
+}
+
+protected function failedResponse(Request $request, GlobalModel $model)
+{
+    $response;
+    $errors = $model->errors();
+    if ($request->ajax() || $request->wantsJson())
+    {
+            $responseData = $errors->all();
+            $statusCode = 422;
+        $response = response()->json($responseData, $statusCode);
+    } else {
+            $response = back()->withErrors($errors)->withInput();
+    }
+    return $response;
 }
 
 }

@@ -42,9 +42,9 @@ $data = $request->all();
 if ($position->validate($data))
 {
     $position->create($data);
-    return $this->sendResponse($request, $position, true, 'positions', 'Successfully added position');
+    return $this->successResponse($request, 'positions', 'Successfully added position');
 }
-    return $this->sendResponse($request, $position, false);
+    return $this->failedResponse($request, $position);
     }
 
     /**
@@ -71,9 +71,9 @@ return view('pages/edit_position')->with('position', $position);
         if ($position->validate($data))
         {
             $position->update($data);
-    return $this->sendResponse($request, $position, true, 'positions', 'Successfully edited position');
+    return $this->successResponse($request, 'positions', 'Successfully edited position');
         }
-    return $this->sendResponse($request, $position, false);
+    return $this->failedResponse($request, $position);
     }
 
     /**
@@ -85,6 +85,7 @@ return view('pages/edit_position')->with('position', $position);
     public function destroy(Request $request, Position $position)
     {
         $position->delete();
-    return $this->sendResponse($request, $position, true, 'positions', 'Successfully deleted position');
+    return $this->successResponse($request, 'positions', 'Successfully deleted position');
     }
+    
 }
