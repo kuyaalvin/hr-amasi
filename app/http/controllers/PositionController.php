@@ -84,7 +84,7 @@ return view('pages/edit_position')->with('position', $position);
     public function destroy(Request $request, Position $position)
     {
         $position->delete();
-    return $this->successResponse($request, 'positions', 'Successfully deleted position');
+    return $this->successResponse($request, 'positions', 'Successfully deleted position', false);
     }
     
 }

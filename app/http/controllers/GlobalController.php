@@ -13,25 +13,24 @@ class GlobalController extends Controller
     // $this->middleware(['authenticate', 'token']);
     }
     
-protected function successResponse(Request $request, string $redirect, string $message = null)
+protected function successResponse(Request $request, string $redirect, string $message, $flashOnAjax = true)
 {
     $router = app('router');
     $isNamedRoute = $router->has($redirect);
-if ($request->ajax() || $request->wantsJson())
+if ($this->isAjaxRequest($request))
 {
-    $responseData = ['redirect'=>($isNamedRoute) ? route($redirect) : url($redirect)];
-if (isset($message))
+    $responseData['redirect'] = ($isNamedRoute) ? route($redirect) : url($redirect);
+if ($flashOnAjax)
 {
+    $request->session()->flash('message', $message);
+} else {
     $responseData['message'] = $message;
 }
     $statusCode = 200;
     $response = response()->json($responseData, $statusCode);
 } else {
-    if (isset($message))
-    {
-        $request->session()->flash('message', $message);
-    }
     $response = $isNamedRoute ? redirect()->route($redirect) : redirect($redirect);
+    $request->session()->flash('message', $message);
 }
 return $response;
 }
@@ -39,7 +38,7 @@ return $response;
 protected function failedResponse(Request $request, GlobalModel $model)
 {
     $errors = $model->errors();
-    if ($request->ajax() || $request->wantsJson())
+    if ($this->isAjaxRequest($request))
     {
             $responseData = $errors->all();
             $statusCode = 422;
@@ -48,6 +47,11 @@ protected function failedResponse(Request $request, GlobalModel $model)
             $response = back()->withErrors($errors)->withInput();
     }
     return $response;
+}
+
+private function isAjaxRequest(Request $request)
+{
+    return $request->ajax() || $request->wantsJson();
 }
 
 }
