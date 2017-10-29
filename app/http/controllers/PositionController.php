@@ -14,8 +14,7 @@ class PositionController extends GlobalController
      */
     public function index()
     {
-$position = app(Position::class);
-$positions = $position->all();
+$positions = Position::all();
 return view('pages/view_positions')->with('positions', $positions);
     }
 
