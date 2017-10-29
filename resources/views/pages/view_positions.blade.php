@@ -4,7 +4,7 @@
 
 
 @if (session('message'))
-<h4>{{ session('message') }}</h4>
+<h4 id="message">{{ session('message') }}</h4>
 @endif
 
 <a href="{{ url('positions/create') }}">Add Position</a>
@@ -23,7 +23,7 @@
       <th scope="row">{{ $position->position_id }}</th>
       <td>{{ $position->name }}</td>
       <td><a href="{{ url('positions/' . $position->position_id . '/edit') }}">Edit</a></td>
-<td><form action="{{ url('positions/' . $position->position_id) }}" method="post">
+<td><form class="deletePositionForm" action="{{ url('positions/' . $position->position_id) }}" method="post">
 {{ csrf_field() }}
 {{ method_field('delete') }}
 <input type="submit" value="Delete"/>
@@ -32,4 +32,35 @@
 @endforeach
   </tbody>
 </table>
+@endsection
+
+@section('scripts')
+<script>
+$(function() {
+$(".deletePositionForm").on("submit", function(event) {
+event.preventDefault();
+
+var form = $(this);
+$.ajax({
+type: form.attr("method"),
+url: form.attr("action"),
+cache: false,
+data: form.serializeArray(),
+statusCode: {
+	200: function(data) {
+		form.parent().parent().remove();
+		var message = data.message;
+		var elementId = "message";
+		if ($("#"+elementId).length) {
+		$("#"+elementId).text(message);
+			} else {
+				$("body").prepend("<h4 id='"+elementId+"'>"+message+"</h4>");
+			}
+	}
+}
+});
+});
+});
+
+</script>
 @endsection
