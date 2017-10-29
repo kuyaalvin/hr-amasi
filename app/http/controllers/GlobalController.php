@@ -17,14 +17,6 @@ protected function successResponse(Request $request, string $redirect, string $m
 {
     $router = app('router');
     $isNamedRoute = $router->has($redirect);
-    if (isset($message))
-    {
-        $request->session()->flash('message', $message);
-    }
-    if (isset($message))
-    {
-        $request->session()->flash('message', $message);
-    }
 if ($request->ajax() || $request->wantsJson())
 {
     $responseData = ['redirect'=>($isNamedRoute) ? route($redirect) : url($redirect)];
@@ -35,7 +27,11 @@ if (isset($message))
     $statusCode = 200;
     $response = response()->json($responseData, $statusCode);
 } else {
-        $response = $isNamedRoute ? redirect()->route($redirect) : redirect($redirect);
+    if (isset($message))
+    {
+        $request->session()->flash('message', $message);
+    }
+    $response = $isNamedRoute ? redirect()->route($redirect) : redirect($redirect);
 }
 return $response;
 }
