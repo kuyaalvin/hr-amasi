@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;;
+use Illuminate\Http\Request;;;
 use App\Models\Position;
 
 class PositionController extends GlobalController
@@ -14,7 +14,7 @@ class PositionController extends GlobalController
      */
     public function index()
     {
-$position = new Position();
+$position = app(Position::class);
 $positions = $position->all();
 return view('pages/view_positions')->with('positions', $positions);
     }
@@ -35,9 +35,8 @@ return view('pages/add_position');
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Position $position)
     {
-        $position = new Position();
 $data = $request->all();
 if ($position->validate($data))
 {
