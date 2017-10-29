@@ -16,7 +16,8 @@ class ProjectController extends GlobalController
      */
     public function index()
     {
-        //
+$projects = Project::where('active', 1)->get();
+return view('pages/view_projects')->with('projects', $projects);
     }
 
     /**
@@ -26,7 +27,7 @@ class ProjectController extends GlobalController
      */
     public function create()
     {
-        //
+return view('pages/add_project');
     }
 
     /**
@@ -35,26 +36,15 @@ class ProjectController extends GlobalController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
-        $project = new Project();
         $data = $request->all();
         if ($project->validate($data))
         {
             $project->create($data);
+    return $this->successResponse($request, 'projects', 'Successfully added project');
         }
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    return $this->failedResponse($request, $project);
     }
 
     /**
@@ -63,9 +53,9 @@ class ProjectController extends GlobalController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+return view('pages/edit_project')->with('project', $project);
     }
 
     /**
@@ -81,9 +71,9 @@ class ProjectController extends GlobalController
         if ($project->validate($data))
         {
             $project->update($data);
+    return $this->successResponse($request, 'projects', 'Successfully edited project');
         }
-        
-        //
+    return $this->failedResponse($request, $project);
     }
 
     /**
@@ -92,14 +82,15 @@ class ProjectController extends GlobalController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Connection $con, Project $project)
+    public function destroy(Request $request, Connection $con, Project $project)
     {
-        $employee = new Employee();
+        $employee = app(Employee::class);
         $con->transaction(function() use($project, $employee) {
-            $employee->where('project_id', $project->project_id)->update(['project_id', null]);
+            $employee->where('project_id', $project->project_id)->update(['project_id' => null]);
             $project->active = 0;
             $project->save();
         });
-        //
+    return $this->successResponse($request, 'projects', 'Successfully deleted project', false);
     }
+
 }

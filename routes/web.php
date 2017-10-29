@@ -16,3 +16,4 @@ Route::view('/', 'pages/index');
     Route::get('/login', 'LoginController@index')->name('login');
 
 Route::resource('positions', 'PositionController')->except('show');
+Route::resource('projects', 'ProjectController')->except('show');
