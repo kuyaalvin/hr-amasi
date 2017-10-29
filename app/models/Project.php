@@ -15,6 +15,16 @@ protected $dateFormat = 'H:i:s';
         return $this->hasMany(Employee::class);
     }
 
+    public function getTimeInAttribute($value)
+    {
+        return $value;    
+    }
+
+    public function getTimeOutAttribute($value)
+    {
+        return $value;
+    }
+    
     public function validate(array $data)
     {
         $rules = [
