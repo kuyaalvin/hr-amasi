@@ -15,27 +15,33 @@ class GlobalController extends Controller
     
 protected function successResponse(Request $request, string $redirect, string $message = null)
 {
-    $response;
     $router = app('router');
     $isNamedRoute = $router->has($redirect);
+    if (isset($message))
+    {
+        $request->session()->flash('message', $message);
+    }
+    if (isset($message))
+    {
+        $request->session()->flash('message', $message);
+    }
 if ($request->ajax() || $request->wantsJson())
 {
     $responseData = ['redirect'=>($isNamedRoute) ? route($redirect) : url($redirect)];
+if (isset($message))
+{
+    $responseData['message'] = $message;
+}
     $statusCode = 200;
     $response = response()->json($responseData, $statusCode);
 } else {
         $response = $isNamedRoute ? redirect()->route($redirect) : redirect($redirect);
-}
-if (isset($message))
-{
-    $request->session()->flash('message', $message);
 }
 return $response;
 }
 
 protected function failedResponse(Request $request, GlobalModel $model)
 {
-    $response;
     $errors = $model->errors();
     if ($request->ajax() || $request->wantsJson())
     {
