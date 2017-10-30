@@ -38,7 +38,7 @@ statusCode: {
 window.location.replace(data.redirect);
 	},
 422: function(jqXHR, textStatus, errorThrone) {
-	var errorMessage = $.parseJSON(jqXHR.responseText)[0];
+	var errorMessage = jqXHR.responseJSON[0];
 var elementId = "errorMessage";
 if ($("#"+elementId).length) {
 $("#"+elementId).text(errorMessage);
