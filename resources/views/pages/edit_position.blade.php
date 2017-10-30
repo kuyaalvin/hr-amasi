@@ -26,30 +26,34 @@
 $(function() {
 $("#editPositionForm").on("submit", function(event) {
 event.preventDefault();
-
 var form = $(this);
-$.ajax({
-type: form.attr("method"),
-url: form.attr("action"),
-cache: false,
-data: form.serializeArray(),
-statusCode: {
-	200: function(data) {
+
+sendAjaxRequest(form, function(data) {
 window.location.replace(data.redirect);
 	},
-422: function(jqXHR, textStatus, errorThrone) {
-	var errorMessage = jqXHR.responseJSON[0];
+function(jqXHR, textStatus, errorThrone) {
+	var errorMessage;
+if (jqXHR.status === 422)
+{
+errorMessage = jqXHR.responseJSON[0];
+} else {
+errorMessage = internalErrorMessage;
+}
+displayErrorMessage(form, errorMessage);
+});
+});
+});
+
+function displayErrorMessage(form, errorMessage)
+{
 var elementId = "errorMessage";
 if ($("#"+elementId).length) {
 $("#"+elementId).text(errorMessage);
 	} else {
 		form.before("<label id='"+elementId+"' for='errorMessage'>"+errorMessage+"</label>");
 	}
-}	
 }
-});
-});
-});
 
 </script>
+
 @endsection

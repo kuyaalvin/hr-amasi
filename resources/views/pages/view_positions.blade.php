@@ -36,18 +36,13 @@
 
 @section('scripts')
 <script>
+
 $(function() {
 $(".deletePositionForm").on("submit", function(event) {
 event.preventDefault();
-
 var form = $(this);
-$.ajax({
-type: form.attr("method"),
-url: form.attr("action"),
-cache: false,
-data: form.serializeArray(),
-statusCode: {
-	200: function(data) {
+
+sendAjaxRequest(form, function(data) {
 		form.parent().parent().remove();
 		var message = data.message;
 		var elementId = "message";
@@ -56,11 +51,12 @@ statusCode: {
 			} else {
 				$("body").prepend("<h4 id='"+elementId+"'>"+message+"</h4>");
 			}
-	}
-}
-});
-});
-});
+	},
+function(jqXHR, textStatus, errorThrone) {
+	var errorMessage;
 
+});
+});
+});
 </script>
 @endsection
