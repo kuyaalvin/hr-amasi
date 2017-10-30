@@ -14,6 +14,7 @@ class EmployeeController extends GlobalController
      */
     public function index()
     {
+        $employees = Employee::where('active', 1)->get();
         //
     }
 
@@ -33,15 +34,15 @@ class EmployeeController extends GlobalController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Employee $employee)
     {
-        $employee = new Employee();
         $data = $request->all();
         if ($employee->validate($data))
         {
             $employee->create($data);
+            return $this->successResponse($request, 'employees', 'Successfully added employee');
         }
-            //
+        return $this->failedResponse($request, $employee);
     }
 
     /**
@@ -50,7 +51,7 @@ class EmployeeController extends GlobalController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
         //
     }
@@ -61,7 +62,7 @@ class EmployeeController extends GlobalController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
         //
     }
@@ -79,8 +80,9 @@ class EmployeeController extends GlobalController
         if ($employee->validate($data))
         {
             $employee->update($data);
+            return $this->successResponse($request, 'employees', 'Successfully edited employee');
         }
-            //
+        return $this->failedResponse($request, $employee);
     }
 
     /**
@@ -93,6 +95,7 @@ class EmployeeController extends GlobalController
     {
 $employee->active = 0;
 $employee->save();
-            //
+return $this->successResponse($request, 'employees', 'Successfully deleted employee', false);
     }
+    
 }
