@@ -32,6 +32,7 @@ return view('pages/add_position');
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Position $position
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Position $position)
@@ -48,7 +49,7 @@ if ($position->validate($data))
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Position $position
      * @return \Illuminate\Http\Response
      */
     public function edit(Position $position)
@@ -60,7 +61,7 @@ return view('pages/edit_position')->with('position', $position);
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Position $position
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Position $position)
@@ -77,7 +78,8 @@ return view('pages/edit_position')->with('position', $position);
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Position $position
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Position $position)

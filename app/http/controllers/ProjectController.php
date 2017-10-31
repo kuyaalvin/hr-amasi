@@ -34,6 +34,7 @@ return view('pages/add_project');
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Project $project)
@@ -50,7 +51,7 @@ return view('pages/add_project');
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
@@ -62,7 +63,7 @@ return view('pages/edit_project')->with('project', $project);
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
@@ -79,7 +80,9 @@ return view('pages/edit_project')->with('project', $project);
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Database\Connection $con
+     * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Connection $con, Project $project)
