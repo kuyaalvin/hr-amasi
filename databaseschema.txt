@@ -9,7 +9,7 @@ incomplete tables are not yet implemented
 
 employees table
 employee_id (int) (auto increment) (pk)
-id_number (unique) (char) (10) (only number) (not null) (
+id_number (unique) (char) (8) (only number) (not null) (
 biometric_id (char) (4) (unique) (numbers only) (minimun 1 and max 4)
 account_number (char) (25) (not null) (unique) (numbers only)
 last_name (nvarchar) (50) (not null)
@@ -17,16 +17,19 @@ first_name (nvarchar) (100) (not null)
 middle_name (nvarchar) (50) (not null)
 city_address (nvarchar) (255) (not null)
 provincial_address (nvarchar) (255)
+telephone_number (char) (9) exact (xxx-xx-xx)
+cellphone_number1 (char) (13) exact (xxxx-xxx-xxxx)
+cellphone_number2 (char) (13) exact (xxxx-xxx-xxxx)
 birthdate (date) (should be greater than today) (YYYY-MM-DD) (not null)
 civil_status (enum- Single, Married) (not null)
 number_of_dependencies (tinyint unsigned) 
 citizenship (nvarchar) (30) (not null)()
 religion (nvarchar) (30)
 gender (nvarchar) (enum- Male, Female) (not null)
-sss_id (char) (15) (XX-XXXXXXX-X) (min 10)  (number only server side)
-phic_id (char) (15) (XX-XXXXXXXXX-X) (min 12) (number only server side)
-hdmf_id (char) (15) (XXXX-XXXX-XXXX) (min 12 )  (number only server side)
-tin_id (char) (15) (XXX-XXX-XXX-XXX) (min 12) (last 3 digits 000) (number only server side)
+sss_id (char) (12) (XX-XXXXXXX-X) exact
+phic_id (char) (14) (XX-XXXXXXXXX-X) exact
+hdmf_id (char) (14) (XXXX-XXXX-XXXX) exact
+tin_id (char)(15) (XXX-XXX-XXX-XXX) exact (last 3 digits 000)
 position_id (fk) (references positions table)
 payroll_type (enum- Weekly, Monthly) (not null)
 date_started (date) (not null)
@@ -34,9 +37,6 @@ active (boolean) (not null) (if date started greater than today = 0 else = 1)
 regular (boolean) (not null) 
 agency (boolean) (not null)
 project_id (fk) (references projects table)
-telephone_number (char) (10) 
-cellphone_number1 (char) (11)
-cellphone_number2 (char) (11)
 
 logins table
 login_id (int) (auto increment) (pk)
@@ -53,7 +53,7 @@ time-out (time) (HH:MM:SS) (greater than time in)
 active (boolean) (default = 1)
 
 positions table
-pos ition_id (int) ((auto increment)   (not null) (pk)
+position_id (int) ((auto increment)   (not null) (pk)
 name (nvarchar)(50)(not null) 
 
 attendances table (incomplete)
