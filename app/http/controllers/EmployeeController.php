@@ -14,7 +14,7 @@ class EmployeeController extends GlobalController
      */
     public function index()
     {
-        $employees = Employee::where('active', 1)->get();
+        $employees = Employee::where('active', 1)->orderBy('employee_id')->get();
         //
     }
 
