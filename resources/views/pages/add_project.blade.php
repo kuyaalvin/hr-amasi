@@ -4,7 +4,9 @@
 
 <h1>add project</h1>
 @if ($errors->any())
-
+@foreach ($errors->all() as $error)
+{{ $error }}<br/>
+@endforeach
 @endif
 
 	<form id="createProjectForm" action="{{ url('projects') }}" method="post">
@@ -20,11 +22,11 @@
 </div>
 			<div class="form-group col-md-4">
 				<label for="timeIn">Time In</label>
-				<input type="text" class="form-control" name="time_in" placeholder="add time in here" value="{{ old('time_in') }}">
+				<input type="time" class="form-control" name="time_in" placeholder="add time in here" value="{{ old('time_in') }}">
 </div>
 			<div class="form-group col-md-4">
 				<label for="timeOut">Time Out</label>
-				<input type="text" class="form-control" name="time_out" placeholder="add time out here" value="{{ old('time_out') }}">
+				<input type="time" class="form-control" name="time_out" placeholder="add time out here" value="{{ old('time_out') }}">
 </div>
 </div>
 		<input type="submit" value="Submit">
