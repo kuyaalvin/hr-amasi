@@ -13,7 +13,7 @@ class CreateEvents extends Migration
      */
     public function up()
     {
-        DB::unprepared('create event set_active_employees on schedule every 1 day starts current_date + interval 1 day do update employees set active=1 where date_started=current_date;');
+        DB::unprepared('create event set_active_employees on schedule every 6 hour starts current_date + interval 1 day do update employees set active=1 where date_started=current_date;');
     }
 
     /**
