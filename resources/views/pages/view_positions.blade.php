@@ -26,7 +26,7 @@
 <td><form class="deletePositionForm" action="{{ url('positions/' . $position->position_id) }}" method="post">
 {{ csrf_field() }}
 {{ method_field('delete') }}
-<input type="submit" value="Delete"/>
+<input type="submit" value="Delete">
 </form></td>
     </tr>
 @endforeach

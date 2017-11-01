@@ -12,10 +12,10 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Name</label>
-				<input type="text" class="form-control" name="name" placeholder="add position here" value="{{ old('name') }}"/>
+				<input type="text" class="form-control" name="name" placeholder="add position here" value="{{ old('name') }}">
 			</div>
 		</div>
-		<input type="submit" value="Submit"/>
+		<input type="submit" value="Submit">
 	</form>
 
 

@@ -32,7 +32,7 @@
 <td><form class="deleteProjectForm" action="{{ url('projects/' . $project->project_id) }}" method="post">
 {{ csrf_field() }}
 {{ method_field('delete') }}
-<input type="submit" value="Delete"/>
+<input type="submit" value="Delete">
 </form></td>
     </tr>
 @endforeach
