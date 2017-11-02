@@ -36,30 +36,3 @@
   </tbody>
 </table>
 @endsection
-
-@section('scripts')
-<script>
-
-$(function() {
-$(".deletePositionForm").on("submit", function(event) {
-event.preventDefault();
-var form = $(this);
-
-sendAjaxRequest(form, function(data) {
-		form.parent().parent().remove();
-		var message = data.message;
-		var elementId = "message";
-		if ($("#"+elementId).length) {
-		$("#"+elementId).text(message);
-			} else {
-				$("body").prepend("<h4 id='"+elementId+"'>"+message+"</h4>");
-			}
-	},
-function(jqXHR, textStatus, errorThrone) {
-	var errorMessage;
-
-});
-});
-});
-</script>
-@endsection
