@@ -23,9 +23,9 @@ class CreateEmployeesTable extends Migration
             $table->string('middle_name', 50);
             $table->string('city_address', 255);
             $table->string('provincial_address', 255)->nullable();
-$table->char('telephone_number', 9);
-$table->char('mobile_number1', 13);
-$table->char('mobile_number2', 13);
+$table->char('telephone_number', 9)->nullable();
+$table->char('mobile_number1', 13)->nullable();
+$table->char('mobile_number2', 13)->nullable();
             $table->date('birthdate');
             $table->enum('civil_status', ['Single', 'Married']);
             $table->unsignedTinyInteger('number_of_dependencies')->nullable();
