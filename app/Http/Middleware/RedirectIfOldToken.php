@@ -21,7 +21,7 @@ class RedirectIfOldToken
 $currentToken = $request->session()->get('token');
         $newToken = $currentLogin->token;
 
-        if ($currentToken !== $newToken)
+        if ($currentToken != $newToken)
         {
         return redirect()->route('login');
         }
