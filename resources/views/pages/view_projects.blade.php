@@ -2,10 +2,6 @@
 
 @section('content')
 
-@if ($errors->any())
-{{ $error->all()[0] }}
-@endif
-
 @if (session('message'))
 <h4 id="message">{{ session('message') }}</h4>
 @endif
