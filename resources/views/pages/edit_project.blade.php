@@ -5,7 +5,7 @@
 	
 @if ($errors->any())
 @foreach ($errors->all() as $error)
-{{ $error }}<br/>
+<label for="errorMessage">{{ $error }}</label>
 @endforeach
 @endif
 
