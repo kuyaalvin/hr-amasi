@@ -40,7 +40,8 @@ return view('pages/add_position');
 $data = $request->all();
 if ($position->validate($data))
 {
-    $position->create($data);
+    $position->fill($data);
+$position->save();
     return $this->successResponse($request, 'positions', 'Position has been added.');
 }
     return $this->failedResponse($request, $position);
@@ -69,8 +70,9 @@ return view('pages/edit_position')->with('position', $position);
         $data = $request->all();
         if ($position->validate($data))
         {
-            $position->update($data);
-    return $this->successResponse($request, 'positions', 'Position has been edited.');
+            $position->fill($data);
+$position->save();    
+return $this->successResponse($request, 'positions', 'Position has been edited.');
         }
     return $this->failedResponse($request, $position);
     }

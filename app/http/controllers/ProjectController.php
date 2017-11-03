@@ -42,7 +42,8 @@ return view('pages/add_project');
         $data = $request->all();
         if ($project->validate($data))
         {
-            $project->create($data);
+            $project->fill($data);
+$project->save();
     return $this->successResponse($request, 'projects', 'Project has been added.');
         }
     return $this->failedResponse($request, $project);
@@ -71,7 +72,8 @@ return view('pages/edit_project')->with('project', $project);
         $data = $request->all();
         if ($project->validate($data))
         {
-            $project->update($data);
+            $project->fill($data);
+$project->save();
     return $this->successResponse($request, 'projects', 'Project has been edited.');
         }
     return $this->failedResponse($request, $project);
