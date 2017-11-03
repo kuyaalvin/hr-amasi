@@ -17,3 +17,4 @@ Route::view('/', 'pages/index');
 
 Route::resource('positions', 'PositionController')->except('show');
 Route::resource('projects', 'ProjectController')->except('show');
+Route::resource('employees', 'EmployeeController')->except('show');

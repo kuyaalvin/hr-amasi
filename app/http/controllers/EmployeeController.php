@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;;
+use Illuminate\Http\Request;;;;
 use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Project;
 
 class EmployeeController extends GlobalController
 {
@@ -14,8 +16,8 @@ class EmployeeController extends GlobalController
      */
     public function index()
     {
-        $employees = Employee::where('active', 1)->orderBy('employee_id')->get();
-        //
+        $employees = Employee::with('position', 'project')->orderBy('employee_id')->get();
+return view('pages/view_employees')->with('employees', $employees);
     }
 
     /**
@@ -25,7 +27,9 @@ class EmployeeController extends GlobalController
      */
     public function create()
     {
-        //
+        $positions = Position::orderBy('position_id')->get();
+        $projects = Project::orderBy('project_id')->get();
+return view('pages/add_employee', ['positions'=>$positions, 'projects'=>$projects]);
     }
 
     /**
@@ -40,21 +44,11 @@ class EmployeeController extends GlobalController
         $data = $request->all();
         if ($employee->validate($data))
         {
-            $employee->create($data);
-            return $this->successResponse($request, 'employees', 'Successfully added employee');
+            $employee->fill($data);
+$employee->save();
+            return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been added.');
         }
         return $this->failedResponse($request, $employee);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Employee $employee)
-    {
-        //
     }
 
     /**
@@ -65,7 +59,9 @@ class EmployeeController extends GlobalController
      */
     public function edit(Employee $employee)
     {
-        //
+        $positions = Position::orderBy('position_id')->get();
+        $projects = Project::orderBy('project_id')->get();
+return view('pages/edit_employee', ['employee'=>$employee, 'positions'=>$positions, 'projects'=>$projects]);
     }
 
     /**
@@ -80,8 +76,9 @@ class EmployeeController extends GlobalController
         $data = $request->all();
         if ($employee->validate($data))
         {
-            $employee->update($data);
-            return $this->successResponse($request, 'employees', 'Successfully edited employee');
+            $employee->fill($data);
+$employee->save();
+            return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been edited.');
         }
         return $this->failedResponse($request, $employee);
     }
@@ -89,14 +86,14 @@ class EmployeeController extends GlobalController
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Request $request, Employee $employee)
     {
-$employee->active = 0;
-$employee->save();
-return $this->successResponse($request, 'employees', 'Successfully deleted employee', false);
+$employee->delete();
+return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been deleted.', false);
     }
     
 }
