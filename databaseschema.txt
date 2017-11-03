@@ -33,7 +33,7 @@ tin_id (char)(15) (XXX-XXX-XXX-XXX) exact (last 3 digits 000)
 position_id (fk) (references positions table)
 payroll_type (enum- Weekly, Monthly) (not null)
 date_started (date) (not null)
-active (boolean) (not null) (if date started greater than today = 0 else = 1)
+date_terminated date
 regular (boolean) (not null) 
 agency (boolean) (not null)
 project_id (fk) (references projects table)
