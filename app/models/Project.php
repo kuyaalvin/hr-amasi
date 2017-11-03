@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\models\scopes\ActiveScope;
+
 class Project extends GlobalModel
 {
     protected $primaryKey = 'project_id';
@@ -9,6 +11,13 @@ class Project extends GlobalModel
     protected $guarded = ['project_id', 'active'];
 protected $dates = ['time_in', 'time_out'];
 protected $dateFormat = 'H:i:s';
+
+protected static function boot()
+{
+    parent::boot();
+    
+    static::addGlobalScope(new ActiveScope());
+});
 
     public function employees()
     {
