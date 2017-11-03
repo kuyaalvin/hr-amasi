@@ -43,7 +43,7 @@ return view('pages/add_project');
         if ($project->validate($data))
         {
             $project->create($data);
-    return $this->successResponse($request, 'projects', 'Successfully added project');
+    return $this->successResponse($request, 'projects', 'Project has been added.');
         }
     return $this->failedResponse($request, $project);
     }
@@ -72,7 +72,7 @@ return view('pages/edit_project')->with('project', $project);
         if ($project->validate($data))
         {
             $project->update($data);
-    return $this->successResponse($request, 'projects', 'Successfully edited project');
+    return $this->successResponse($request, 'projects', 'Project has been edited.');
         }
     return $this->failedResponse($request, $project);
     }
@@ -93,7 +93,7 @@ return view('pages/edit_project')->with('project', $project);
             $project->active = 0;
             $project->save();
         });
-    return $this->successResponse($request, 'projects', 'Successfully deleted project', false);
+    return $this->successResponse($request, 'projects', 'Project has been deleted.', false);
     }
 
 }
