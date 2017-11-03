@@ -16,8 +16,6 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('employee_id');
             $table->char('id_number', 8)->unique();
-            $table->char('biometric_id', 4)->nullable()->unique();
-            $table->char('account_number', 25)->unique();
             $table->string('last_name', 50);
             $table->string('first_name', 100);
             $table->string('middle_name', 50);
@@ -36,11 +34,13 @@ $table->char('mobile_number2', 13)->nullable();
             $table->char('phic_id', 14)->nullable();
             $table->char('hdmf_id', 14)->nullable();
             $table->char('tin_id', 15)->nullable();
+            $table->char('account_number', 25)->unique();
+            $table->char('biometric_id', 4)->nullable()->unique();
             $table->enum('payroll_type', ['Weekly', 'Monthly']);
             $table->date('date_started');
+            $table->date('date_terminated')->nullable();
             $table->boolean('agency');
             $table->boolean('regular');
-            $table->boolean('active');
             $table->unsignedInteger('position_id')->nullable();
             $table->unsignedInteger('project_id')->nullable();
         });
