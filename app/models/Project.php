@@ -17,7 +17,7 @@ protected static function boot()
     parent::boot();
     
     static::addGlobalScope(new ActiveScope());
-});
+}
 
     public function employees()
     {
