@@ -8,6 +8,23 @@
 		<title>{{config('app.name', 'LSAPP')}}</title>
 	</head>
 	<body>
+
+	<nav class="navbar fixed-top">
+		<a class="navbar-brand">AMASI HR</a>
+		<ul class="navbar-nav">
+		<!-- Pagpasok ng link ilagay mo na papuntang list -->
+			<a class="nav-link" href="">Employee</a>
+		</ul>
+		<ul class="navbar-nav">
+			<a class="nav-link" href="">Project</a>
+		</ul>
+		<ul class="navbar-nav">
+			<a class="nav-link" href="">Position</a>
+		</ul>
+		<ul class="navbar-nav">
+			<a class="nav-link" href="">Log Out</a>
+		</ul>
+	</nav>
 	
 
 	@yield('content')
