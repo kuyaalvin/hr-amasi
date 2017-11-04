@@ -12,7 +12,6 @@
 		<input id="password" name="password"/>
 		<a id="login" href="index.html" class="btn btn-primary">Login</a>
 	</div>
-
 </form>
 
 

@@ -8,8 +8,8 @@
 @endif
 
 	<form id="editPositionForm" action="{{ url('positions/' . $position->position_id) }}" method="post">
-{{ csrf_field() }}
-{{ method_field('patch') }}
+		{{ csrf_field() }}
+		{{ method_field('patch') }}
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Name</label>

@@ -10,8 +10,8 @@
 @endif
 
 	<form id="editEmployeeForm" action="{{ url('employees/' . $employee->employee_id) }}" method="post">
-{{ csrf_field() }}
-{{ method_field('patch') }}
+		{{ csrf_field() }}
+		{{ method_field('patch') }}
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="fullName">Name</label>
@@ -31,16 +31,16 @@
 			</div>
 			<div class="form-group col-md-4">
 				<label for="gender">Sex</label>
-<label for="gender0">Male</label>
+				<label for="gender0">Male</label>
 				<input class="checkbox-inline form-control" type="radio" id="gender0" name="gender" value="Male" @if (old('gender', $employee->gender) == 'Male') checked @endif>
-<label for="gender1">Female</label>
-<input class="checkbox-inline form-control" type="radio" id="gender1" name="gender" value="Female" @if (old('gender', $employee->gender) == 'Female') checked @endif>
+				<label for="gender1">Female</label>
+				<input class="checkbox-inline form-control" type="radio" id="gender1" name="gender" value="Female" @if (old('gender', $employee->gender) == 'Female') checked @endif>
 			</div>
 			<div class="form-group col-md-4">
 				<label for="civilStatus">Civil Status</label>
-<label for="civil_status0">Single</label>
+				<label for="civil_status0">Single</label>
 				<input class="checkbox-inline form-control" type="radio" id="civil_status0" name="civil_status" value="Single" @if (old('civil_status', $employee->civil_status) == 'Single') checked @endif>
-<label for="civil_status1">Married</label>
+				<label for="civil_status1">Married</label>
 				<input class="checkbox-inline form-control" type="radio" id="civil_status1" name="civil_status" value="Married" @if (old('civil_status', $employee->civil_status) == 'Married') checked @endif>
 			</div>
 			<div class="form-group col-md-4">
@@ -79,21 +79,21 @@
 			</div>
 			<div class="form-group col-md-3">
 				<label for="position">Position</label>
-<select name="position_id">
-<option value="">None</option>
-@foreach ($positions as $position)
-<option value="{{ $position->position_id }}" @if (old('position_id', $employee->position_id) == $position->position_id) selected @endif>{{ $position->name }}</option>
-@endforeach
-</select>
+				<select name="position_id">
+				<option value="">None</option>
+				@foreach ($positions as $position)
+				<option value="{{ $position->position_id }}" @if (old('position_id', $employee->position_id) == $position->position_id) selected @endif>{{ $position->name }}</option>
+				@endforeach
+				</select>
 			</div>
 			<div class="form-group col-md-3">
 				<label for="project">Project</label>
-<select name="project_id">
-<option value="">None</option>
-@foreach ($projects as $project)
-<option value="{{ $project->project_id }}" @if (old('project_id', $employee->project_id) == $project->project_id) selected @endif>{{ $project->name }}</option>
-@endforeach
-</select>
+				<select name="project_id">
+				<option value="">None</option>
+				@foreach ($projects as $project)
+				<option value="{{ $project->project_id }}" @if (old('project_id', $employee->project_id) == $project->project_id) selected @endif>{{ $project->name }}</option>
+				@endforeach
+				</select>
 			</div>
 		</div>
 		<div class="form-row">
@@ -118,32 +118,32 @@
 			<div class="form-group">
 				<label for="accountNumber">Account Number</label>
 				<input type="text" class="form-control" id="account_number" name="account_number" placeholder="Account Number" value="{{ old('account_number', $employee->account_number) }}">
-</div>
+			</div>
 			<div class="form-group">
 				<label for="biometricID">Biometric ID</label>
 				<input type="text" class="form-control" id="biometric_id" name="biometric_id" placeholder="Biometric ID" value="{{ old('biometric_id', $employee->biometric_id) }}">
-</div>
+			</div>
 			<div class="form-group">
 				<label for="payrollType">Payroll Type</label>
-<label for="payroll_type0">Weekly</label>
+				<label for="payroll_type0">Weekly</label>
 				<input class="checkbox-inline form-control" type="radio" id="payroll_type0" name="payroll_type" value="Weekly" @if (old('payroll_type', $employee->payroll_type) == 'Weekly') checked @endif>
-<label for="payroll_type1">Monthly</label>
+				<label for="payroll_type1">Monthly</label>
 				<input class="checkbox-inline form-control" type="radio" id="payroll_type1" name="payroll_type" value="Monthly" @if (old('payroll_type', $employee->payroll_type) == 'Monthly') checked @endif>
 			</div>
 			<div class="form-group">
 				<label for="dateStarted">Date Started</label>
 				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started', $employee->date_started) }}">
-</div>
-<input type="hidden" name="regular" value="0">
+			</div>
+			<input type="hidden" name="regular" value="0">
 			<div class="form-group">
-<label for="regular">Regular</label>
+				<label for="regular">Regular</label>
 				<input class="checkbox-inline form-control" type="checkbox" id="regular" name="regular" value="1" @if (old('regular', $employee->regular)) checked @endif>
-</div>
-<input type="hidden" name="agency" value="0">
+			</div>
+			<input type="hidden" name="agency" value="0">
 			<div class="form-group">
-<label for="agency">Agency</label>
+				<label for="agency">Agency</label>
 				<input class="checkbox-inline form-control" type="checkbox" id="agency" name="agency" value="1" @if (old('agency', $employee->agency)) checked @endif>
-</div>
+			</div>
 		</div>
 		<input type="submit" value="Submit">
 	</form>

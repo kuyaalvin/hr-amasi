@@ -29,10 +29,10 @@
       <td>@isset ($employee->project->name) {{ $employee->project->name }} @endisset</td>
       <td><a href="{{ url('employees/' . $employee->employee_id . '/edit') }}">Edit</a></td>
 <td><form class="deleteEmployeeForm" action="{{ url('employees/' . $employee->employee_id) }}" method="post">
-{{ csrf_field() }}
-{{ method_field('delete') }}
-<input type="submit" value="Delete">
-</form></td>
+    {{ csrf_field() }}
+    {{ method_field('delete') }}
+    <input type="submit" value="Delete">
+    </form></td>
     </tr>
 @endforeach
   </tbody>

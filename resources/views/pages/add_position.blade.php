@@ -8,7 +8,7 @@
 @endif
 
 	<form id="createPositionForm" action="{{ url('positions') }}" method="post">
-{{ csrf_field() }}
+		{{ csrf_field() }}
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Name</label>
