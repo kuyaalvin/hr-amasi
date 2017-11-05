@@ -8,21 +8,25 @@
 		<title>{{config('app.name', 'LSAPP')}}</title>
 	</head>
 	<body>
+<form id="logoutForm" action="{{ url('logout') }}" method="post">
+		{{ csrf_field() }}
+</form>
 
 	<nav class="navbar fixed-top">
 		<a class="navbar-brand">AMASI HR</a>
 		<ul class="navbar-nav">
 		<!-- Pagpasok ng link ilagay mo na papuntang list -->
-			<a class="nav-link" href="">Employee</a>
+			<a class="nav-link" href="{{ url('employees') }}">Employee</a>
 		</ul>
 		<ul class="navbar-nav">
-			<a class="nav-link" href="">Project</a>
+			<a class="nav-link" href="{{ url('projects') }}">Project</a>
 		</ul>
 		<ul class="navbar-nav">
-			<a class="nav-link" href="">Position</a>
+			<a class="nav-link" href="{{ url('positions') }}">Position</a>
 		</ul>
 		<ul class="navbar-nav">
-			<a class="nav-link" href="">Log Out</a>
+			<input type="submit" class="nav-link" form="logoutForm" value="Log Out">
+</form>
 		</ul>
 	</nav>
 	

@@ -10,7 +10,7 @@ class GlobalController extends Controller
 
     public function __construct()
     {
-    // $this->middleware(['authenticate', 'token']);
+    $this->middleware(['authenticate', 'token']);
     }
     
 protected function successResponse(Request $request, string $redirect, string $message, $flashOnAjax = true)

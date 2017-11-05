@@ -12,8 +12,8 @@ class LoginController extends GlobalController
 
     public function __construct()
     {
-//    $this->middleware(['authenticate', 'token'])->only('logout');
-//        $this->middleware('guest')->except('logout');
+$this->middleware(['authenticate', 'token'])->only('logout');
+$this->middleware('guest')->except('logout');
     }
     
     /**
@@ -63,8 +63,9 @@ $token = encrypt(time());
     $login->token = $token;
 $request->session()->put('token', $token);
     $login->save();
+return redirect('/home');
 }
-// 
+return back()->withErrors('Username or password is incorrect.')->withInput(['username'=>$request->input('username')]);
     }
 
     public function logout(AuthManager $auth)
@@ -73,7 +74,7 @@ $request->session()->put('token', $token);
         $login->token = null;
  $auth->logout();
         $login->save();
-        // 
+        return redirect('/home');
     }
     
     /**
