@@ -1,6 +1,3 @@
-<?php
-use Illuminate\Support\Facades\Session;
-?>
 @extends('layouts.applogin')
 
 @section('content')
