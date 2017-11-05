@@ -9,7 +9,7 @@
 @endforeach
 @endif
 
-	<form id="editProjectForm" action="{{ url('projects/' . $project->project_id) }}" method="post">
+	<form action="{{ url('projects/' . $project->project_id) }}" method="post">
 		{{ csrf_field() }}
 		{{ method_field('patch') }}
 		<div class="form-row">

@@ -28,7 +28,7 @@
       <td>{{ $project->time_in }}</td>
       <td>{{ $project->time_out }}</td>
       <td><a href="{{ url('projects/' . $project->project_id . '/edit') }}">Edit</a></td>
-<td><form class="deleteProjectForm" action="{{ url('projects/' . $project->project_id) }}" method="post">
+<td><form action="{{ url('projects/' . $project->project_id) }}" method="post">
 {{ csrf_field() }}
 {{ method_field('delete') }}
 <input type="submit" value="Delete">

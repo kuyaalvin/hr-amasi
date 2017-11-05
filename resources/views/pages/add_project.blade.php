@@ -9,7 +9,7 @@
 @endforeach
 @endif
 
-	<form id="createProjectForm" action="{{ url('projects') }}" method="post">
+	<form action="{{ url('projects') }}" method="post">
 		{{ csrf_field() }}
 		<div class="form-row">
 			<div class="form-group col-md-4">

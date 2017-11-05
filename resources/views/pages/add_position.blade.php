@@ -7,7 +7,7 @@
 <label for="errorMessage">{{ $errors->all()[0] }}</label>
 @endif
 
-	<form id="createPositionForm" action="{{ url('positions') }}" method="post">
+	<form action="{{ url('positions') }}" method="post">
 		{{ csrf_field() }}
 		<div class="form-row">
 			<div class="form-group col-md-4">

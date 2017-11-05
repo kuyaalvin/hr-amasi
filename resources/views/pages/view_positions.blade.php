@@ -22,7 +22,7 @@
       <th scope="row">{{ $position->position_id }}</th>
       <td>{{ $position->name }}</td>
       <td><a href="{{ url('positions/' . $position->position_id . '/edit') }}">Edit</a></td>
-<td><form class="deletePositionForm" action="{{ url('positions/' . $position->position_id) }}" method="post">
+<td><form action="{{ url('positions/' . $position->position_id) }}" method="post">
 {{ csrf_field() }}
 {{ method_field('delete') }}
 <input type="submit" value="Delete">
