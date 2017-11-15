@@ -11,13 +11,10 @@
 |
 */
 
-Route::view('/', 'pages/index');
-Route::view('/home', 'pages/home')->middleware(['authenticate', 'token']);
-
-    Route::get('/login', 'LoginController@index')->name('login');
+    Route::get('/', 'LoginController@index')->name('login');
     Route::post('/login', 'LoginController@login');
+Route::view('/home', 'pages/home')->middleware(['authenticate', 'token']);
     Route::post('/logout', 'LoginController@logout');
-    
     
 Route::resource('positions', 'PositionController')->except('show');
 Route::resource('projects', 'ProjectController')->except('show');

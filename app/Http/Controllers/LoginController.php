@@ -21,9 +21,9 @@ $this->middleware('guest')->except('logout');
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-return view('pages/login');
+return view('pages/index');
     }
 
     /**
