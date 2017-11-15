@@ -8,6 +8,8 @@
 		<title>{{config('app.name', 'LSAPP')}}</title>
 	</head>
 	<body>
+
+@auth
 <form id="logoutForm" action="{{ url('logout') }}" method="post">
 		{{ csrf_field() }}
 </form>
@@ -29,7 +31,7 @@
 </form>
 		</ul>
 	</nav>
-	
+@endauth	
 
 	@yield('content')
 
