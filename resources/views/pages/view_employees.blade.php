@@ -2,21 +2,31 @@
 
 @section('content')
 
+<div class="container">
 @if (session('message'))
 <h4 id="message">{{ session('message') }}</h4>
 @endif
 
-<a href="{{ url('employees/create') }}">Add Employee</a>
-<table class="table">
-  <thead>
+<div class="row">
+<button type="button"  class="btn btn-outline-primary" onclick="location.href='{{ url('employees/create') }}'">+ Add Employee</button>
+</div>
+
+<br/>
+<div class="row">
+<h4>Employee Master List</h4>
+</div>
+
+<div class="row">
+<table class="table table-hover">
+  <thead >
     <tr>
-      <th>#</th>
-      <th>ID Number</th>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Project</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th scope="col">#</th>
+      <th scope="col">ID Number</th>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Project</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +38,7 @@
       <td>@isset ($employee->position->name) {{ $employee->position->name }} @endisset</td>
       <td>@isset ($employee->project->name) {{ $employee->project->name }} @endisset</td>
       <td><a href="{{ url('employees/' . $employee->employee_id . '/edit') }}">Edit</a></td>
-<td><form action="{{ url('employees/' . $employee->employee_id) }}" method="post">
+      <td><form action="{{ url('employees/' . $employee->employee_id) }}" method="post">
     {{ csrf_field() }}
     {{ method_field('delete') }}
     <input type="submit" value="Delete">
@@ -37,4 +47,6 @@
 @endforeach
   </tbody>
 </table>
+
+  </div>
 @endsection
