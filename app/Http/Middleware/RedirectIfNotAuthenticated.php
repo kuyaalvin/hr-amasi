@@ -4,9 +4,17 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\AuthManager;
 
 class RedirectIfNotAuthenticated
 {
+    private $auth;
+    
+    public function __construct(AuthManager $auth)
+    {
+        $this->auth = $auth;
+    }
+    
     /**
      * Handle an incoming request.
      *
@@ -17,7 +25,7 @@ class RedirectIfNotAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!Auth::guard($guard)->check()) {
+        if (!$this->auth->guard($guard)->check()) {
             return redirect()->route('login');
         }
 
