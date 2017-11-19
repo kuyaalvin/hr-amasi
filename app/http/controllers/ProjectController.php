@@ -89,9 +89,8 @@ $project->save();
      */
     public function destroy(Request $request, Connection $con, Project $project)
     {
-        $employee = app(Employee::class);
-        $con->transaction(function() use($project, $employee) {
-            $employee->where('project_id', $project->project_id)->update(['project_id' => null]);
+        $con->transaction(function() use($project) {
+            Employee::where('project_id', $project->project_id)->update(['project_id' => null]);
             $project->active = 0;
             $project->save();
         });
