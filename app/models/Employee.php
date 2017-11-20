@@ -28,7 +28,7 @@ const DELETED_AT = 'date_terminated';
             do {
                 $randomDigits = mt_rand($min, $max);
                 $idNumber = $formattedYear . (sprintf("%05d", $randomDigits));
-            } while ($employee->where('id_number', $idNumber)->get()->isNotEmpty());
+            } while ($employee->where('id_number', $idNumber)->exists());
             $employee->id_number = $idNumber;
         });
     }
