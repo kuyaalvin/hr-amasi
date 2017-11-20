@@ -12,6 +12,16 @@ class PositionsTableSeeder extends Seeder
      */
     public function run()
     {
-factory(Position::class, 100)->create();
+for ($i = 0; $i < 100; $i++)
+{
+    do {
+        $name = str_random(rand(2, 5));
+    } while (Position::where('name', $name)->exists());
+    
+    Position::create([
+        'name'=>$name,
+    ]);
+    
+}
     }
 }
