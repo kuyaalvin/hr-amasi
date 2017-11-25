@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;;;
+use Illuminate\Http\Request;;;;;
 use App\Models\Position;
+use App\DataTables\PositionsDataTable;
 
 class PositionController extends GlobalController
 {
     /**
      * Display a listing of the resource.
+     * @param  \App\DataTables\PositionsDataTable $dataTable
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PositionsDataTable $dataTable)
     {
-$positions = Position::get();
-return view('pages/view_positions')->with('positions', $positions);
+        return $dataTable->render('pages/view_positions');
     }
 
     /**
