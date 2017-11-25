@@ -10,7 +10,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
       <th>Name</th>
       <th>Address</th>
       <th>Time In</th>
@@ -22,7 +21,6 @@
   <tbody>
 @foreach ($projects as $project)
     <tr>
-      <th scope="row">{{ $project->project_id }}</th>
       <td>{{ $project->name }}</td>
       <td>{{ $project->address }}</td>
       <td>{{ $project->time_in }}</td>

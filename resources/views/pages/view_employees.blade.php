@@ -20,7 +20,6 @@
 <table class="table table-hover">
   <thead >
     <tr>
-      <th class="col">#</th>
       <th class="col">ID Number</th>
       <th class="col">Name</th>
       <th class="col">Position</th>
@@ -32,7 +31,6 @@
   <tbody>
 @foreach ($employees as $employee)
     <tr>
-      <th class="row">{{ $employee->employee_id }}</th>
       <td>{{ $employee->id_number }}</td>
       <td>{{ $employee->last_name . ', ' . $employee->first_name . ' ' . $employee->middle_name }}</td>
       <td>@isset ($employee->position->name) {{ $employee->position->name }} @endisset</td>
