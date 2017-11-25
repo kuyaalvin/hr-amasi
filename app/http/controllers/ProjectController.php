@@ -16,7 +16,7 @@ class ProjectController extends GlobalController
      */
     public function index()
     {
-$projects = Project::orderBy('project_id')->get();
+$projects = Project::get();
 return view('pages/view_projects')->with('projects', $projects);
     }
 

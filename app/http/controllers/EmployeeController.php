@@ -16,7 +16,7 @@ class EmployeeController extends GlobalController
      */
     public function index()
     {
-        $employees = Employee::with('position', 'project')->orderBy('employee_id')->get();
+        $employees = Employee::with('position', 'project')->get();
 return view('pages/view_employees')->with('employees', $employees);
     }
 

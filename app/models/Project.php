@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\models\scopes\ActiveScope;
+use Illuminate\Database\Eloquent\Builder;
 
 class Project extends GlobalModel
 {
@@ -15,8 +16,12 @@ protected $dateFormat = 'H:i:s';
 protected static function boot()
 {
     parent::boot();
-    
+
     static::addGlobalScope(new ActiveScope());
+    static::addGlobalScope('orderByName', function(Builder $builder) {
+        $builder->orderBy('name');
+    });
+        
 }
 
     public function employees()

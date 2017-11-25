@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Employee extends GlobalModel
 {
@@ -31,6 +32,11 @@ const DELETED_AT = 'date_terminated';
             } while ($employee->where('id_number', $idNumber)->exists());
             $employee->id_number = $idNumber;
         });
+
+        static::addGlobalScope('orderByLastName', function(Builder $builder) {
+           $builder->orderBy('last_name');
+        });
+        
     }
     
     public function position()

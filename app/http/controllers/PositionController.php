@@ -14,7 +14,7 @@ class PositionController extends GlobalController
      */
     public function index()
     {
-$positions = Position::orderBy('position_id')->get();
+$positions = Position::get();
 return view('pages/view_positions')->with('positions', $positions);
     }
 
