@@ -17,54 +17,22 @@
 </div>
 
 <div class="row">
-  <label for="regular">#</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="#" name="#" >
-</div>
-
-<div class="row">
-  <label for="regular">ID Number</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="idnumber" name="idnumber" >
-</div>
-<div class="row">
-  <label for="regular">Name</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="name" name="name" >
-</div>
-<div class="row">
-  <label for="regular">Position</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="position" name="position" >
-</div>
-<div class="row">
-  <label for="regular">Project</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="project" name="project" >
-</div>
-<div class="row">
-  <label for="regular">Edit</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="edit" name="edit" >
-</div>
-<div class="row">
-  <label for="regular">Delete</label>
-  <input class="checkbox-inline form-control" type="checkbox" id="delete" name="delete" >
-</div>
-
-
-
-<div class="row">
 <table class="table table-hover">
   <thead >
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">ID Number</th>
-      <th scope="col">Name</th>
-      <th scope="col">Position</th>
-      <th scope="col">Project</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th class="col">#</th>
+      <th class="col">ID Number</th>
+      <th class="col">Name</th>
+      <th class="col">Position</th>
+      <th class="col">Project</th>
+      <th class="col">Edit</th>
+      <th class="col">Delete</th>
     </tr>
   </thead>
   <tbody>
 @foreach ($employees as $employee)
     <tr>
-      <th scope="row">{{ $employee->employee_id }}</th>
+      <th class="row">{{ $employee->employee_id }}</th>
       <td>{{ $employee->id_number }}</td>
       <td>{{ $employee->last_name . ', ' . $employee->first_name . ' ' . $employee->middle_name }}</td>
       <td>@isset ($employee->position->name) {{ $employee->position->name }} @endisset</td>
