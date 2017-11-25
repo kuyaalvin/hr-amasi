@@ -17,6 +17,38 @@
 </div>
 
 <div class="row">
+  <label for="regular">#</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="#" name="#" >
+</div>
+
+<div class="row">
+  <label for="regular">ID Number</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="idnumber" name="idnumber" >
+</div>
+<div class="row">
+  <label for="regular">Name</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="name" name="name" >
+</div>
+<div class="row">
+  <label for="regular">Position</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="position" name="position" >
+</div>
+<div class="row">
+  <label for="regular">Project</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="project" name="project" >
+</div>
+<div class="row">
+  <label for="regular">Edit</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="edit" name="edit" >
+</div>
+<div class="row">
+  <label for="regular">Delete</label>
+  <input class="checkbox-inline form-control" type="checkbox" id="delete" name="delete" >
+</div>
+
+
+
+<div class="row">
 <table class="table table-hover">
   <thead >
     <tr>
