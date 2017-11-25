@@ -58,7 +58,7 @@ Employee::create([
     'provincial_address'=>$fakerStrRandom($randomLength(), true),
     'birthdate'=>$faker->date($dateFormat, Carbon::yesterday()->format($dateFormat)),
     'civil_status'=>$faker->randomElement($civilStatuses),
-    'number_of_dependencies'=>$faker->optional()->numberBetween(0, 127),
+    'number_of_dependencies'=>$faker->optional()->numberBetween(0, 20),
     'citizenship'=>$fakerStrRandom($randomLength()),
     'religion'=>$fakerStrRandom($randomLength(), true),
     'gender'=>$faker->randomElement($genders),
