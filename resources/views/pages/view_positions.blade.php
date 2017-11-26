@@ -7,22 +7,45 @@
 @endif
 
 <a href="{{ url('positions/create') }}">Add Position</a>
-{!! $dataTable->table() !!}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+</table>
 @endsection
 
 @push('scripts')
 <script>
 $(function() {
-    $('.table').DataTable({
+var prefixUrl = "{{ url('positions/') . '/' }}";
+
+var table = $('.table').DataTable({
         serverSide: true,
         processing: true,
         ajax: '',
         columns: [
         	{data: 'name'},
-        	{data: 'edit'},
-        	{data: 'delete'}
-        	]
+        	{data: 'edit',
+render: function(data, type, row) {
+return '<a href="'+prefixUrl+row.position_id+'/edit">Edit</a>';
+}
+},
+        	{data: 'delete',
+render: function(data, type, row) {
+	return '<form action="'+prefixUrl+row.position_id+'" method="post">'+
+	'{{ csrf_field() }}'+
+	'{{ method_field('delete') }}'+
+	'<input type="submit" value="Delete"/>'+
+	'</form>';	
+}
+            	}
+        	],
     });
+
 });
 </script>
 @endpush

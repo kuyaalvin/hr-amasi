@@ -15,18 +15,7 @@ class ProjectsDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables($query)
-        ->addColumn('edit', function(Project $project) {
-            return '<a href="' . url('projects/' . $project->project_id . '/edit') . '">Edit</a>';
-        })
-        ->addColumn('delete', function(Project $project) {
-            return '<form action="' . url('projects/' . $project->project_id) . '" method="post">'
-                . csrf_field()
-                . method_field('delete')
-                . '<input type="submit" value="Delete">
-</form>';
-        })
-        ->rawColumns(['edit', 'delete']);
+        return datatables($query);
     }
 
     /**
@@ -48,26 +37,8 @@ class ProjectsDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px', 'title' => 'Edit'])
-                    ->addAction(['width' => '80px', 'title' => 'Delete'])
         ->parameters($this->getBuilderParameters());
-    }
-
-    /**
-     * Get columns.
-     *
-     * @return array
-     */
-    protected function getColumns()
-    {
-        return [
-            'name',
-            'address',
-            'time_in',
-            'time_out'
-        ];
     }
 
     /**
