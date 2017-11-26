@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;;
+use Illuminate\Http\Request;;;
 use App\Models\Project;
 use App\Models\Employee;
 use Illuminate\Database\Connection;
+use App\DataTables\ProjectsDataTable;
 
 class ProjectController extends GlobalController
 {
     /**
      * Display a listing of the resource.
+     * App\DataTables\ProjectsDataTable $dataTable
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProjectsDataTable $dataTable)
     {
-$projects = Project::get();
-return view('pages/view_projects')->with('projects', $projects);
+return $dataTable->render('pages/view_projects');
     }
 
     /**
