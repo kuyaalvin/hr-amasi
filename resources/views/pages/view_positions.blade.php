@@ -9,13 +9,14 @@
 <a href="{{ url('positions/create') }}">Add Position</a>
 {!! $dataTable->table() !!}
 @endsection
+
 @push('scripts')
 <script>
 $(function() {
     $('.table').DataTable({
         serverSide: true,
         processing: true,
-        ajax: null,
+        ajax: '',
         columns: [
         	{data: 'name'},
         	{data: 'edit'},
