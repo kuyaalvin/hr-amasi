@@ -10,7 +10,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
       <th>Name</th>
       <th>Address</th>
       <th>Time In</th>
