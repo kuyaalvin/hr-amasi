@@ -53,11 +53,13 @@ dom: 'l<"#filter">rtip',
         	{data: 'time_in'},
         	{data: 'time_out'},
         	{data: 'edit',
+searchable: false,
         		render: function(data, type, row) {
         		return '<a href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
         		}
         		},
         		        	{data: 'delete',
+searchable: false,
         		render: function(data, type, row) {
         			return '<form action="'+prefixUrl+row.project_id+'" method="post">'+
         			'{{ csrf_field() }}'+
