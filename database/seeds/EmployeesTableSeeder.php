@@ -6,6 +6,7 @@ use App\Models\Employee;
 use Faker\Generator;
 use Carbon\Carbon;
 use App\Models\Project;
+use Illuminate\Database\Connection;
 
 class EmployeesTableSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class EmployeesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Generator $faker)
+    public function run(Connection $con, Generator $faker)
     {
         $dateFormat = 'Y-m-d';
         $civilStatuses = ['Single', 'Married'];
@@ -31,6 +32,8 @@ $fakerStrRandom = function($length, $optional = false) use($faker) {
     $str = str_repeat('?', $length);
     return $optional ? $faker->optional()->lexify($str) : $faker->lexify($str);
 };
+
+$con->transaction(function() use($dateFormat, $civilStatuses, $genders, $payrollTypes, $positionIds, $projectIds, $randomLength, $fakerStrRandom, $faker) {
 for ($i = 0; $i < 1000; $i++)
 {
 do {
@@ -76,5 +79,6 @@ Employee::create([
     'project_id'=>$faker->optional()->randomElement($projectIds),
     ]);
 }
+});
     }
 }

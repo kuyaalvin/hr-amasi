@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Position;
+use Illuminate\Database\Connection;
 
 class PositionsTableSeeder extends Seeder
 {
@@ -10,8 +11,9 @@ class PositionsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Connection $con)
     {
+        $con->transaction(function() {
 for ($i = 0; $i < 1000; $i++)
 {
     do {
@@ -23,5 +25,6 @@ for ($i = 0; $i < 1000; $i++)
     ]);
     
 }
+        });
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Project;
 use Carbon\Carbon;
+use Illuminate\Database\Connection;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -11,9 +12,10 @@ class ProjectsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Connection $con)
     {
         $timeFormat = 'H:i:s';
+$con->transaction(function() use($timeFormat) {
 for ($i = 0; $i < 1000; $i++)
 {
         $timeInHour = rand(0, 23);
@@ -34,5 +36,6 @@ for ($i = 0; $i < 1000; $i++)
             'time_out'=>Carbon::createFromTime($timeOutHour, $timeOutMinutes, $timeOutSeconds)->format($timeFormat),
         ]);
 }
+});
     }
 }
