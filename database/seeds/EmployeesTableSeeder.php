@@ -31,7 +31,7 @@ $fakerStrRandom = function($length, $optional = false) use($faker) {
     $str = str_repeat('?', $length);
     return $optional ? $faker->optional()->lexify($str) : $faker->lexify($str);
 };
-for ($i = 0; $i < 100; $i++)
+for ($i = 0; $i < 1000; $i++)
 {
 do {
     $accountNumber = $faker->regexify('^\d{' . $randomLength() . '}$');

@@ -14,7 +14,7 @@ class ProjectsTableSeeder extends Seeder
     public function run()
     {
         $timeFormat = 'H:i:s';
-for ($i = 0; $i < 100; $i++)
+for ($i = 0; $i < 1000; $i++)
 {
         $timeInHour = rand(0, 23);
         $timeInMinutes = rand(0, 59);
