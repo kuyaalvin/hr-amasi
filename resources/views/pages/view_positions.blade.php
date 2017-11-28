@@ -11,8 +11,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th data-orderable="false">Edit</th>
-      <th data-orderable="false">Delete</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 </table>

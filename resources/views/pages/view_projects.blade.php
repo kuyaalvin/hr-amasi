@@ -14,8 +14,8 @@
       <th>Address</th>
       <th>Time In</th>
       <th>Time Out</th>
-      <th data-orderable="false">Edit</th>
-      <th data-orderable="false">Delete</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 </table>
