@@ -60,6 +60,7 @@ orderable: false,
         		},
         		        	{data: 'delete',
 searchable: false,
+orderable: false,
         		render: function(data, type, row) {
         			return '<form action="'+prefixUrl+row.project_id+'" method="post">'+
         			'{{ csrf_field() }}'+

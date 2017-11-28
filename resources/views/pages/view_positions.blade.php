@@ -38,6 +38,7 @@ return '<a href="'+prefixUrl+row.position_id+'/edit">Edit</a>';
 },
         	{data: 'delete',
 searchable: false,
+orderable: false,
 render: function(data, type, row) {
 	return '<form action="'+prefixUrl+row.position_id+'" method="post">'+
 	'{{ csrf_field() }}'+
