@@ -31,6 +31,7 @@ var table = $('.table').DataTable({
         	{data: 'name'},
         	{data: 'edit',
 searchable: false,
+orderable: false,
 render: function(data, type, row) {
 return '<a href="'+prefixUrl+row.position_id+'/edit">Edit</a>';
 }

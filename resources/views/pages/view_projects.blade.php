@@ -53,6 +53,7 @@ dom: 'l<"#filter">rtip',
         	{data: 'time_out'},
         	{data: 'edit',
 searchable: false,
+orderable: false,
         		render: function(data, type, row) {
         		return '<a href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
         		}
