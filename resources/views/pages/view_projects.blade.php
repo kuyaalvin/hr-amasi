@@ -51,16 +51,12 @@ dom: 'l<"#filter">rtip',
         	{data: 'address'},
         	{data: 'time_in'},
         	{data: 'time_out'},
-        	{data: 'edit',
-searchable: false,
-orderable: false,
+        	{data: 'edit', searchable: false, orderable: false,
         		render: function(data, type, row) {
         		return '<a href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
         		}
         		},
-        		        	{data: 'delete',
-searchable: false,
-orderable: false,
+        		{data: 'delete', searchable: false,orderable: false,
         		render: function(data, type, row) {
         			return '<form action="'+prefixUrl+row.project_id+'" method="post">'+
         			'{{ csrf_field() }}'+
@@ -68,7 +64,7 @@ orderable: false,
         			'<input type="submit" value="Delete"/>'+
         			'</form>';	
         		}
-        		            	}
+        		}
         	]
     });
 

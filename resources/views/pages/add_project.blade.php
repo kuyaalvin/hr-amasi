@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('layouts.sidebaremployee')
+
 <h1>add project</h1>
 @if ($errors->any())
 @foreach ($errors->all() as $error)

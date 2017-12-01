@@ -2,11 +2,30 @@
 
 @section('content')
 
+@include('layouts.sidebaremployee')
+
+<h1>Position List</h1>
+
+<div class="row">
+  <div class="col">
+    <nav class="nav flex-column">
+      <li class="nav-item">
+        <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('positions/create') }}'">+ Add Position</button>
+      </li>
+  </div>
+    </nav>
+</div>
+
+<hr/>
+
 @if (session('message'))
-<h4 id="message">{{ session('message') }}</h4>
+<div class="alert alert-info" role="alert">
+{{ session('message') }}
+</div>
 @endif
 
-<a href="{{ url('positions/create') }}">Add Position</a>
+<div class="row">
+  <div class="col">
 <table class="table">
   <thead>
     <tr>
@@ -16,7 +35,11 @@
     </tr>
   </thead>
 </table>
+  </div>
+</div>
 @endsection
+
+
 
 @push('scripts')
 <script>
@@ -30,12 +53,12 @@ var table = $('.table').DataTable({
         columns: [
         	{data: 'name'},
         	{data: 'edit',
-searchable: false,
-orderable: false,
-render: function(data, type, row) {
-return '<a href="'+prefixUrl+row.position_id+'/edit">Edit</a>';
-}
-},
+        searchable: false,
+        orderable: false,
+        render: function(data, type, row) {
+        return '<a class="btn btn-sm btn-dark" href="'+prefixUrl+row.position_id+'/edit">Edit</a>';
+        }
+        },
         	{data: 'delete',
 searchable: false,
 orderable: false,
@@ -43,7 +66,7 @@ render: function(data, type, row) {
 	return '<form action="'+prefixUrl+row.position_id+'" method="post">'+
 	'{{ csrf_field() }}'+
 	'{{ method_field('delete') }}'+
-	'<input type="submit" value="Delete"/>'+
+	'<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
 	'</form>';	
 }
             	}
