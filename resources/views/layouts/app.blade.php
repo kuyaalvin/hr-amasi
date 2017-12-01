@@ -50,8 +50,16 @@
     </header>
 
 
+    <div class="container">
+    	</div class="row">
+    	<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
 
 	@yield('content')
+		</main>
+		</div>
+	</div>
+		
+
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.2.1/jszip-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1.4.2/b-html5-1.4.2/sc-1.4.3/datatables.min.css"/> 
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/jszip-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1.4.2/b-html5-1.4.2/sc-1.4.3/datatables.min.js"></script>
