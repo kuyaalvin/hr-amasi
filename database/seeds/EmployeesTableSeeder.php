@@ -13,6 +13,8 @@ class EmployeesTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+* @param \Faker\Generator $generator
+* @param \Illuminate\Database\Connection $con
      * @return void
      */
     public function run(Connection $con, Generator $faker)

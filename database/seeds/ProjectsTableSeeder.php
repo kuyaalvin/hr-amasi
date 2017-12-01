@@ -10,6 +10,7 @@ class ProjectsTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+* @param \Illuminate\Database\Connection $con
      * @return void
      */
     public function run(Connection $con)
