@@ -6,6 +6,7 @@ use Illuminate\Http\Request;;;;
 use App\Models\Employee;
 use App\Models\Position;
 use App\Models\Project;
+use App\DataTables\EmployeesDataTable;
 
 class EmployeeController extends GlobalController
 {
@@ -14,10 +15,9 @@ class EmployeeController extends GlobalController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(EmployeesDataTable $dataTable)
     {
-        $employees = Employee::with('position', 'project')->get();
-return view('pages/view_employees')->with('employees', $employees);
+return $dataTable->render('pages/view_employees');
     }
 
     /**
