@@ -11,6 +11,7 @@
 
 		
 		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	</head>
 	<body>
 
@@ -63,6 +64,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.2.1/jszip-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1.4.2/b-html5-1.4.2/sc-1.4.3/datatables.min.css"/> 
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/jszip-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1.4.2/b-html5-1.4.2/sc-1.4.3/datatables.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <script>
 setTimeout(function() {
