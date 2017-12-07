@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('layouts.sidebaremployee')
+
 <h1>add position</h1>
 @if ($errors->any())
 <label for="errorMessage">{{ $errors->all()[0] }}</label>
