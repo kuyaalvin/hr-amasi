@@ -34,7 +34,7 @@ $table->char('mobile_number2', 13)->nullable();
             $table->char('phic_id', 14)->nullable();
             $table->char('hdmf_id', 14)->nullable();
             $table->char('tin_id', 15)->nullable();
-            $table->char('account_number', 25)->unique();
+            $table->char('account_number', 25)->unique()->nullable();
             $table->char('biometric_id', 4)->nullable()->unique();
             $table->enum('payroll_type', ['Weekly', 'Monthly']);
             $table->date('date_started');
