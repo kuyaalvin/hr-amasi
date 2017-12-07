@@ -60,15 +60,15 @@ var table = $('.table').DataTable({
         }
         },
         	{data: 'delete',
-searchable: false,
-orderable: false,
-render: function(data, type, row) {
-	return '<form action="'+prefixUrl+row.position_id+'" method="post">'+
-	'{{ csrf_field() }}'+
-	'{{ method_field('delete') }}'+
-	'<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
-	'</form>';	
-}
+            searchable: false,
+            orderable: false,
+            render: function(data, type, row) {
+            	return '<form action="'+prefixUrl+row.position_id+'" method="post">'+
+            	'{{ csrf_field() }}'+
+            	'{{ method_field('delete') }}'+
+            	'<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
+            	'</form>';	
+            }
             	}
         	],
     });

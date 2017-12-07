@@ -2,11 +2,27 @@
 
 @section('content')
 
+@include('layouts.sidebaremployee')
+
+
+<h1>Project List</h1>
+
 @if (session('message'))
 <h4 id="message">{{ session('message') }}</h4>
 @endif
 
-<a href="{{ url('projects/create') }}">Add Project</a>
+<div class="row">
+  <div class="col">
+    <nav class="nav flex-column">
+      <li class="nav-item">
+      <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('projects/create') }}'">+ Add Project</button>
+      </li>
+    </nav>
+  </div>
+</div>
+
+<hr/>
+<div class="row">
 <table class="table">
   <thead>
     <tr>
@@ -19,6 +35,7 @@
     </tr>
   </thead>
 </table>
+</div>
 @endsection
 
 @push('scripts')
@@ -26,20 +43,20 @@
 $(function() {
 	var prefixUrl = "{{ url('projects/') . '/' }}";
 	var headers = $(".table th");
-var filter = '<label for="search">Search</label>'+
-'<input type="search" class="search" id="search">'+
-'<label for="searchIn">Search in</label>'+
-'<select class="search" id="searchIn">'+
-'<option value="">Global</option>';
+  var filter = '<div class="row"><div class="col"><label for="search">Search:</label>'+
+                '<input type="search" class="search form-control" id="search"></div>'+
+                '<div="col"><label for="searchIn">Search in: </label>'+
+                '<select class="search form-control" id="searchIn">'+
+                '<option class="search form-control" value="">Global</option>';
 
 headers.each(function(index, element) {
 var columnValue = $(this).text();
 	if (columnValue.toUpperCase() !== "EDIT" && columnValue.toUpperCase() !== "DELETE")
 	{
-filter += '<option value="'+index+'">'+columnValue+'</option>';
+filter += '<option class="search form-control" value="'+index+'">'+columnValue+'</option>';
 	}
 });
-filter += "</option";
+filter += "</option></div";
 
 var table = $('.table').DataTable({
 //dom: 'l<"#filter">rtip',
@@ -54,7 +71,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         	{data: 'time_out'},
         	{data: 'edit', searchable: false, orderable: false,
         		render: function(data, type, row) {
-        		return '<a href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
+        		return '<a class="btn btn-dark" href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
         		}
         		},
         		{data: 'delete', searchable: false,orderable: false,
@@ -62,7 +79,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         			return '<form action="'+prefixUrl+row.project_id+'" method="post">'+
         			'{{ csrf_field() }}'+
         			'{{ method_field('delete') }}'+
-        			'<input type="submit" value="Delete"/>'+
+        			'<input class="btn btn-danger" type="submit" value="Delete"/>'+
         			'</form>';	
         		}
         		}
