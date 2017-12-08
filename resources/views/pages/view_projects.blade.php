@@ -51,7 +51,7 @@ $(function() {
 
 headers.each(function(index, element) {
 var columnValue = $(this).text();
-	if (columnValue.toUpperCase() !== "EDIT" && columnValue.toUpperCase() !== "DELETE")
+	if (columnValue !== "Edit" && columnValue !== "Delete")
 	{
 filter += '<option class="search form-control" value="'+index+'">'+columnValue+'</option>';
 	}
