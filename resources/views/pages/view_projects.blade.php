@@ -88,7 +88,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
 
 $("#filter").html(filter);
 
-$('#search').on('keyup', function(event) {
+$('#search').on('keyup change', function(event) {
 search();
 });
 
