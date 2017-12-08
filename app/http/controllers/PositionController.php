@@ -10,8 +10,8 @@ class PositionController extends GlobalController
 {
     /**
      * Display a listing of the resource.
-     * @param  \App\DataTables\PositionsDataTable $dataTable
      *
+     * @param  \App\DataTables\PositionsDataTable $dataTable
      * @return \Illuminate\Http\Response
      */
     public function index(PositionsDataTable $dataTable)

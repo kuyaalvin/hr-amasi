@@ -12,7 +12,7 @@ class ProjectController extends GlobalController
 {
     /**
      * Display a listing of the resource.
-     * App\DataTables\ProjectsDataTable $dataTable
+     * @param \App\DataTables\ProjectsDataTable $dataTable
      *
      * @return \Illuminate\Http\Response
      */

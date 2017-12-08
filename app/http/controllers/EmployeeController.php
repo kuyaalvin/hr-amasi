@@ -13,6 +13,7 @@ class EmployeeController extends GlobalController
     /**
      * Display a listing of the resource.
      *
+     * @param \App\DataTables\EmployeesDataTable dataTable
      * @return \Illuminate\Http\Response
      */
     public function index(EmployeesDataTable $dataTable)
