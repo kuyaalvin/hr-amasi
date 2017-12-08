@@ -6,7 +6,7 @@
 
 
 <div class="container">
-<h1>Add Project</h1>
+<h1>Register New Project</h1>
 @if ($errors->any())
 @foreach ($errors->all() as $error)
 <div class="alert alert-danger" for="errorMessage" role="alert">

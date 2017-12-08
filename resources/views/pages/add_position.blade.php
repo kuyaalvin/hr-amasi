@@ -4,7 +4,7 @@
 
 @include('layouts.sidebaremployee')
 
-<h1>add position</h1>
+<h1>Add Position</h1>
 @if ($errors->any())
 <label for="errorMessage">{{ $errors->all()[0] }}</label>
 @endif
@@ -14,10 +14,10 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Name</label>
-				<input type="text" class="form-control" name="name" placeholder="add position here" value="{{ old('name') }}">
+				<input type="text" class="form-control" name="name" placeholder="add position..." value="{{ old('name') }}">
 			</div>
 		</div>
-		<input type="submit" value="Submit">
+		<input class="btn btn-primary" type="submit" value="Submit">
 	</form>
 
 
