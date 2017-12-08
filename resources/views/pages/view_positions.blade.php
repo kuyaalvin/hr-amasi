@@ -70,7 +70,7 @@ var table = $('.table').DataTable({
             	'</form>';	
             }
             	}
-        	],
+        	]
     });
 
 });
