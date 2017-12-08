@@ -39,7 +39,11 @@ $con->transaction(function() use($dateFormat, $civilStatuses, $genders, $payroll
 for ($i = 0; $i < 1000; $i++)
 {
 do {
-    $accountNumber = $faker->regexify('^\d{' . $randomLength() . '}$');
+    $accountNumber = $faker->optional()->regexify('^\d{' . $randomLength() . '}$');
+if ($accountNumber === null)
+{
+break;
+}
 } while (Employee::where('account_number', $accountNumber)->exists());
 
 do {

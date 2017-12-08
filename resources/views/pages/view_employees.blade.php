@@ -169,6 +169,13 @@ render: function(data, type, row) {
 ],
 buttons: [
 {
+extend: 'excel',
+text: 'Export to Excel',
+exportOptions: {
+columns: togglableColumns
+}
+},
+{
 extend: 'columnsToggle',
 columns: togglableColumns
 }
