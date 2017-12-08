@@ -5,6 +5,24 @@ namespace App\Models;
 use App\models\scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * App\Models\Project
+ *
+ * @property int $project_id
+ * @property string $name
+ * @property string $address
+ * @property \Carbon\Carbon|null $time_in
+ * @property \Carbon\Carbon|null $time_out
+ * @property int $active
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Employee[] $employees
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Project whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Project whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Project whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Project whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Project whereTimeIn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Project whereTimeOut($value)
+ * @mixin \Eloquent
+ */
 class Project extends GlobalModel
 {
     protected $primaryKey = 'project_id';

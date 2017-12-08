@@ -4,6 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * App\Models\Position
+ *
+ * @property int $position_id
+ * @property string $name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Employee[] $employees
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Position whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Position wherePositionId($value)
+ * @mixin \Eloquent
+ */
 class Position extends GlobalModel
 {
     protected $primaryKey = 'position_id';

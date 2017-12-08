@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rule;
 
+/**
+ * App\Models\GlobalModel
+ *
+ * @mixin \Eloquent
+ */
 class GlobalModel extends Model
 {
     protected $errors;
