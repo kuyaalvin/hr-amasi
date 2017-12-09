@@ -43,10 +43,7 @@ return back()->withErrors('Username or password is incorrect.')->withInput(['use
      */
     public function logout(AuthManager $auth)
     {
-        $login = $auth->user();
-        $login->token = null;
  $auth->logout();
-        $login->save();
         return redirect('/home');
     }
 
