@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Seeder;;
 use App\Models\Project;
 use Carbon\Carbon;
 use Illuminate\Database\Connection;
+use Faker\Generator;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -13,10 +14,10 @@ class ProjectsTableSeeder extends Seeder
 * @param \Illuminate\Database\Connection $con
      * @return void
      */
-    public function run(Connection $con)
+    public function run(Connection $con, Generator $faker)
     {
         $timeFormat = 'H:i:s';
-$con->transaction(function() use($timeFormat) {
+$con->transaction(function() use($timeFormat, $faker) {
 for ($i = 0; $i < 2000; $i++)
 {
         $timeInHour = rand(0, 23);
@@ -32,7 +33,7 @@ for ($i = 0; $i < 2000; $i++)
         
         Project::create([
             'name'=>$name,
-            'address'=>str_random(rand(2, 5)),
+            'address'=>$faker->randomElement([null, str_random(rand(2, 5))]),
             'time_in'=>Carbon::createFromTime($timeInHour, $timeInMinutes, $timeInSeconds)->format($timeFormat),
             'time_out'=>Carbon::createFromTime($timeOutHour, $timeOutMinutes, $timeOutSeconds)->format($timeFormat),
         ]);
