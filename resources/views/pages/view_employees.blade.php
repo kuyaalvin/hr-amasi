@@ -108,13 +108,13 @@ dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr
 {data: 'last_name'},
 {data: 'first_name'},
 {data: 'middle_name'},
-{data: 'position',
+{data: 'position.name', title: 'Position',
 render: function(data, type, row) {
 var position = row.position;
 return position !== null ? position.name : '';
 }
 },
-{data: 'project',
+{data: 'project.name', title: 'Project',
 render: function(data, type, row) {
 var project = row.project;
 return project !== null ? project.name : '';
