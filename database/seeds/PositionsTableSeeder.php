@@ -15,7 +15,7 @@ class PositionsTableSeeder extends Seeder
     public function run(Connection $con)
     {
         $con->transaction(function() {
-for ($i = 0; $i < 2000; $i++)
+for ($i = 0; $i < 5000; $i++)
 {
     do {
         $name = str_random(rand(2, 5));
