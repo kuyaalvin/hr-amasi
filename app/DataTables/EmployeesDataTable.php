@@ -26,7 +26,7 @@ class EmployeesDataTable extends DataTable
      */
     public function query(Employee $model)
     {
-        return $model->query()->with(['position', 'project']);
+        return $model->query()->with(['position', 'project'])->select('employees.*');
     }
 
     /**
