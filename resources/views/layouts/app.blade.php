@@ -4,14 +4,13 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 		<title>{{config('app.name', 'LSAPP')}}</title>
 
 
 		
 		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	</head>
 	<body>
 
@@ -62,9 +61,7 @@
 		
 
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.2.1/jszip-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1.4.2/b-html5-1.4.2/sc-1.4.3/datatables.min.css"/> 
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/jszip-2.5.0/dt-1.10.16/b-1.4.2/b-colvis-1.4.2/b-html5-1.4.2/sc-1.4.3/datatables.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 <script>
 setTimeout(function() {
