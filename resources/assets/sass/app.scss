@@ -2,8 +2,13 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
-// Variables
-@import "variables";
-
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+// DataTables
+@import "~datatables.net-bs4/scss/dataTables.bootstrap4";
+@import "~datatables.net-buttons-bs4/scss/buttons.bootstrap4";
+@import "~datatables.net-scroller-bs4/scss/scroller.bootstrap4";
+
+// JQuery Timepicker
+@import "~jquery-timepicker/jquery.timepicker";
