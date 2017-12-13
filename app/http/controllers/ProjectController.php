@@ -40,10 +40,9 @@ return view('pages/add_project');
      */
     public function store(Request $request, Project $project)
     {
-        $data = $request->all();
-        if ($project->validate($data))
+$project->fill($request->all());
+        if ($project->validate())
         {
-            $project->fill($data);
 $project->save();
     return $this->successResponse($request, 'projects', 'Project has been added.');
         }
@@ -70,10 +69,9 @@ return view('pages/edit_project')->with('project', $project);
      */
     public function update(Request $request, Project $project)
     {
-        $data = $request->all();
-        if ($project->validate($data))
+$project->fill($request->all());
+        if ($project->validate())
         {
-            $project->fill($data);
 $project->save();
     return $this->successResponse($request, 'projects', 'Project has been edited.');
         }

@@ -38,10 +38,9 @@ return view('pages/add_position');
      */
     public function store(Request $request, Position $position)
     {
-$data = $request->all();
-if ($position->validate($data))
+$position->fill($request->all());
+if ($position->validate())
 {
-    $position->fill($data);
 $position->save();
     return $this->successResponse($request, 'positions', 'Position has been added.');
 }
@@ -68,10 +67,9 @@ return view('pages/edit_position')->with('position', $position);
      */
     public function update(Request $request, Position $position)
     {
-        $data = $request->all();
-        if ($position->validate($data))
+$position->fill($request->all());
+        if ($position->validate())
         {
-            $position->fill($data);
 $position->save();    
 return $this->successResponse($request, 'positions', 'Position has been edited.');
         }

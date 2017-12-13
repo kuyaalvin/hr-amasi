@@ -57,7 +57,7 @@ protected static function boot()
         return $value;
     }
     
-    public function validate(array $data)
+    public function validate()
     {
         $rules = [
             'name'=>['required', $this->uniqueRule(), 'string', 'max:200'],
@@ -72,7 +72,7 @@ protected static function boot()
             'time_out.after'=>'The time out must be a time after time in.',
         ];
         
-        $validator = validator($data, $rules, $messages);
+        $validator = validator($this->attributes, $rules, $messages);
         $validator->sometimes('time_out', 'after:time_in', function($input) use(&$validator) {
             return $validator->validateDateFormat('time_in', $input->time_in, [$this->getDateFormat()]);
         });

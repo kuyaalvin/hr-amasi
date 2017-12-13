@@ -42,10 +42,9 @@ return view('pages/add_employee', ['positions'=>$positions, 'projects'=>$project
      */
     public function store(Request $request, Employee $employee)
     {
-        $data = $request->all();
-        if ($employee->validate($data))
+$employee->fill($request->all());
+        if ($employee->validate())
         {
-            $employee->fill($data);
 $employee->save();
             return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been added.');
         }
@@ -74,10 +73,9 @@ return view('pages/edit_employee', ['employee'=>$employee, 'positions'=>$positio
      */
     public function update(Request $request, Employee $employee)
     {
-        $data = $request->all();
-        if ($employee->validate($data))
+$employee->fill($request->all());
+        if ($employee->validate())
         {
-            $employee->fill($data);
 $employee->save();
             return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been edited.');
         }

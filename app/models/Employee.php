@@ -129,7 +129,7 @@ const DELETED_AT = 'date_terminated';
         return $value;
     }
     
-    public function validate(array $data)
+    public function validate()
     {
         $rules = [            
             'last_name'=>['required', 'string', 'max:50'],
@@ -167,7 +167,7 @@ const DELETED_AT = 'date_terminated';
             'regular.different'=>'Employees from agency cannot be regularized.',
         ];
         
-        $validator = validator($data, $rules, $messages);
+        $validator = validator($this->attributes, $rules, $messages);
 $validator->sometimes('regular', 'different:agency', function($input) {
     return $input->agency == 1;
 });

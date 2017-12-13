@@ -35,13 +35,13 @@ protected static function boot()
     return $this->hasMany(Employee::class);
     }
 
-    public function validate(array $data)
+    public function validate()
     {
         $rules = [
             'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],
         ];
         
-        $validator = validator($data, $rules);
+        $validator = validator($this->attributes, $rules);
         $this->errors = $validator->errors();
         return $validator->passes();
     }
