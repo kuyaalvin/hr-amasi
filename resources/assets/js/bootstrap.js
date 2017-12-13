@@ -16,4 +16,5 @@ require('datatables.net-buttons/js/buttons.colVis.js');
 require('datatables.net-buttons/js/buttons.html5.js');
 require('datatables.net-scroller');
 require('jquery-timepicker/jquery.timepicker.js');
+require("jquery-ui/ui/widgets/autocomplete");
 } catch (e) {}
