@@ -1,11 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Builder;
 
 class CreateEmployeesTable extends Migration
 {
+    private $schema;
+    
+    public function __construct()
+    {
+        $this->schema = app(Builder::class);
+    }
+    
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        $this->schema->create('employees', function (Blueprint $table) {
             $table->increments('employee_id');
             $table->char('id_number', 8)->unique();
             $table->string('last_name', 50);
@@ -53,6 +60,6 @@ $table->char('mobile_number2', 13)->nullable();
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        $this->schema->dropIfExists('employees');
     }
 }

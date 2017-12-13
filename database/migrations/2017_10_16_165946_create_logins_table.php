@@ -1,11 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Builder;
 
 class CreateLoginsTable extends Migration
 {
+    private $schema;
+
+    public function __construct()
+    {
+    $this->schema = app(Builder::class);
+    }
+    
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateLoginsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logins', function (Blueprint $table) {
+        $this->schema->create('logins', function (Blueprint $table) {
             $table->increments('login_id');
             $table->string('username', 16);
             $table->string('password', 255);
@@ -28,6 +35,6 @@ class CreateLoginsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logins');
+        $this->schema->dropIfExists('logins');
     }
 }

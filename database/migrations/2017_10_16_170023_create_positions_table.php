@@ -1,11 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Builder;
 
 class CreatePositionsTable extends Migration
 {
+    private $schema;
+    
+    public function __construct()
+    {
+        $this->schema = app(Builder::class);
+    }
+    
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreatePositionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('positions', function (Blueprint $table) {
+        $this->schema->create('positions', function (Blueprint $table) {
             $table->increments('position_id');
             $table->string('name', 50)->unique();
         });
@@ -26,6 +33,6 @@ class CreatePositionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('positions');
+        $this->schema->dropIfExists('positions');
     }
 }

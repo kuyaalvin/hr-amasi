@@ -1,12 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\DatabaseManager;
 
 class AddSystemAdmin extends Migration
 {
+    private $dbManager;
+    private $hasher;
+    
+    public function __construct()
+    {
+        $this->dbManager = app(DatabaseManager::class);
+        $this->hasher = app('hash');
+    }
+    
     /**
      * Run the migrations.
      *
@@ -14,7 +22,7 @@ class AddSystemAdmin extends Migration
      */
     public function up()
     {
-DB::unprepared("insert into logins (username, password) values('" . env('SYSTEM_ADMIN_USERNAME') . "', '" . Hash::make(env('SYSTEM_ADMIN_PASSWORD')) . "')");
+$this->dbManager->unprepared("insert into logins (username, password) values('" . env('SYSTEM_ADMIN_USERNAME') . "', '" . $this->hasher->make(env('SYSTEM_ADMIN_PASSWORD')) . "')");
     }
 
     /**
