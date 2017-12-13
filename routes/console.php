@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\DatabaseManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +18,27 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
-Artisan::command('db:create', function() {
-config(['database.connections.' . env('DB_CONNECTION') . '.database' => null]);
-DB::unprepared('create database if not exists `' . env('DB_DATABASE') . '`');
-$this->info("Create database if not exists executed.");
+Artisan::command('db:create', function(DatabaseManager $db) {
+    $databaseName = env('DB_DATABASE');
+    try {
+$db->connection()->getPdo();
+        $this->info("Database already created.");
+    } catch(Exception $e) {        
+        config(['database.connections.' . env('DB_CONNECTION') . '.database' => null]);
+        $db->reconnect();
+        $db->unprepared('create database if not exists `' . $databaseName . '`');
+$this->info("Database created successfully.");
+    }
     })-> describe("Creates database if not exists.");
 
-Artisan::command('db:drop', function() {
-config(['database.connections.' . env('DB_CONNECTION') . '.database' => null]);
-DB::unprepared('drop database if exists `' . env('DB_DATABASE') . '`');
-$this->info("Drop database if exists executed.");
-})-> describe("Drops database if exists.");
+Artisan::command('db:drop', function(DatabaseManager $db) {
+    $databaseName = env('DB_DATABASE');
+    try {
+        $db->connection()->getPdo();
+$db->unprepared('drop database if exists `' . $databaseName . '`');
+$this->info("Database dropped successfully.");
+    } catch(Exception $e) {
+        $this->info("Database does not exist.");
+    }
+    })-> describe("Drops database if exists.");
 
