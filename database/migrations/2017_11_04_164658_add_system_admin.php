@@ -32,6 +32,6 @@ $this->dbManager->unprepared("insert into logins (username, password) values('" 
      */
     public function down()
     {
-        //
+        $this->dbManager->unprepared("delete from logins where username='" . env('SYSTEM_ADMIN_USERNAME') . "'");
     }
 }
