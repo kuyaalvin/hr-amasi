@@ -18,24 +18,24 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
-Artisan::command('db:create', function(DatabaseManager $db) {
-    $databaseName = env('DB_DATABASE');
+    $dbName = env('DB_DATABASE');
+
+Artisan::command('db:create', function(DatabaseManager $dbManager) use($dbName) {
     try {
-$db->connection()->getPdo();
+$dbManager->connection()->getPdo();
         $this->info("Database already created.");
     } catch(Exception $e) {        
         config(['database.connections.' . env('DB_CONNECTION') . '.database' => null]);
-        $db->reconnect();
-        $db->unprepared('create database if not exists `' . $databaseName . '`');
+        $dbManager->reconnect();
+        $dbManager->unprepared('create database if not exists `' . $dbName . '`');
 $this->info("Database created successfully.");
     }
     })-> describe("Creates database if not exists.");
 
-Artisan::command('db:drop', function(DatabaseManager $db) {
-    $databaseName = env('DB_DATABASE');
+Artisan::command('db:drop', function(DatabaseManager $dbManager) use($dbName) {
     try {
-        $db->connection()->getPdo();
-$db->unprepared('drop database if exists `' . $databaseName . '`');
+        $dbManager->connection()->getPdo();
+$dbManager->unprepared('drop database if exists `' . $dbName . '`');
 $this->info("Database dropped successfully.");
     } catch(Exception $e) {
         $this->info("Database does not exist.");
