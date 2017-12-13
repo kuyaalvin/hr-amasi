@@ -12,9 +12,9 @@ require('bootstrap');
 window.JSZip = require('jszip');
 require('datatables.net-bs4');
 require('datatables.net-buttons-bs4');
-require('datatables.net-buttons/js/buttons.colVis.js');
-require('datatables.net-buttons/js/buttons.html5.js');
+require('datatables.net-buttons/js/buttons.colVis');
+require('datatables.net-buttons/js/buttons.html5');
 require('datatables.net-scroller');
-require('jquery-timepicker/jquery.timepicker.js');
-require("jquery-ui/ui/widgets/autocomplete");
+require('jquery-timepicker/jquery.timepicker');
+require('jquery-ui/ui/widgets/autocomplete');
 } catch (e) {}
