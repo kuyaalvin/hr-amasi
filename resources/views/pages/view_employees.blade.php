@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('layouts.sidebaremployee')
+
 <div class="container">
 @if (session('message'))
 <h4 id="message">{{ session('message') }}</h4>
@@ -20,7 +22,7 @@
 <table class="table table-hover">
   <thead >
     <tr>
-<th class="col">ID Number</th>
+<th class="col-md-12">ID Number</th>
 <th class="col">Biometric ID</th>
 <th class="col">Last Name</th>
 <th class="col">First Name</th>
@@ -53,33 +55,33 @@
   </thead>
   <tfoot >
     <tr>
-<th><input type="text" placeholder="Search ID Number"></th>
-<th><input type="text" placeholder="Search Biometric ID"></th>
-<th><input type="text" placeholder="Search Last Name"></th>
-<th><input type="text" placeholder="Search First Name"></th>
-<th><input type="text" placeholder="Search Middle Name"></th>
-<th><input type="text" placeholder="Search Position"></th>
-<th><input type="text" placeholder="Search Project"></th>
-<th><input type="text" placeholder="Search Account Number"></th>
-<th><input type="text" placeholder="Search SSS ID"></th>
-<th><input type="text" placeholder="Search PHIC ID"></th>
-<th><input type="text" placeholder="Search HDMF ID"></th>
-<th><input type="text" placeholder="Search TIN ID"></th>
-<th><input type="text" placeholder="Search Number of Dependencies"></th>
-<th><input type="text" placeholder="Search Religion"></th>
-<th><input type="text" placeholder="Search Gender"></th>
-<th><input type="text" placeholder="Search City Address"></th>
-<th><input type="text" placeholder="Search Provincial Address"></th>
-<th><input type="text" placeholder="Search Birthdate"></th>
-<th><input type="text" placeholder="Search Civil Status"></th>
-<th><input type="text" placeholder="Search Telephone Number"></th>
-<th><input type="text" placeholder="Search Mobile Number1"></th>
-<th><input type="text" placeholder="Search Mobile Number2"></th>
-<th><input type="text" placeholder="Search Citizenship"></th>
-<th><input type="text" placeholder="Search Date Started"></th>
-<th><input type="text" placeholder="Search Payroll Type"></th>
-<th><input type="text" placeholder="Search Agency"></th>
-<th><input type="text" placeholder="Search Regular"></th>
+      <th><input type="text" class="form-control" placeholder="Search ID Number"></th>
+      <th><input type="text" class="form-control" placeholder="Search Biometric ID"></th>
+      <th><input type="text" class="form-control" placeholder="Search Last Name"></th>
+      <th><input type="text" class="form-control" placeholder="Search First Name"></th>
+      <th><input type="text" class="form-control" placeholder="Search Middle Name"></th>
+      <th><input type="text" class="form-control" placeholder="Search Position"></th>
+      <th><input type="text" class="form-control" placeholder="Search Project"></th>
+      <th><input type="text" class="form-control" placeholder="Search Account Number"></th>
+      <th><input type="text" class="form-control" placeholder="Search SSS ID"></th>
+      <th><input type="text" class="form-control" placeholder="Search PHIC ID"></th>
+      <th><input type="text" class="form-control" placeholder="Search HDMF ID"></th>
+      <th><input type="text" class="form-control" placeholder="Search TIN ID"></th>
+      <th><input type="text" class="form-control" placeholder="Search Number of Dependencies"></th>
+      <th><input type="text" class="form-control" placeholder="Search Religion"></th>
+      <th><input type="text" class="form-control" placeholder="Search Gender"></th>
+      <th><input type="text" class="form-control" placeholder="Search City Address"></th>
+      <th><input type="text" class="form-control" placeholder="Search Provincial Address"></th>
+      <th><input type="text" class="form-control" placeholder="Search Birthdate"></th>
+      <th><input type="text" class="form-control" placeholder="Search Civil Status"></th>
+      <th><input type="text" class="form-control" placeholder="Search Telephone Number"></th>
+      <th><input type="text" class="form-control" placeholder="Search Mobile Number1"></th>
+      <th><input type="text" class="form-control" placeholder="Search Mobile Number2"></th>
+      <th><input type="text" class="form-control" placeholder="Search Citizenship"></th>
+      <th><input type="text" class="form-control" placeholder="Search Date Started"></th>
+      <th><input type="text" class="form-control" placeholder="Search Payroll Type"></th>
+      <th><input type="text" class="form-control" placeholder="Search Agency"></th>
+      <th><input type="text" class="form-control" placeholder="Search Regular"></th>
       <th></th>
       <th></th>
     </tr>
@@ -102,85 +104,85 @@ dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr
         serverSide: true,
         processing: true,
         ajax: '',
-lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
+        lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
         columns: [
-{data: 'id_number', visible: false },
-{data: 'biometric_id', visible: false },
-{data: 'last_name'},
-{data: 'first_name'},
-{data: 'middle_name'},
-{data: 'position.name', title: 'Position',
-render: function(data, type, row) {
-var position = row.position;
-return position !== null ? position.name : '';
-}
-},
-{data: 'project.name', title: 'Project',
-render: function(data, type, row) {
-var project = row.project;
-return project !== null ? project.name : '';
-}
-},
-{data: 'account_number', visible: false },
-{data: 'sss_id', title: 'SSS ID', visible: false },
-{data: 'phic_id', title: 'PHIC ID', visible: false },
-{data: 'hdmf_id', title: 'HDMF ID', visible: false },
-{data: 'tin_id', title: 'TIN ID', visible: false },
-{data: 'number_of_dependencies', visible: false },
-{data: 'religion', visible: false },
-{data: 'gender', visible: false },
-{data: 'city_address'},
-{data: 'provincial_address'},
-{data: 'birthdate', visible: false },
-{data: 'civil_status', visible: false },
-{data: 'telephone_number'},
-{data: 'mobile_number1'},
-{data: 'mobile_number2'},
-{data: 'citizenship', visible: false },
-{data: 'date_started', visible: false },
-{data: 'payroll_type', visible: false },
-{data: 'agency', visible: false,
-render: function(data, type, row) {
-return row.agency ? 'yes' : 'no';
-}
-},
-{data: 'regular', visible: false,
-render: function(data, type, row) {
-return row.regular ? 'yes' : 'no';
-}
-},
-        	{data: 'edit',
-        searchable: false,
-        orderable: false,
-        render: function(data, type, row) {
-        return '<a class="btn btn-sm btn-dark" href="'+prefixUrl+row.employee_id+'/edit">Edit</a>';
-        }
-        },
+            {data: 'id_number', visible: false },
+            {data: 'biometric_id', visible: false },
+            {data: 'last_name'},
+            {data: 'first_name'},
+            {data: 'middle_name'},
+            {data: 'position.name', title: 'Position',
+                render: function(data, type, row) {
+                var position = row.position;
+                return position !== null ? position.name : '';
+                }
+                },
+            {data: 'project.name', title: 'Project',
+                render: function(data, type, row) {
+                var project = row.project;
+                return project !== null ? project.name : '';
+                }
+                },
+            {data: 'account_number', visible: false },
+            {data: 'sss_id', title: 'SSS ID', visible: false },
+            {data: 'phic_id', title: 'PHIC ID', visible: false },
+            {data: 'hdmf_id', title: 'HDMF ID', visible: false },
+            {data: 'tin_id', title: 'TIN ID', visible: false },
+            {data: 'number_of_dependencies', visible: false },
+            {data: 'religion', visible: false },
+            {data: 'gender', visible: false },
+            {data: 'city_address'},
+            {data: 'provincial_address'},
+            {data: 'birthdate', visible: false },
+            {data: 'civil_status', visible: false },
+            {data: 'telephone_number'},
+            {data: 'mobile_number1'},
+            {data: 'mobile_number2'},
+            {data: 'citizenship', visible: false },
+            {data: 'date_started', visible: false },
+            {data: 'payroll_type', visible: false },
+            {data: 'agency', visible: false,
+                render: function(data, type, row) {
+                return row.agency ? 'yes' : 'no';
+                }
+                },
+            {data: 'regular', visible: false,
+                render: function(data, type, row) {
+                return row.regular ? 'yes' : 'no';
+                }
+                },
+        	   {data: 'edit',
+                searchable: false,
+                orderable: false,
+                render: function(data, type, row) {
+                return '<a class="btn btn-sm btn-dark" href="'+prefixUrl+row.employee_id+'/edit">Edit</a>';
+                }
+                },
         	{data: 'delete',
-searchable: false,
-orderable: false,
-render: function(data, type, row) {
-	return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
-	'{{ csrf_field() }}'+
-	'{{ method_field('delete') }}'+
-	'<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
-	'</form>';	
-}
-            	}
-],
-buttons: [
-{
-extend: 'excel',
-text: 'Export to Excel',
-exportOptions: {
-columns: togglableColumns
-}
-},
-{
-extend: 'columnsToggle',
-columns: togglableColumns
-}
-],
+              searchable: false,
+              orderable: false,
+              render: function(data, type, row) {
+	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
+	               '{{ csrf_field() }}'+
+	               '{{ method_field('delete') }}'+
+	               '<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
+	               '</form>';	
+                }
+            	   }
+                ],
+        buttons: [
+            {
+                extend: 'excel',
+                text: 'Export to Excel',
+                exportOptions: {
+                columns: togglableColumns
+            }
+            },
+            {
+                extend: 'columnsToggle',
+                columns: togglableColumns
+            }
+            ],
 
     });
 

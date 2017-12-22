@@ -19,11 +19,11 @@
 			</div>
 			<div class="form-group col-md-4">
 				<label for="fullName">First Name : </label>
-				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="{{ old('middle_name', $employee->middle_name) }}">
+				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name..." value="{{ old('first_name', $employee->first_name) }}">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="fullName">Middle Name : </label>
-				<input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Middle Name" value="{{ old('first_name', $employee->first_name) }}">
+				<input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Middle Name..." value="{{ old('middle_name', $employee->middle_name) }} ">
 			</div>
 		</div>
 		<div class="form-row">
@@ -58,7 +58,7 @@
 				</div>
 				<div class="form-check">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="civil_status1" name="civil_status" value="Married" @if (old('civil_status', $employee->civil_status) == 'Married') checked @endif> Married
+				    <input class="form-check-input" type="radio" id="civil_status1" name="civil_status" value="Married" @if (old('civil_status', $employee->civil_status) == 'Married') checked @endif> Married	
 				  </label>
 				</div>
 				</div>
@@ -100,7 +100,7 @@
 			<div class="form-group col-md-3">
 				<label for="position">Position</label>
 				<select class="form-control" name="position_id">
-				<option value="">None</option>
+				<option value=""></option>
 				@foreach ($positions as $position)
 				<option value="{{ $position->position_id }}" @if (old('position_id', $employee->position_id) == $position->position_id) selected @endif>{{ $position->name }}</option>
 				@endforeach
@@ -109,7 +109,7 @@
 			<div class="form-group col-md-3">
 				<label for="project">Project</label>
 				<select class="form-control" name="project_id">
-				<option value="">None</option>
+				<option value=""></option>
 				@foreach ($projects as $project)
 				<option value="{{ $project->project_id }}" @if (old('project_id', $employee->project_id) == $project->project_id) selected @endif>{{ $project->name }}</option>
 				@endforeach

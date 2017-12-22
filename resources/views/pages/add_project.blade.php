@@ -15,7 +15,7 @@
 @endforeach
 @endif
 
-	<form action="{{ url('projects') }}" method="post">
+	<form action="{{ url('projects') }}" method="post" onsubmit="submitButton.disabled = true; return true;">
 		{{ csrf_field() }}
 			<div class="row form-group col-md-12">
 				<label for="projectName">Project Name</label>
@@ -37,7 +37,7 @@
 			</div>
 			</div>
 			<div class="form-group">
-				<input class="btn btn-primary" type="submit" value="Submit">
+				<input class="btn btn-primary" name="submitButton" type="submit" value="Submit">
 			</div>
 
 		
@@ -53,7 +53,6 @@
     interval: 30,
     minTime: '0',
     maxTime: '23:00',
-    defaultTime: '0',
     startTime: '00:00',
     dynamic: true,
     dropdown: true,
@@ -65,7 +64,6 @@
     interval: 30,
     minTime: '0',
     maxTime: '23:00',
-    defaultTime: '0',
     startTime: '00:00',
     dynamic: true,
     dropdown: true,

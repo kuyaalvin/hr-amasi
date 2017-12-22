@@ -106,7 +106,7 @@
 			<div class="form-group col-md-3">
 				<label for="position">Position: </label>
 				<select class="form-control" name="position_id">
-				<option value="">None</option>
+				<option value=""></option>
 				@foreach ($positions as $position)
 				<option value="{{ $position->position_id }}" @if (old('position_id') == $position->position_id) selected @endif>{{ $position->name }}</option>
 				@endforeach
@@ -115,7 +115,7 @@
 			<div class="form-group col-md-3">
 				<label for="project">Project:</label>
 				<select class="form-control" name="project_id">
-				<option value="">None</option>
+				<option value=""></option>
 				@foreach ($projects as $project)
 				<option value="{{ $project->project_id }}" @if (old('project_id') == $project->project_id) selected @endif>{{ $project->name }}</option>
 				@endforeach
