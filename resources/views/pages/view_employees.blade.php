@@ -93,14 +93,9 @@
 <script>
 $(function() {
 var prefixUrl = "{{ url('employees/') . '/' }}";
-var numberOfTogglableColumns = 27;
-var togglableColumns = [];
-for (var i = 0; i < numberOfTogglableColumns; i++) {
-togglableColumns.push(i);
-}
 
 var table = $('.table').DataTable({
-dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         serverSide: true,
         processing: true,
         ajax: '',
@@ -131,13 +126,13 @@ dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr
             {data: 'number_of_dependencies', visible: false },
             {data: 'religion', visible: false },
             {data: 'gender', visible: false },
-            {data: 'city_address'},
-            {data: 'provincial_address'},
+            {data: 'city_address', visible: false },
+            {data: 'provincial_address', visible: false },
             {data: 'birthdate', visible: false },
             {data: 'civil_status', visible: false },
-            {data: 'telephone_number'},
-            {data: 'mobile_number1'},
-            {data: 'mobile_number2'},
+            {data: 'telephone_number', visible: false },
+            {data: 'mobile_number1', visible: false },
+            {data: 'mobile_number2', visible: false },
             {data: 'citizenship', visible: false },
             {data: 'date_started', visible: false },
             {data: 'payroll_type', visible: false },
@@ -170,22 +165,8 @@ dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr
                 }
             	   }
                 ],
-        buttons: [
-            {
-                extend: 'excel',
-                text: 'Export to Excel',
-                exportOptions: {
-                columns: togglableColumns
-            }
-            },
-            {
-                extend: 'columnsToggle',
-                columns: togglableColumns
-            }
-            ],
 
     });
-
 
 table.columns().every(function() {
 var column = this;
