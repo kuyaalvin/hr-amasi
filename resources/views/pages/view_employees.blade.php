@@ -100,6 +100,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         processing: true,
         ajax: '',
         lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
+order: [],
         columns: [
             {data: 'id_number', visible: false },
             {data: 'biometric_id', visible: false },

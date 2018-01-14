@@ -50,6 +50,7 @@ var table = $('.table').DataTable({
         serverSide: true,
         processing: true,
         ajax: '',
+order: [],
         columns: [
         	{data: 'name'},
         	{data: 'edit',
