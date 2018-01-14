@@ -59,7 +59,6 @@ filter += '<option class="search form-control" value="'+index+'">'+columnValue+'
 filter += "</option></div";
 
 var table = $('.table').DataTable({
-//dom: 'l<"#filter">rtip',
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
