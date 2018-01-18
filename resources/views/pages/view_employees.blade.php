@@ -96,6 +96,11 @@ var prefixUrl = "{{ url('employees/') . '/' }}";
 
 var table = $('.table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+responsive: {
+        details: {
+            display: $.fn.dataTable.Responsive.display.modal()
+        }
+    },
         serverSide: true,
         processing: true,
         ajax: '',
@@ -161,7 +166,7 @@ order: [],
 	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
 	               '{{ csrf_field() }}'+
 	               '{{ method_field('delete') }}'+
-	               '<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
+	               '<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Delete this record?\')\" type="submit" value="Delete"/>'+
 	               '</form>';	
                 }
             	   }
@@ -171,6 +176,8 @@ order: [],
 
 table.columns().every(function() {
 var column = this;
+
+
 
 $("input", this.footer()).on("keyup change", function(event) {
 var searchValue = $(this).val();
