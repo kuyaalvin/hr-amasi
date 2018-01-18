@@ -53,8 +53,7 @@
     <div class="container">
     	</div class="row">
     	<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-
-	@yield('content')
+		@yield('content')
 		</main>
 		</div>
 	</div>
@@ -64,9 +63,27 @@
 <script src="{{ asset('js/app.js') }}"></script>
 
 <script>
-setTimeout(function() {
-// code when session expires
-}, {{ env('SESSION_LIFETIME')*60*1000 }});
+function idleLogout() {
+    var t;
+    window.onload = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onmousedown = resetTimer; 
+    window.onclick = resetTimer;     
+    window.onscroll = resetTimer;   
+    window.onkeypress = resetTimer;
+
+    function logout() {
+    	alert("Session has been finish. Please login again.");
+        window.location.href = '{{url("")}}';
+    }
+
+    function resetTimer() {
+        clearTimeout(t);
+        t = setTimeout(logout, {{ env('SESSION_LIFETIME')*60*1000 }} );  
+    }
+}
+idleLogout();
+
 </script>
     @stack('scripts')
 	</body>
