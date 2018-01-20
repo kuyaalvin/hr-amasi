@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
+
 
 <h1>Register Employee</h1>
 <p><small class="text-muted">Fields with * are required</small></p>
@@ -151,7 +151,7 @@
 			</div>
 			<div class="form-group col">
 				<div class="col">
-				<label class="col-form-label" for="payrollType">Payroll Type: </label>
+				<label class="col-form-label" for="payrollType">Payroll Type: *</label>
 				<div class="form-check">
 				  <label class="form-check-label">
 				    <input class="form-check-input" type="radio" type="radio" id="payroll_type0" name="payroll_type" value="Weekly" @if (old('payroll_type') == 'Weekly') checked @endif>Weekly
@@ -165,7 +165,7 @@
 				</div>
 			</div>
 			<div class="form-group col">
-				<label for="dateStarted">Date Started: </label>
+				<label for="dateStarted">Date Started: *</label>
 				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started') }}">
 			</div>
 			<div class="form-group">

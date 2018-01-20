@@ -2,13 +2,14 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
 
 
 <h1>Project List</h1>
 
 @if (session('message'))
-<h4 id="message">{{ session('message') }}</h4>
+<div class="alert alert-info" role="alert">
+{{ session('message') }}
+</div>
 @endif
 
 <div class="row">
@@ -56,14 +57,14 @@ var columnValue = $(this).text();
 filter += '<option class="search form-control" value="'+index+'">'+columnValue+'</option>';
 	}
 });
-filter += "</option></div";
+filter += "</option></div>";
 
 var table = $('.table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
         ajax: '',
-order: [],
+        order: [],
         columns: [
         	{data: 'name'},
         	{data: 'address'},
@@ -79,7 +80,7 @@ order: [],
         			return '<form action="'+prefixUrl+row.project_id+'" method="post">'+
         			'{{ csrf_field() }}'+
         			'{{ method_field('delete') }}'+
-        			'<input class="btn btn-danger" type="submit" value="Delete"/>'+
+        			'<input class="btn btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" type="submit" value="Delete"/>'+
         			'</form>';	
         		}
         		}
@@ -89,19 +90,19 @@ order: [],
 $("#filter").html(filter);
 
 $('#search').on('keyup change', function(event) {
-search();
+  search();
 });
 
 $('#searchIn').on('change', function(event) {
 	search();
-	});
+});
 
 function search() {
 	var input = $('#search').val();
-var column = $('#searchIn').val();
-table.search( '' ).columns().search( '' ).draw();
-if (column === '')
-	{
+  var column = $('#searchIn').val();
+    table.search( '' ).columns().search( '' ).draw();
+      if (column === '')
+	     {
 table.search(input).draw();
 	} else {
 		table.column(column).search(input).draw();

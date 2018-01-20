@@ -18,7 +18,7 @@ class Position extends GlobalModel
 {
     protected $primaryKey = 'position_id';
     public $timestamps = false;
-protected $guarded = ['position_id'];
+    protected $guarded = ['position_id'];
 
 protected static function boot()
 {

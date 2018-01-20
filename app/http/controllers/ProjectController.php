@@ -44,7 +44,7 @@ $project->fill($request->all());
         if ($project->validate())
         {
 $project->save();
-    return $this->successResponse($request, 'projects', 'Project has been added.');
+    return $this->successResponse($request, 'projects', 'New project has been added.');
         }
     return $this->failedResponse($request, $project);
     }

@@ -2,53 +2,62 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
 
-<div class="container">
+
+
+
+<h1>Employee Master List</h1>
+
+
 @if (session('message'))
-<h4 id="message">{{ session('message') }}</h4>
+<div class="alert alert-info" role="alert">
+{{ session('message') }}
+</div>
 @endif
 
 <div class="row">
-<button type="button"  class="btn btn-outline-primary" onclick="location.href='{{ url('employees/create') }}'">+ Add Employee</button>
+  <div class="col">
+    <nav class="nav flex-column">
+      <li class="nav-item">
+        <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('employees/create') }}'">+ Add Employee</button>
+      </li>
+    </nav>
+  </div>
 </div>
 
-<br/>
-<div class="row">
-<h4>Employee Master List</h4>
-</div>
+<hr/>
 
 <div class="row">
 <table class="table table-hover">
-  <thead >
+  <thead>
     <tr>
-<th class="col-md-12">ID Number</th>
-<th class="col">Biometric ID</th>
-<th class="col">Last Name</th>
-<th class="col">First Name</th>
-<th class="col">Middle Name</th>
-<th class="col">Position</th>
-<th class="col">Project</th>
-<th class="col">Account Number</th>
-<th class="col">SSS ID</th>
-<th class="col">PHIC ID</th>
-<th class="col">HDMF ID</th>
-<th class="col">TIN ID</th>
-<th class="col">Number of Dependencies</th>
-<th class="col">Religion</th>
-<th class="col">Gender</th>
-<th class="col">City Address</th>
-<th class="col">Provincial Address</th>
-<th class="col">Birthdate</th>
-<th class="col">Civil Status</th>
-<th class="col">Telephone Number</th>
-<th class="col">Mobile Number1</th>
-<th class="col">Mobile Number2</th>
-<th class="col">Citizenship</th>
-<th class="col">Date Started</th>
-<th class="col">Payroll Type</th>
-<th class="col">Agency</th>
-<th class="col">Regular</th>
+      <th class="col-md-12">ID Number</th>
+      <th class="col">Biometric ID</th>
+      <th class="col">Last Name</th>
+      <th class="col">First Name</th>
+      <th class="col">Middle Name</th>
+      <th class="col">Position</th>
+      <th class="col">Project</th>
+      <th class="col">Account Number</th>
+      <th class="col">SSS ID</th>
+      <th class="col">PHIC ID</th>
+      <th class="col">HDMF ID</th>
+      <th class="col">TIN ID</th>
+      <th class="col">Number of Dependencies</th>
+      <th class="col">Religion</th>
+      <th class="col">Gender</th>
+      <th class="col">City Address</th>
+      <th class="col">Provincial Address</th>
+      <th class="col">Birthdate</th>
+      <th class="col">Civil Status</th>
+      <th class="col">Telephone Number</th>
+      <th class="col">Mobile Number1</th>
+      <th class="col">Mobile Number2</th>
+      <th class="col">Citizenship</th>
+      <th class="col">Date Started</th>
+      <th class="col">Payroll Type</th>
+      <th class="col">Agency</th>
+      <th class="col">Regular</th>
       <th class="col">Edit</th>
       <th class="col">Delete</th>
     </tr>
@@ -166,7 +175,7 @@ order: [],
 	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
 	               '{{ csrf_field() }}'+
 	               '{{ method_field('delete') }}'+
-	               '<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Delete this record?\')\" type="submit" value="Delete"/>'+
+	               '<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" type="submit" value="Delete"/>'+
 	               '</form>';	
                 }
             	   }

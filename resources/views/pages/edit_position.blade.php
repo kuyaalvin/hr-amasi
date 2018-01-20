@@ -16,7 +16,7 @@
 				<input type="text" class="form-control" name="name" placeholder="edit position here" value="{{ old('name', $position->name) }}">
 			</div>
 		</div>
-		<input type="submit" value="Submit">
+		<input class="btn btn-primary" type="submit" value="Submit">
 
 	</form>
 @endsection

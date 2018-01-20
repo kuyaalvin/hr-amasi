@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
+
 
 <h1>Add Position</h1>
 @if ($errors->any())
