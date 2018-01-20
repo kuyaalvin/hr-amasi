@@ -2,8 +2,6 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
-
 <h1>Position List</h1>
 
 <div class="row">
@@ -26,7 +24,7 @@
 
 <div class="row">
   <div class="col">
-<table class="table table-striped">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -67,7 +65,7 @@ order: [],
             	return '<form action="'+prefixUrl+row.position_id+'" method="post">'+
             	'{{ csrf_field() }}'+
             	'{{ method_field('delete') }}'+
-            	'<input class="btn btn-sm btn-danger" type="submit" value="Delete"/>'+
+            	'<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" type="submit" value="Delete"/>'+
             	'</form>';	
             }
             	}

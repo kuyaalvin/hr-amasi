@@ -50,11 +50,12 @@
     </header>
 
 
-    <div class="container">
-    	</div class="row">
+    <div class="container-fluid">
+    	<div class="row">
+    	@include('layouts.sidebaremployee')
     	<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-		@yield('content')
-		</main>
+  		@yield('content')
+  		</main>
 		</div>
 	</div>
 		

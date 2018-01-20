@@ -2,6 +2,5 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
 
 @endsection

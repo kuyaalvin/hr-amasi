@@ -2,7 +2,6 @@
 
 @section('content')
 
-@include('layouts.sidebaremployee')
 
 
 <div class="container">
