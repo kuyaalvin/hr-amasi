@@ -118,7 +118,11 @@ order: [],
         columns: [
             {data: 'id_number', visible: false },
             {data: 'biometric_id', visible: false },
-            {data: 'last_name'},
+            {data: 'last_name',
+                render: function(data,type,row) {
+                return '<a href="employeeProfileblade">'+data+'</a>';
+                }
+                },
             {data: 'first_name'},
             {data: 'middle_name'},
             {data: 'position.name', title: 'Position',
