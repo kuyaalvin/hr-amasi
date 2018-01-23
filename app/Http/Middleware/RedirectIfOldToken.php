@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\Login;
+use App\Models\User;
 use Illuminate\Auth\AuthManager;
 
 class RedirectIfOldToken
@@ -24,9 +24,9 @@ class RedirectIfOldToken
      */
     public function handle($request, Closure $next)
     {
-        $currentLogin = $request->user();
+        $currentUser = $request->user();
 $currentToken = $request->session()->get('token');
-        $newToken = $currentLogin->token;
+        $newToken = $currentUser->token;
 
         if ($currentToken != $newToken)
         {

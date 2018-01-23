@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;;;
-use App\Models\Login;
+use App\Models\User;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Hashing\Hasher;
 
@@ -26,11 +26,11 @@ $this->middleware('guest')->except('logout');
     {
         if ($auth->attempt(['username'=>$request->input('username'), 'password'=>$request->input('password')]))
 {
-    $login = $request->user();
+    $user = $request->user();
 $token = encrypt(time());
-    $login->token = $token;
+    $user->token = $token;
 $request->session()->put('token', $token);
-    $login->save();
+    $user->save();
 return redirect('/home');
 }
 return back()->withErrors('Username or password is incorrect.')->withInput(['username'=>$request->input('username')]);

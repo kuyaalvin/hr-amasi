@@ -5,24 +5,24 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
- * App\Models\Login
+ * App\Models\User
  *
- * @property int $login_id
+ * @property int $user_id
  * @property string $username
  * @property string $password
  * @property string|null $token
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Login whereLoginId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Login wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Login whereToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Login whereUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUsername($value)
  * @mixin \Eloquent
  */
-class Login extends GlobalModel implements Authenticatable
+class User extends GlobalModel implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;
-    protected $primaryKey = 'login_id';
+    protected $primaryKey = 'user_id';
     public $timestamps = false;
-    protected $guarded = ['login_id', 'token'];
+    protected $guarded = ['user_id', 'token'];
     protected $hidden = ['password', 'token'];
  
  public function validate(array $data)

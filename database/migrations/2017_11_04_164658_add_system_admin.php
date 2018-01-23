@@ -22,7 +22,7 @@ class AddSystemAdmin extends Migration
      */
     public function up()
     {
-$this->dbManager->unprepared("insert into logins (username, password) values('" . env('SYSTEM_ADMIN_USERNAME') . "', '" . $this->hasher->make(env('SYSTEM_ADMIN_PASSWORD')) . "')");
+$this->dbManager->unprepared("insert into users (username, password) values('" . env('SYSTEM_ADMIN_USERNAME') . "', '" . $this->hasher->make(env('SYSTEM_ADMIN_PASSWORD')) . "')");
     }
 
     /**
@@ -32,6 +32,6 @@ $this->dbManager->unprepared("insert into logins (username, password) values('" 
      */
     public function down()
     {
-        $this->dbManager->unprepared("delete from logins where username='" . env('SYSTEM_ADMIN_USERNAME') . "'");
+        $this->dbManager->unprepared("delete from users where username='" . env('SYSTEM_ADMIN_USERNAME') . "'");
     }
 }
