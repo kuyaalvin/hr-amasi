@@ -6,7 +6,7 @@
     <div class="container">
 	<div class="row">
 		<div class="col-md-4 login-sec">
-			<h3 class="text-center">Welcome to AMASI HRM SYSTEM</h3>
+			<h3 class="text-center">Welcome to AMASI HR SYSTEM</h3>
 		    <h2 class="text-center">Login Now</h2>
 	<form class="login-form" action="{{ url('login') }}" method="post">
 		{{ csrf_field() }}
