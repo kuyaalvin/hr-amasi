@@ -4,7 +4,7 @@
 
 
 
-<h1>Register Employee</h1>
+<h1>Register New Employee</h1>
 <p><small class="text-muted">Fields with * are required</small></p>
 
 
@@ -52,10 +52,10 @@
 				  </label>
 				</div>
 				</div>
-			</div>
+			</div>	
 			<div class="form-group col-md-4">
 				<div class="col">
-				<label class="col-form-label" for="civilStatus">Civil Satus: *</label>
+				<label class="col-form-label" for="civilStatus">Civil Status: *</label>
 
 				<div class="form-check">
 				  <label class="form-check-label">

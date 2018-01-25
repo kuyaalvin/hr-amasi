@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-	<h1>edit position</h1>
+	<h1>Edit Position</h1>
+<p><small class="text-muted">Fields with * are required</small></p>	
 	
 @if ($errors->any())
-<label for="errorMessage">{{ $errors->all()[0] }}</label>
+<label class="alert alert-danger" for="errorMessage">{{ $errors->all()[0] }}</label>
 @endif
 
 	<form action="{{ url('positions/' . $position->position_id) }}" method="post">

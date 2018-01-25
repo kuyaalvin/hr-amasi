@@ -4,16 +4,21 @@
 
 
 
-<h1>Add Position</h1>
+<h1>Register New Position</h1>
+
+<p><small class="text-muted">Fields with * are required</small></p>
+
+
+
 @if ($errors->any())
-<label for="errorMessage">{{ $errors->all()[0] }}</label>
+<label class="alert alert-danger" for="errorMessage">{{ $errors->all()[0] }}</label>
 @endif
 
 	<form action="{{ url('positions') }}" method="post">
 		{{ csrf_field() }}
 		<div class="form-row">
 			<div class="form-group col-md-4">
-				<label for="positionName">Position Name</label>
+				<label for="positionName">Position Name: *</label>
 				<input type="text" class="form-control" name="name" placeholder="add position..." value="{{ old('name') }}">
 			</div>
 		</div>
