@@ -189,6 +189,29 @@
 			</div>
 			
 		</div>
+		<div class="row">
+			<div class="form-group col">
+				<label for="Referred by">Referred by: *</label>
+				<input type="text" class="form-control" id="referred_by" name="referred_by" value="{{ old('referred_by') }}">
+			</div>
+			<div class="form-group col">
+				<label for="Referred by">Mother's Maiden Name: </label>
+				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" value="{{ old('mothers_maiden_name') }}">
+			</div>
+			<div class="form-group col">
+				<label for="Referred by">Birth Place: *</label>
+				<input type="text" class="form-control" id="birth_place" name="birth_place" value="{{ old('birth_place') }}">
+			</div>
+			<div class="form-group col">
+				<label for="Referred by">Emergency Contact Person Name: </label>
+				<input type="text" class="form-control" id="emergency_contact_name" name="emergency_contact_name" value="{{ old('emergency_contact_name') }}">
+			</div>
+			<div class="form-group col">
+				<label for="Referred by">Emergency Contact Person Number: </label>
+				<input type="text" class="form-control" id="emergency_contact_number" name="emergency_contact_number" value="{{ old('emergency_contact_number') }}">
+			</div>
+
+		</div>
 		<input class="btn btn-primary" type="submit" value="Submit">
 	</form>
 	
