@@ -15,5 +15,4 @@ require('datatables.net-buttons-bs4');
 require('datatables.net-buttons/js/buttons.colVis');
 require('datatables.net-buttons/js/buttons.html5');
 require('bootstrap-timepicker');
-require('jquery-ui/ui/widgets/autocomplete');
 } catch (e) {}
