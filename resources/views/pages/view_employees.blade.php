@@ -19,7 +19,7 @@
   <div class="col">
     <nav class="nav flex-column">
       <li class="nav-item">
-        <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('employees/create') }}'">+ Add Employee</button>
+        <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('employees/create') }}'">+ Register Employee</button>
       </li>
     </nav>
   </div>
