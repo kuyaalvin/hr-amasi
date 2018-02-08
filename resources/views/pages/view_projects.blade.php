@@ -31,12 +31,44 @@
       <th>Address</th>
       <th>Time In</th>
       <th>Time Out</th>
+      <th>Total Man Power</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
   </thead>
 </table>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Are you sure you want to delete employee "*insert name here* ?"</label>
+            <br/>
+            <label>How is this employee being let go?</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Terminated</option>
+              <option>AWOL</option>
+              <option>Deceased</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
 
 @push('scripts')
@@ -70,6 +102,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         	{data: 'address'},
         	{data: 'time_in'},
         	{data: 'time_out'},
+          {data: 'name'},
         	{data: 'edit', searchable: false, orderable: false,
         		render: function(data, type, row) {
         		return '<a class="btn btn-dark" href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
@@ -86,6 +119,8 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         		}
         	]
     });
+
+
 
 $("#filter").html(filter);
 

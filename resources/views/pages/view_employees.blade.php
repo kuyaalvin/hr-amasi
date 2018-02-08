@@ -97,6 +97,36 @@
   </tfoot>
 </table>
   </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Confirm deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Are you sure you want to delete employee "*insert name here* ?"</label>
+            <br/>
+            <label>How is this employee being let go?</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Terminated</option>
+              <option>AWOL</option>
+              <option>Deceased</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('scripts')
 <script>
@@ -174,12 +204,12 @@ order: [],
 	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
 	               '{{ csrf_field() }}'+
 	               '{{ method_field('delete') }}'+
-	               '<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" type="submit" value="Delete"/>'+
+	               '<button type="button"  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirmModal">Delete</button>'+
 	               '</form>';	
                 }
             	   }
                 ],
-
+//<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" data-toggle="modal" data-target="#exampleModal" type="submit" value="Delete"/>
     });
 
 table.columns().every(function() {
