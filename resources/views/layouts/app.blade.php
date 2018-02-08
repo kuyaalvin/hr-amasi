@@ -22,7 +22,7 @@
 			{{ csrf_field() }}
 	</form>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#"><img src="{{ asset('img/brandlogo.png')}}" width="30" height="30" class="d-inline-block align-top" alt=""/>AMASI HR</a>
+        <a class="navbar-brand" href="{{ url ('home')}}"><img src="{{ asset('img/brandlogo.png')}}" width="30" height="30" class="d-inline-block align-top" alt=""/> AMASI HR</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
