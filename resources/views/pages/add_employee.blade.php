@@ -92,6 +92,7 @@
 			<label class="col-sm-2 col-form-label">SSS ID:</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="sss_id" name="sss_id" placeholder="SSS" value="{{ old('sss_id') }}">
+				<small class="text-muted">With faded secondary text</small>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -157,6 +158,12 @@
 		</div>
 		<div class="form-group"><h3>Employment Information</h3></div>
 		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Date of employment*:</label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started') }}">
+			</div>
+		</div>
+		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Assigned position:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="position_id">
@@ -179,12 +186,6 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2 col-form-label">Date of employment*:</label>
-			<div class="col-sm-10">
-				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started') }}">
-			</div>
-		</div>
-		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Employment type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="regular">
@@ -202,6 +203,12 @@
 					<option value="Weekly">Weekly</option>
 					<option value="Monthly">Monthly</option>
 				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Referred by:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="referred_by" name="referred_by" placeholder="referred by" value="{{ old('referred_by') }}">
 			</div>
 		</div>
 		<div class="form-group row">
