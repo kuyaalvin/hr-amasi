@@ -16,4 +16,5 @@ require('datatables.net-buttons/js/buttons.colVis');
 require('datatables.net-buttons/js/buttons.html5');
 require('datatables.net-select')();
 require('bootstrap-timepicker');
+require('inputmask/dist/jquery.inputmask.bundle.js');
 } catch (e) {}
