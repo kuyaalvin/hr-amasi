@@ -156,9 +156,21 @@
 				<input type="text" class="form-control" id="emergency_contact_number" name="emergency_contact_number" placeholder="emergency contact person number" value="{{ old('emergency_contact_number') }}">
 			</div>
 		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Emergency contact person address:</label>
+			<div class="col-sm-10">
+				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_naddress" placeholder="emergency contact person address" value="{{ old('emergency_contact_naddress') }}" rows="2"></textarea>
+			</div>
+		</div>
 		<div class="form-group"><h3>Employment Information</h3></div>
 		<div class="form-group row">
-			<label class="col-sm-2 col-form-label">Date of employment*:</label>
+			<label class="col-sm-2 col-form-label">Date hired*:</label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" id="date_hired" name="date_hired" value="{{ old('date_hired') }}">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Date started*:</label>
 			<div class="col-sm-10">
 				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started') }}">
 			</div>
@@ -209,6 +221,12 @@
 			<label class="col-sm-2 col-form-label">Referred by:</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="referred_by" name="referred_by" placeholder="referred by" value="{{ old('referred_by') }}">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Walk-in:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="walk_in" name="walk_in" placeholder="walk in" value="{{ old('walk_in') }}">
 			</div>
 		</div>
 		<div class="form-group row">
