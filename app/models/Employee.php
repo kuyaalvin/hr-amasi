@@ -83,7 +83,7 @@ class Employee extends GlobalModel
     protected $primaryKey = 'employee_id';
     public $timestamps = false;
 const DELETED_AT = 'date_terminated';
-    protected $dates = ['birthdate', 'date_started', 'date_terminated'];
+    protected $dates = ['birthdate', 'date_started', 'date_hired', 'date_terminated'];
     protected $dateFormat = 'Y-m-d';
     protected $guarded = ['employee_id', 'active'];
 
@@ -160,8 +160,7 @@ const DELETED_AT = 'date_terminated';
             'date_hired'=>['nullable', 'date_format:' . $this->getDateFormat()],
             'account_number'=>['nullable', $this->uniqueRule(), 'digits_between:1,25'],
             'biometric_id'=>['nullable', $this->uniqueRule(), 'digits_between:1,4'],
-            'agency'=>['required', 'boolean'],
-            'regular'=>['required', 'boolean'],
+'employment_type'=>['required', 'in:Agency,Regular'],
             'referred_by'=>['nullable', 'string', 'max:50'],
             'walk_in'=>['nullable', 'string', 'max:50'],
             'position_id'=>['nullable', 'exists:positions'],
@@ -172,13 +171,9 @@ const DELETED_AT = 'date_terminated';
             'birthdate.before' => 'The birthdate must be a date before today.',
             'birthdate.date_format'=>'The birthdate does not match the format YYYY-MM-DD.',
             'date_started.date_format'=>'The date started does not match the format YYYY-MM-DD.',
-            'regular.different'=>'Employees from agency cannot be regularized.',
         ];
         
         $validator = validator($this->attributes, $rules, $messages);
-$validator->sometimes('regular', 'different:agency', function($input) {
-    return $input->agency == 1;
-});
 
         $this->errors = $validator->errors();
         return $validator->passes();

@@ -200,10 +200,10 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Employment type*:</label>
 			<div class="col-sm-10">
-				<select class="form-control" name="regular">
+				<select class="form-control" name="employment_type">
 					<option></option>
-					<option name="agency" value="1">Agency</option>
-					<option name="regular" value="0">Regular</option>
+					<option value="Agency">Agency</option>
+					<option value="Regular">Regular</option>
 				</select>
 			</div>
 		</div>
