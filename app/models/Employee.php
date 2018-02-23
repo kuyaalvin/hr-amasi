@@ -75,6 +75,26 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Employee withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Employee withoutTrashed()
  * @mixin \Eloquent
+ * @property string|null $mothers_maiden_name
+ * @property string $birth_place
+ * @property string|null $emergency_contact_name
+ * @property string|null $emergency_contact_number
+ * @property string|null $emergency_contact_address
+ * @property \Carbon\Carbon|null $date_hired
+ * @property string $employment_type
+ * @property string|null $referred_by
+ * @property string|null $walk_in
+ * @property string $status
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereBirthPlace($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereDateHired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereEmergencyContactAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereEmergencyContactName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereEmergencyContactNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereEmploymentType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereMothersMaidenName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereReferredBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Employee whereWalkIn($value)
  */
 class Employee extends GlobalModel
 {
