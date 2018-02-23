@@ -12,8 +12,9 @@
 @endforeach
 @endif
 
-	<form action="{{ url('employees') }}" method="post">
+	<form action="{{ url('employees/' . $employee->employee_id) }}" method="post">
 		{{ csrf_field() }}
+		{{ method_field('patch') }}
 		<div class="form-group"><h3>Personal Information</h3></div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Last name*:</label>
@@ -42,17 +43,16 @@
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Place of birth*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="birth_place" name="birth_place" placeholder="place of birth" value="{{ old('birth_place'), $employee->birth_place }}" >
+				<input type="text" class="form-control" id="birth_place" name="birth_place" placeholder="place of birth" value="{{ old('birth_place', $employee->birth_place) }}" >
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Gender*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="gender" id="gender0">
-				  <option value="{{ old('gender', $employee->gender) }}">{{ old('gender', $employee->gender) }}</option>
-			      <option value="Male">Male</option>
-			      <option value="Female">Female</option>
-			      <option value=""></option>
+				  <option ></option>
+			      <option value="Male" @if (old('gender', $employee->gender) == 'Male') selected @endif>Male</option>
+			      <option value="Female" @if (old('gender', $employee->gender) == 'Female') selected @endif>Female</option>
 			    </select>
 			</div>
 		</div>
@@ -60,9 +60,9 @@
 			<label class="col-sm-2  col-form-label">Civil status*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="civil_status" id="civil_status0">
-				  <option value="{{ old('civil_status', $employee->civil_status) }}"></option>
-			      <option value="Single">Single</option>
-			      <option value="Married">Married</option>
+				  <option></option>
+			      <option value="Single" @if (old('civil_status', $employee->civil_status) == 'Single') selected @endif>Single</option>
+			      <option value="Married" @if (old('civil_status', $employee->civil_status) == 'Married') selected @endif>Married</option>
 			    </select>
 			</div>
 		</div>
@@ -113,7 +113,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">City address*:</label>
 			<div class="col-sm-10">
-				<textarea type="text" class="form-control" id="city_address" name="city_address" placeholder="city address" value="{{ old('city_address', $employee->city_address) }}" rows="2"></textarea>
+				<textarea type="text" class="form-control" id="city_address" name="city_address" placeholder="city address" rows="2">{{ old('city_address', $employee->city_address) }}</textarea>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -155,7 +155,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Emergency contact person address:</label>
 			<div class="col-sm-10">
-				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_address" placeholder="emergency contact person address" value="{{ old('emergency_contact_naddress') }}" rows="2"></textarea>
+				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_address" placeholder="emergency contact person address" rows="2">{{ old('emergency_contact_address', $employee->emergency_contact_address) }}</textarea>
 			</div>
 		</div>
 		<div class="form-group"><h3>Employment Information</h3></div>
@@ -196,10 +196,10 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Employment type*:</label>
 			<div class="col-sm-10">
-				<select class="form-control" name="regular">
+				<select class="form-control" name="employment_type">
 					<option></option>
-					<option name="agency" value="1">Agency</option>
-					<option name="regular" value="0">Regular</option>
+			      <option value="Agency" @if (old('employment_type', $employee->employment_type) == 'Agency') selected @endif>Agency</option>
+			      <option value="Regular" @if (old('employment_type', $employee->employment_type) == 'Regular') selected @endif>Regular</option>
 				</select>
 			</div>
 		</div>
@@ -208,8 +208,8 @@
 			<div class="col-sm-10">
 				<select class="form-control" name="payroll_type">
 					<option> </option>
-					<option value="Weekly">Weekly</option>
-					<option value="Monthly">Monthly</option>
+			      <option value="Weekly" @if (old('payroll_type', $employee->payroll_type) == 'Weekly') selected @endif>Weekly</option>
+			      <option value="Monthly" @if (old('payroll_type', $employee->payroll_type) == 'Monthly') selected @endif>Monthly</option>
 				</select>
 			</div>
 		</div>
