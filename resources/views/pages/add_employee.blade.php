@@ -159,7 +159,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Emergency contact person address:</label>
 			<div class="col-sm-10">
-				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_naddress" placeholder="emergency contact person address" value="{{ old('emergency_contact_naddress') }}" rows="2"></textarea>
+				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_address" placeholder="emergency contact person address" value="{{ old('emergency_contact_naddress') }}" rows="2"></textarea>
 			</div>
 		</div>
 		<div class="form-group"><h3>Employment Information</h3></div>

@@ -81,7 +81,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Mother's maiden name*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="morther's maiden name" value="{{ old('mothers_maiden_name', $employee->mothers_maiden_name) }}" >
+				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="mother's maiden name" value="{{ old('mothers_maiden_name', $employee->mothers_maiden_name) }}" >
 			</div>
 		</div>
 		<div class="form-group"><h3>Government IDs</h3></div>
@@ -155,7 +155,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Emergency contact person address:</label>
 			<div class="col-sm-10">
-				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_naddress" placeholder="emergency contact person address" value="{{ old('emergency_contact_naddress') }}" rows="2"></textarea>
+				<textarea type="text" class="form-control" id="emergency_contact_address" name="emergency_contact_address" placeholder="emergency contact person address" value="{{ old('emergency_contact_naddress') }}" rows="2"></textarea>
 			</div>
 		</div>
 		<div class="form-group"><h3>Employment Information</h3></div>
