@@ -103,7 +103,6 @@ class Employee extends GlobalModel
     protected $primaryKey = 'employee_id';
     public $timestamps = false;
 const DELETED_AT = 'date_terminated';
-    protected $dates = ['birthdate', 'date_started', 'date_hired', 'date_terminated'];
     protected $dateFormat = 'Y-m-d';
     protected $guarded = ['employee_id', 'active'];
 
