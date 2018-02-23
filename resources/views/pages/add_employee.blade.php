@@ -84,7 +84,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Mother's maiden name*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="morther's maiden name" value="{{ old('mothers_maiden_name') }}" >
+				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="mother's maiden name" value="{{ old('mothers_maiden_name') }}" >
 			</div>
 		</div>
 		<div class="form-group"><h3>Government IDs</h3></div>
