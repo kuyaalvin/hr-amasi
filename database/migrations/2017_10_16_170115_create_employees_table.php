@@ -55,7 +55,7 @@ $table->date('date_hired')->nullable();
             $table->enum('employment_type', ['Agency', 'Regular']);
 $table->string('referred_by', 50)->nullable();
 $table->string('walk_in', 50)->nullable();
-$table->enum('status', ['active', 'terminated', 'AWOL', 'deceased'])->default('active');
+$table->enum('status', ['Active', 'Terminated', 'AWOL', 'Deceased', 'Others'])->default('active');
             $table->unsignedInteger('position_id')->nullable();
             $table->unsignedInteger('project_id')->nullable();
         });
