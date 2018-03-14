@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "bootstrap": "4.0.0-beta.2",
+        "bootstrap-datetimepicker": "tarruda/bootstrap-datetimepicker",
         "cross-env": "^5.0.1",
         "datatables.net-bs4": "^1.10.16",
         "datatables.net-buttons-bs4": "^1.5.0",

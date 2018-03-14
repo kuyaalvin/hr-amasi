@@ -15,4 +15,5 @@ require('datatables.net-buttons-bs4');
 require('datatables.net-buttons/js/buttons.colVis');
 require('datatables.net-buttons/js/buttons.html5');
 require('inputmask/dist/jquery.inputmask.bundle.js');
+require('bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js');
 } catch (e) {}
