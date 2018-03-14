@@ -950,10 +950,6 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap-timepicker@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/bootstrap-timepicker/-/bootstrap-timepicker-0.5.2.tgz#10ed9f2a2f0b8ccaefcde0fcf6a0738b919a3835"
-
 bootstrap@4.0.0-beta.2:
   version "4.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.2.tgz#4d67d2aa2219f062cd90bc1247e6747b9e8fd051"
@@ -1826,21 +1822,6 @@ datatables.net-buttons-bs4@^1.5.0:
 datatables.net-buttons@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-1.5.1.tgz#cdb35c0c8b0260cd45b0df6b39f6da815357febb"
-  dependencies:
-    datatables.net "^1.10.15"
-    jquery ">=1.7"
-
-datatables.net-select-bs4@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/datatables.net-select-bs4/-/datatables.net-select-bs4-1.2.5.tgz#eb1d6070f7b9485c7766393a05f28553a9f4ff19"
-  dependencies:
-    datatables.net-bs4 "^1.10.15"
-    datatables.net-select "1.2.5"
-    jquery ">=1.7"
-
-datatables.net-select@1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/datatables.net-select/-/datatables.net-select-1.2.5.tgz#4f764669b464d5576a59c576c1250a5d069aa2e9"
   dependencies:
     datatables.net "^1.10.15"
     jquery ">=1.7"

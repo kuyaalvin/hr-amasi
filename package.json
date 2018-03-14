@@ -11,7 +11,6 @@
     },
     "devDependencies": {
         "bootstrap": "4.0.0-beta.2",
-        "bootstrap-timepicker": "^0.5.2",
         "cross-env": "^5.0.1",
         "datatables.net-bs4": "^1.10.16",
         "datatables.net-buttons-bs4": "^1.5.0",
