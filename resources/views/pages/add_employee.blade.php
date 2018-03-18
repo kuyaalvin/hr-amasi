@@ -4,8 +4,10 @@
 
 
 
+
 <h1>Employee Registration</h1>
 <p><small class="text-muted">Fields with * are required</small></p>
+
 
 
 @if ($errors->any())
@@ -82,7 +84,7 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2  col-form-label">Mother's maiden name*:</label>
+			<label class="col-sm-2  col-form-label">Mother's maiden name:</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="mother's maiden name" value="{{ old('mothers_maiden_name') }}" >
 			</div>
@@ -129,7 +131,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Primary mobile number:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="mobile_number1" name="mobile_number1" placeholder="primary mobile number" value="{{ old('mobile_number1') }}">
+				<input type="text" class="form-control" id="mobile_number1"  name="mobile_number1" placeholder="primary mobile number" value="{{ old('mobile_number1') }}">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -164,13 +166,13 @@
 		</div>
 		<div class="form-group"><h3>Employment Information</h3></div>
 		<div class="form-group row">
-			<label class="col-sm-2 col-form-label">Date hired*:</label>
+			<label class="col-sm-2 col-form-label">Date hired:</label>
 			<div class="col-sm-10">
 				<input type="date" class="form-control" id="date_hired" name="date_hired" value="{{ old('date_hired') }}">
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2 col-form-label">Date started*:</label>
+			<label class="col-sm-2 col-form-label">Date started:</label>
 			<div class="col-sm-10">
 				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started') }}">
 			</div>
@@ -241,8 +243,25 @@
 				<input type="text" class="form-control" id="biometric_id" name="biometric_id" placeholder="biometric ID" value="{{ old('biometric_id') }}">
 			</div>
 		</div>
+
 		<input class="btn btn-primary" type="submit" value="Create New Employee">
 	</form>
+
+	
+
+	@push('scripts')
+	<script>
+	$().ready(function() {
+		$('#mobile_number1').inputmask("mask", {"mask": "9999-999-9999"});
+		$('#mobile_number2').inputmask("mask", {"mask": "9999-999-9999"});
+		$('#telephone_number').inputmask("mask", {"mask": "999-9999"});
+		$('#sss_id').inputmask("mask", {"mask": "99-9999999-9"});
+		$('#phic_id').inputmask("mask", {"mask": "99-999999999-9"});
+		$('#hdmf_id').inputmask("mask", {"mask": "9999-9999-9999"});
+		$('#tin_id').inputmask("mask", {"mask": "999-999-999-0000"});
+	});
+	</script>
+	@endpush
 	
 
 @endsection
