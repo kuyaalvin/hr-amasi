@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\models\scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -98,17 +98,16 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Employee extends GlobalModel
 {
-    use SoftDeletes;
-    
     protected $primaryKey = 'employee_id';
     public $timestamps = false;
-const DELETED_AT = 'date_terminated';
     protected $dateFormat = 'Y-m-d';
-    protected $guarded = ['employee_id', 'active'];
+    protected $guarded = ['employee_id', 'status'];
 
     protected static function boot()
     {
         parent::boot();
+
+    static::addGlobalScope(new ActiveScope());
 
         static::creating(function(Employee $employee) {
             $year = Carbon::today()->year;

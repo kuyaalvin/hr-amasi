@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;;;;
 use App\Models\Employee;
 use App\Models\Position;
@@ -91,7 +92,9 @@ $employee->save();
      */
     public function destroy(Request $request, Employee $employee)
     {
-$employee->delete();
+$employee->status = $request->input("status");
+$employee->date_terminated = Carbon::today();
+$employee->update();
 return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been deleted.', false);
     }
     

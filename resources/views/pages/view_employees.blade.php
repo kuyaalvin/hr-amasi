@@ -112,17 +112,17 @@
             <label>Are you sure you want to delete employee "*insert name here* ?"</label>
             <br/>
             <label>How is this employee being let go?</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Terminated</option>
-              <option>AWOL</option>
-              <option>Deceased</option>
-              <option>Others</option>
+            <select class="form-control" id="select">
+              <option value="Terminated">Terminated</option>
+              <option value="AWOL">AWOL</option>
+              <option value="Deceased">Deceased</option>
+              <option value="Others">Others</option>
             </select>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Confirm</button>
+          <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
         </div>
       </div>
     </div>
@@ -130,6 +130,7 @@
 @endsection
 @push('scripts')
 <script>
+var deleteForm;
 $(function() {
 var prefixUrl = "{{ url('employees/') . '/' }}";
 
@@ -204,18 +205,15 @@ order: [],
 	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
 	               '{{ csrf_field() }}'+
 	               '{{ method_field('delete') }}'+
-	               '<button type="button"  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirmModal">Delete</button>'+
+	               '<button type="button"  class="btn btn-sm btn-danger deleteButton" data-toggle="modal" data-target="#confirmModal">Delete</button>'+
 	               '</form>';	
                 }
             	   }
-                ],
-//<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" data-toggle="modal" data-target="#exampleModal" type="submit" value="Delete"/>
+                ]
     });
 
 table.columns().every(function() {
 var column = this;
-
-
 
 $("input", this.footer()).on("keyup change", function(event) {
 var searchValue = $(this).val();
@@ -224,6 +222,17 @@ if (column.search() !== searchValue)
 column.search(searchValue).draw();
 }
 });
+});
+
+$("body").on("click", ".deleteButton", function(event) {
+deleteForm = $(this).parent();
+});
+
+$("#confirmButton").on("click", function(event) {
+var selectedValue = $("#select").val();
+var selectedElement = "<input type='hidden' id='status' name='status' value='"+selectedValue+"'/>";
+deleteForm.append(selectedElement);
+deleteForm.submit();
 });
 
 });
