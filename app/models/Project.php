@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\models\scopes\ActiveScope;
+use App\models\scopes\BinaryActiveScope;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -34,7 +34,7 @@ protected static function boot()
 {
     parent::boot();
 
-    static::addGlobalScope(new ActiveScope());
+    static::addGlobalScope(new BinaryActiveScope());
     static::addGlobalScope('orderByName', function(Builder $builder) {
         $builder->orderBy('name');
     });
