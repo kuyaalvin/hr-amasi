@@ -12,13 +12,12 @@
 </div>
 @endif
 
-<div class="row">
-  <div class="col">
-    <nav class="nav flex-column">
-      <li class="nav-item">
-      <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('projects/create') }}'">+ Add Project</button>
-      </li>
-    </nav>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar for Projectlist">
+  <div class="btn-group mr-2" role="group" aria-label="project group">
+    <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('projects/create') }}'">+ Add Project</button>
+  </div>
+  <div class="btn-group mr-2" role="group" aria-label="transfer group">
+    <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('') }}'">Employee Project Transfer Page</button>
   </div>
 </div>
 

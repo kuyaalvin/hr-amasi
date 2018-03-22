@@ -19,5 +19,21 @@
 </div>
 
 <div class="row">
-	
+  <h3>Employee Project History</h3>
+  <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Assigned Projects</th>
+                  <th>Date Transferred</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Project A</td>
+                  <td>Project B</td>
+                </tr>
+              </tbody>
+         </table>
+    </div>
 </div>
