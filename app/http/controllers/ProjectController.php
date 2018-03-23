@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Employee;
 use Illuminate\Database\Connection;
 use App\DataTables\ProjectsDataTable;
+use Yajra\Datatables\Datatables;
 
 class ProjectController extends GlobalController
 {
@@ -95,5 +96,11 @@ $project->save();
         });
     return $this->successResponse($request, 'projects', 'Project has been deleted.', false);
     }
+
+public function viewTransfer()
+{
+        $projects = Project::orderBy('project_id')->get();
+return view('pages/employee_transfer', ['projects'=>$projects]);
+}
 
 }
