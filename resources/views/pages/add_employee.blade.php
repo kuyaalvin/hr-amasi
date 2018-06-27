@@ -268,7 +268,7 @@
 		$('#sss_id').inputmask("mask", {"mask": "99-9999999-9"});
 		$('#phic_id').inputmask("mask", {"mask": "99-999999999-9"});
 		$('#hdmf_id').inputmask("mask", {"mask": "9999-9999-9999"});
-		$('#tin_id').inputmask("mask", {"mask": "999-999-999-0000"});
+		$('#tin_id').inputmask("mask", {"mask": "999-999-999-000"});
 	});
 	</script>
 	@endpush

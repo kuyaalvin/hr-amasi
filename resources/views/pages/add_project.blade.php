@@ -39,7 +39,11 @@
 			<div class="form-group col-md-6">
 				<label for="timeIn">Time Out:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
+
 					<input id="timepicker1" type="time" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}">
+
+					<!-- <input id="timepicker2" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}"> -->
+
 					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				</div>	
 			</div>
@@ -47,14 +51,12 @@
 			<div class="form-group">
 				<input class="btn btn-primary" name="submitButton" type="submit" value="Submit">
 			</div>
-
-			
-		
 	</form>
 </div>
 
 @push('scripts')
 <script>
+
 
 	$(document).ready(function(){
   
@@ -94,6 +96,13 @@
 	showSeconds: true
 	});
 
+
+	$(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
+    });
+  });
+>>>>>>> 4fac2577cd736495092776d282dc3b762de67833
 </script>
 @endpush
 
