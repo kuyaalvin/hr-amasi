@@ -26,12 +26,11 @@
 </div>
 
 <hr/>
-
 <div class="row">
 <table class="table table-hover">
   <thead>
     <tr>
-      <th class="col-md-12">ID Number</th>
+      <th class="col">ID Number</th>
       <th class="col">Biometric ID</th>
       <th class="col">Last Name</th>
       <th class="col">First Name</th>
@@ -130,6 +129,15 @@
 @endsection
 @push('scripts')
 <script>
+
+$(document).ready(function(){
+  
+  $("#header_employee").css("color","#fff");
+  $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
+
+});
+
 var deleteForm;
 $(function() {
 var prefixUrl = "{{ url('employees/') . '/' }}";

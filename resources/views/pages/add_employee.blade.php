@@ -24,19 +24,19 @@
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Last name*:</label>
 			<div class="col-sm-10">
-      			<input type="text" class="form-control" id="last_name" name="last_name" placeholder="last name" value="{{ old('last_name') }}">
+      			<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name" value="{{ old('last_name') }}">
     		</div>	
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">First name*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="first name" value="{{ old('first_name') }}">
+				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name" value="{{ old('first_name') }}">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Middle name*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="middle name" value="{{ old('middle_name') }}">
+				<input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Middle name" value="{{ old('middle_name') }}">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -48,14 +48,14 @@
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Place of birth*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="birth_place" name="birth_place" placeholder="place of birth" value="{{ old('birth_place') }}" >
+				<input type="text" class="form-control" id="birth_place" name="birth_place" placeholder="Place of birth" value="{{ old('birth_place') }}" >
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Gender*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="gender" id="gender0">
-				  <option ></option>
+				  <option >Select Gender</option>
 			      <option value="Male" @if (old('gender') == 'Male') selected @endif>Male</option>
 			      <option value="Female" @if (old('gender') == 'Female') selected @endif>Female</option>
 			    </select>
@@ -65,7 +65,7 @@
 			<label class="col-sm-2  col-form-label">Civil status*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="civil_status" id="civil_status0">
-				  <option></option>
+				  <option>Select Civil status</option>
 			      <option value="Single" @if (old('civil_status') == 'Single') selected @endif>Single</option>
 			      <option value="Married" @if (old('civil_status') == 'Married') selected @endif>Married</option>
 			    </select>
@@ -74,19 +74,19 @@
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Citizenship*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="citizenship" name="citizenship" placeholder="citizenship" value="{{ old('citizenship') }}" >
+				<input type="text" class="form-control" id="citizenship" name="citizenship" placeholder="Citizenship" value="{{ old('citizenship') }}" >
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Religion*:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="religion" name="religion" placeholder="religion" value="{{ old('religion') }}" >
+				<input type="text" class="form-control" id="religion" name="religion" placeholder="Religion" value="{{ old('religion') }}" >
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2  col-form-label">Mother's maiden name:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="mother's maiden name" value="{{ old('mothers_maiden_name') }}" >
+				<input type="text" class="form-control" id="mothers_maiden_name" name="mothers_maiden_name" placeholder="Mother's maiden name" value="{{ old('mothers_maiden_name') }}" >
 			</div>
 		</div>
 		<div class="form-group"><h3>Government IDs</h3></div>
@@ -119,13 +119,13 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">City address*:</label>
 			<div class="col-sm-10">
-				<textarea type="text" class="form-control" id="city_address" name="city_address" placeholder="city address" rows="2">{{ old('city_address') }}</textarea>
+				<textarea type="text" class="form-control" id="city_address" name="city_address" placeholder="City address" rows="2">{{ old('city_address') }}</textarea>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Provincial address: </label>
 			<div class="col-sm-10">
-				<textarea type="text" class="form-control" id="provincial_address" name="provincial_address" placeholder="provincial address" value="{{ old('provincial_address') }} " rows="2"></textarea>
+				<textarea type="text" class="form-control" id="provincial_address" name="provincial_address" placeholder="Provincial address" value="{{ old('provincial_address') }} " rows="2"></textarea>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -251,6 +251,16 @@
 
 	@push('scripts')
 	<script>
+
+	$(document).ready(function(){
+  
+	  $("#header_employee").css("color","#fff");
+	  $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
+	  $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
+
+	});
+
+
 	$().ready(function() {
 		$('#mobile_number1').inputmask("mask", {"mask": "9999-999-9999"});
 		$('#mobile_number2').inputmask("mask", {"mask": "9999-999-9999"});

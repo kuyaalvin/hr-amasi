@@ -30,13 +30,13 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-					<a class="nav-link" href="{{ url('employees') }}">Employee</a>
+					<a class="nav-link" href="{{ url('employees') }}" id="header_employee">Employee</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('projects') }}">Project</a>
+					<a class="nav-link" href="{{ url('projects') }}" id="header_project" >Project</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url('positions') }}">Position</a>
+					<a class="nav-link" href="{{ url('positions') }}" id="header_position">Position</a>
 				</li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">

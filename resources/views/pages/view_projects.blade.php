@@ -72,6 +72,19 @@
 
 @push('scripts')
 <script>
+
+
+$(document).ready(function(){
+  
+  $("#header_project").css("color","#fff");
+  $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
+
+});
+
+
+
+  
 $(function() {
 	var prefixUrl = "{{ url('projects/') . '/' }}";
 	var headers = $(".table th");

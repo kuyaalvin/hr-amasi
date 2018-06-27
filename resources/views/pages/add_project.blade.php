@@ -32,14 +32,14 @@
 			<div class="form-group col-md-6">
 				<label for="timeIn">Time In:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
-					<input id="timepicker1" type="text" name="time_in" class="form-control input-small" placeholder="select time in here" value="{{ old('time_in') }}">
+					<input id="timepicker1" type="time" name="time_in" class="form-control input-small" placeholder="select time in here" value="{{ old('time_in') }}">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				</div>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="timeIn">Time Out:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
-					<input id="timepicker1" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}">
+					<input id="timepicker1" type="time" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				</div>	
 			</div>
@@ -55,6 +55,15 @@
 
 @push('scripts')
 <script>
+
+	$(document).ready(function(){
+  
+  $("#header_project").css("color","#fff");
+  $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
+
+});
+
 
 
 	$('#timepicker').timepicker({
