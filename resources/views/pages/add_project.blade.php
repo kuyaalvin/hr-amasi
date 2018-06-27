@@ -57,12 +57,13 @@
 @push('scripts')
 <script>
 
-
-	$(document).ready(function(){
+$(document).ready(function(){
   
   $("#header_project").css("color","#fff");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
+
+  
 
 });
 
@@ -102,7 +103,7 @@
       language: 'pt-BR'
     });
   });
->>>>>>> 4fac2577cd736495092776d282dc3b762de67833
+
 </script>
 @endpush
 
