@@ -181,7 +181,7 @@
 			<label class="col-sm-2 col-form-label">Assigned position:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="position_id">
-				<option value=""></option>
+				<option >Select Position</option>
 				@foreach ($positions as $position)
 				<option value="{{ $position->position_id }}" @if (old('position_id') == $position->position_id) selected @endif>{{ $position->name }}</option>
 				@endforeach
@@ -192,7 +192,7 @@
 			<label class="col-sm-2 col-form-label">Assigned project:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="project_id">
-				<option value=""></option>
+				<option >Select Project</option>
 				@foreach ($projects as $project)
 				<option value="{{ $project->project_id }}" @if (old('project_id') == $project->project_id) selected @endif>{{ $project->name }}</option>
 				@endforeach
@@ -203,7 +203,7 @@
 			<label class="col-sm-2 col-form-label">Employment type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="employment_type">
-					<option></option>
+					<option >Select Employee Type</option>
 			      <option value="Agency" @if (old('employment_type') == 'Agency') selected @endif>Agency</option>
 			      <option value="Regular" @if (old('employment_type') == 'Regular') selected @endif>Regular</option>
 				</select>
@@ -213,7 +213,7 @@
 			<label class="col-sm-2 col-form-label">Payroll type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="payroll_type">
-					<option> </option>
+					<option >Select Payroll type</option>
 			      <option value="Weekly" @if (old('payroll_type') == 'Weekly') selected @endif>Weekly</option>
 			      <option value="Monthly" @if (old('payroll_type') == 'Monthly') selected @endif>Monthly</option>
 				</select>
