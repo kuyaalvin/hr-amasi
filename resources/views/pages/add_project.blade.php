@@ -32,7 +32,7 @@
 			<div class="form-group col-md-6">
 				<label for="timeIn">Time In:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
-					<input id="timepicker1" type="time" name="time_in" class="form-control input-small" placeholder="select time in here" value="{{ old('time_in') }}">
+					<input id="time1" type="text" name="time_in" class="form-control input-small" placeholder="select time in here" value="{{ old('time_in') }}" data-field="time">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				</div>
 			</div>
@@ -40,11 +40,12 @@
 				<label for="timeIn">Time Out:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
 
-					<input id="timepicker1" type="time" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}">
+					<input id="time2" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}" data-field="time">
 
 					<!-- <input id="timepicker2" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}"> -->
 
 					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+					<div id="dt_box"></div>
 				</div>	
 			</div>
 			</div>
@@ -52,7 +53,10 @@
 				<input class="btn btn-primary" name="submitButton" type="submit" value="Submit">
 			</div>
 	</form>
+	
 </div>
+
+
 
 @push('scripts')
 <script>
@@ -68,41 +72,50 @@ $(document).ready(function(){
 });
 
 
-
-	$('#timepicker').timepicker({
-    timeFormat: 'HH:mm:ss',
-    interval: 30,
-    minTime: '0',
-    maxTime: '23:00',
-    startTime: '00:00',
-    dynamic: true,
-    dropdown: true,
-    scrollbar: true
-	});
-
-	$('#timepickerout').timepicker({
-    timeFormat: 'HH:mm:ss',
-    interval: 30,
-    minTime: '0',
-    maxTime: '23:00',
-    startTime: '00:00',
-    dynamic: true,
-    dropdown: true,
-    scrollbar: true
-	});
-
-	$('#timepicker1').timepicker({
-	defaultTIme: false,
-	showMeridian: false	,
-	showSeconds: true
-	});
+    $('#dt_box').DateTimePicker();
 
 
-	$(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'pt-BR'
-    });
-  });
+
+
+
+
+
+
+
+	// $('#timepicker').timepicker({
+ //    timeFormat: 'HH:mm:ss',
+ //    interval: 30,
+ //    minTime: '0',
+ //    maxTime: '23:00',
+ //    startTime: '00:00',
+ //    dynamic: true,
+ //    dropdown: true,
+ //    scrollbar: true
+	// });
+
+	// $('#timepickerout').timepicker({
+ //    timeFormat: 'HH:mm:ss',
+ //    interval: 30,
+ //    minTime: '0',
+ //    maxTime: '23:00',
+ //    startTime: '00:00',
+ //    dynamic: true,
+ //    dropdown: true,
+ //    scrollbar: true
+	// });
+
+	// $('#timepicker1').timepicker({
+	// defaultTIme: false,
+	// showMeridian: false	,
+	// showSeconds: true
+	// });
+
+
+	// $(function() {
+ //    $('#datetimepicker1').datetimepicker({
+ //      language: 'pt-BR'
+ //    });
+ //  });
 
 </script>
 @endpush

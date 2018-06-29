@@ -7,10 +7,8 @@
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 		<title>{{config('app.name', 'LSAPP')}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('dist/DateTimePicker.css') }}">
 
-
-		
-		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
 	</head>
 	<body>
 
@@ -62,6 +60,8 @@
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('dist/DateTimePicker.js') }}"></script>
+<script src="{{ asset('dist/i18n/DateTimePicker-i18n.js') }}"></script>
 
 <script>
 function idleLogout() {
