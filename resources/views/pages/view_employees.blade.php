@@ -108,7 +108,7 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label>Are you sure you want to delete employee "*insert name here* ?"</label>
+            <label>Are you sure you want to delete employee "<span id="delete_name"> asd </span>?"</label>
             <br/>
             <label>How is this employee being let go?</label>
             <select class="form-control" id="select">
@@ -131,6 +131,8 @@
 <script>
 
 $(document).ready(function(){
+
+  
   
   $("#header_employee").css("color","#fff");
   $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
@@ -213,7 +215,7 @@ order: [],
 	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
 	               '{{ csrf_field() }}'+
 	               '{{ method_field('delete') }}'+
-	               '<button type="button"  class="btn btn-sm btn-danger deleteButton" data-toggle="modal" data-target="#confirmModal">Delete</button>'+
+	               '<button type="button"  class="btn btn-sm btn-danger deleteButton" data-toggle="modal" data-target="#confirmModal">Delete  </button> <input value=" '+row.first_name+' ' +row.middle_name+' '+row.last_name+' " class="delete_name">'+
 	               '</form>';	
                 }
             	   }
@@ -234,7 +236,10 @@ column.search(searchValue).draw();
 
 $("body").on("click", ".deleteButton", function(event) {
 deleteForm = $(this).parent();
+$("#delete_name").text ( deleteForm.find(".delete_name").val() );
 });
+
+
 
 $("#confirmButton").on("click", function(event) {
 var selectedValue = $("#select").val();

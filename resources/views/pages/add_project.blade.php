@@ -32,7 +32,9 @@
 			<div class="form-group col-md-6">
 				<label for="timeIn">Time In:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
-					<input id="time1" type="text" name="time_in" class="form-control input-small" placeholder="select time in here" value="{{ old('time_in') }}" data-field="time">
+					<input id="time1" type="text" name="time_in" class="form-control input-small" placeholder="select time in here" value="{{ old('time_in') }}" data-field="time" autocomplete="off" >
+
+
 					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				</div>
 			</div>
@@ -40,7 +42,7 @@
 				<label for="timeIn">Time Out:</label>
 				<div class="input-group bootstrap-timepicker timepicker">
 
-					<input id="time2" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}" data-field="time">
+					<input id="time2" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}" data-field="time" autocomplete="off" >
 
 					<!-- <input id="timepicker2" type="text" name="time_out" class="form-control input-small" placeholder="select time out here" value="{{ old('time_out') }}"> -->
 
@@ -72,7 +74,9 @@ $(document).ready(function(){
 });
 
 
-    $('#dt_box').DateTimePicker();
+    $('#dt_box').DateTimePicker({
+    	timeFormat: 'HH:mm:ss'
+    });
 
 
 
