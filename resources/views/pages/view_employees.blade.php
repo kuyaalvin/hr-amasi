@@ -215,7 +215,7 @@ order: [],
 	             return '<form action="'+prefixUrl+row.employee_id+'" method="post">'+
 	               '{{ csrf_field() }}'+
 	               '{{ method_field('delete') }}'+
-	               '<button type="button"  class="btn btn-sm btn-danger deleteButton" data-toggle="modal" data-target="#confirmModal">Delete  </button> <input value=" '+row.first_name+' ' +row.middle_name+' '+row.last_name+' " class="delete_name">'+
+	               '<button type="button"  class="btn btn-sm btn-danger deleteButton" data-toggle="modal" data-target="#confirmModal">Delete  </button> <input value=" '+row.first_name+' ' +row.middle_name+' '+row.last_name+' " class="delete_name" hidden>'+
 	               '</form>';	
                 }
             	   }
