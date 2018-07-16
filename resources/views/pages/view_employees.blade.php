@@ -32,7 +32,7 @@
     <tr>
       <th class="col">ID Number</th>
       <th class="col">Biometric ID</th>
-      <th class="col">Last Name</th>
+      <th class="col">Full Name</th>
       <th class="col">First Name</th>
       <th class="col">Middle Name</th>
       <th class="col">Position</th>
@@ -156,11 +156,11 @@ order: [],
             {data: 'biometric_id', visible: false },
             {data: 'last_name',
                 render: function(data,type,row) {
-                return '<a href="employeeProfileblade">'+data+'</a>';
+                return '<a href="employeeProfileblade" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
                 }
                 },
-            {data: 'first_name'},
-            {data: 'middle_name'},
+            {data: 'first_name' , visible: false},
+            {data: 'middle_name' , visible: false},
             {data: 'position.name', title: 'Position',
                 render: function(data, type, row) {
                 var position = row.position;
@@ -238,6 +238,8 @@ $("body").on("click", ".deleteButton", function(event) {
 deleteForm = $(this).parent();
 $("#delete_name").text ( deleteForm.find(".delete_name").val() );
 });
+
+
 
 
 

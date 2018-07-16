@@ -64,6 +64,10 @@ h1 {
 }
 
 
+#full_name{
+  text-transform:capitalize;
+}
+
 /* modal */
 
 .modal-header{
