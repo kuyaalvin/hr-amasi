@@ -21,3 +21,8 @@ Route::resource('projects', 'ProjectController')->except('show');
 Route::resource('employees', 'EmployeeController')->except('show');
 Route::get('projects/transfer', 'ProjectController@viewTransfer');
 Route::get('data', 'ProjectController@data');
+
+
+Route::get('view_employeeprofile', function () {
+    return view('pages/view_employeeprofile');
+});
