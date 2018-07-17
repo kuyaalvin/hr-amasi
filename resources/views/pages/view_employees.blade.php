@@ -156,7 +156,7 @@ order: [],
             {data: 'biometric_id', visible: false },
             {data: 'last_name',
                 render: function(data,type,row) {
-                return '<a href="{{url("view_employeeprofile")}}" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
+                return '<a href="{{url("employees/profile/") }}row.employee_id" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
                 }
                 },
             {data: 'first_name' , visible: false},
