@@ -60,7 +60,7 @@
 			<label class="col-sm-2  col-form-label">Civil status*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="civil_status" id="civil_status0">
-				  <option></option>
+				  <option ></option>
 			      <option value="Single" @if (old('civil_status', $employee->civil_status) == 'Single') selected @endif>Single</option>
 			      <option value="Married" @if (old('civil_status', $employee->civil_status) == 'Married') selected @endif>Married</option>
 			    </select>
@@ -197,7 +197,7 @@
 			<label class="col-sm-2 col-form-label">Employment type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="employment_type">
-					<option></option>
+					<option ></option>
 			      <option value="Agency" @if (old('employment_type', $employee->employment_type) == 'Agency') selected @endif>Agency</option>
 			      <option value="Regular" @if (old('employment_type', $employee->employment_type) == 'Regular') selected @endif>Regular</option>
 				</select>
@@ -207,7 +207,7 @@
 			<label class="col-sm-2 col-form-label">Payroll type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="payroll_type">
-					<option> </option>
+					<option > </option>
 			      <option value="Weekly" @if (old('payroll_type', $employee->payroll_type) == 'Weekly') selected @endif>Weekly</option>
 			      <option value="Monthly" @if (old('payroll_type', $employee->payroll_type) == 'Monthly') selected @endif>Monthly</option>
 				</select>

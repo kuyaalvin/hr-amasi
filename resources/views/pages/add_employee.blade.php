@@ -55,7 +55,7 @@
 			<label class="col-sm-2  col-form-label">Gender*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="gender" id="gender0">
-				  <option >Select Gender</option>
+				  <option value="">Select Gender</option>
 			      <option value="Male" @if (old('gender') == 'Male') selected @endif>Male</option>
 			      <option value="Female" @if (old('gender') == 'Female') selected @endif>Female</option>
 			    </select>
@@ -65,7 +65,7 @@
 			<label class="col-sm-2  col-form-label">Civil status*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="civil_status" id="civil_status0">
-				  <option>Select Civil status</option>
+				  <option value="">Select Civil status</option>
 			      <option value="Single" @if (old('civil_status') == 'Single') selected @endif>Single</option>
 			      <option value="Married" @if (old('civil_status') == 'Married') selected @endif>Married</option>
 			    </select>
@@ -181,7 +181,7 @@
 			<label class="col-sm-2 col-form-label">Assigned position:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="position_id">
-				<option >Select Position</option>
+				<option value="">Select Position</option>
 				@foreach ($positions as $position)
 				<option value="{{ $position->position_id }}" @if (old('position_id') == $position->position_id) selected @endif>{{ $position->name }}</option>
 				@endforeach
@@ -192,7 +192,7 @@
 			<label class="col-sm-2 col-form-label">Assigned project:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="project_id">
-				<option >Select Project</option>
+				<option value="">Select Project</option>
 				@foreach ($projects as $project)
 				<option value="{{ $project->project_id }}" @if (old('project_id') == $project->project_id) selected @endif>{{ $project->name }}</option>
 				@endforeach
@@ -203,7 +203,7 @@
 			<label class="col-sm-2 col-form-label">Employment type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="employment_type">
-					<option >Select Employee Type</option>
+					<option value="">Select Employee Type</option>
 			      <option value="Agency" @if (old('employment_type') == 'Agency') selected @endif>Agency</option>
 			      <option value="Regular" @if (old('employment_type') == 'Regular') selected @endif>Regular</option>
 				</select>
@@ -213,7 +213,7 @@
 			<label class="col-sm-2 col-form-label">Payroll type*:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="payroll_type">
-					<option >Select Payroll type</option>
+					<option value="">Select Payroll type</option>
 			      <option value="Weekly" @if (old('payroll_type') == 'Weekly') selected @endif>Weekly</option>
 			      <option value="Monthly" @if (old('payroll_type') == 'Monthly') selected @endif>Monthly</option>
 				</select>
