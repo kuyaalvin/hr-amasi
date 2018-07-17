@@ -27,32 +27,32 @@
 
   <tr>
     <td><p>Name:</p> </td>
-    <td><p>Kelvin Macapagal</p></td>
+    <td><p>{{ $employee->first_name }} {{ $employee->last_name }}</p></td>
   </tr>
 
   <tr>
     <td><p>Employee ID:</p> </td>
-    <td><p>1010101010</p></td>
+    <td><p>{{ $employee->id_number }}</p></td>
   </tr>
 
   <tr>
     <td><p>Birthdate:</p> </td>
-    <td><p>12/19/2017</p></td>
+    <td><p>{{ $employee->birthdate }}</p></td>
   </tr>
 
   <tr>
     <td><p>Position:</p> </td>
-    <td><p>ENGasd asdlajalsdjkasldj</p></td>
+    <td><p>{{ $employee->position->name }}</p></td>
   </tr>
 
   <tr>
     <td><p>Project assigned:</p> </td>
-    <td><p>Kelvin Macapagal</p></td>
+    <td><p>{{ $employee->project->name }}</p></td>
   </tr>
 
   <tr>
     <td><p>Name:</p> </td>
-    <td><p>Kelvin Macapagal</p></td>
+    <td><p>{{ $employee->first_name }} {{ $employee->last_name }}</p></td>
   </tr>
 
 
@@ -73,32 +73,32 @@
 
             <tr>
               <td> <p>Place of Birth:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->birth_place }}</p></td>
             </tr>
 
             <tr>
               <td><p>Gender:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->gender }}</p></td>
             </tr>
 
             <tr>
               <td><p>Civil Status:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->civil_status }}</p></td>
             </tr>
 
             <tr>
               <td><p>Citizenship:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->citizenship }}</p></td>
             </tr>
 
             <tr>
               <td><p>Religion:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->religion }}</p></td>
             </tr>
 
             <tr>
               <td><p>Mother's Maiden Name:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->mothers_maiden_name }}</p></td>
             </tr>
 
           </table>
@@ -108,37 +108,37 @@
 
             <tr>
               <td><p>City Address:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->city_address }}</p></td>
             </tr>
 
             <tr>
               <td><p>Provincial Address:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->provincial_address }}</p></td>
             </tr>
 
             <tr>
               <td><p>Primary Mobile Number:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->mobile_number1 }}</p></td>
             </tr>
 
             <tr>
               <td><p>Telephone Number:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->telephone_number }}</p></td>
             </tr>
 
             <tr>
               <td><p>Emergency Contact Name:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->emergency_contact_name }}</p></td>
             </tr>
 
             <tr>
               <td><p>Emergency Contact Number:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->emergency_contact_number }}</p></td>
             </tr>
 
             <tr>
               <td><p>Emergency Contact Address:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->emergency_contact_address }}</p></td>
             </tr>
 
           </table>
@@ -152,42 +152,42 @@
 
             <tr>
               <td> <p>Dated Hired:</p> </td>
-              <td> <p>Kelvin Macapagal</p></td>
+              <td> <p>{{ $employee->date_hired }}</p></td>
             </tr>
 
             <tr>
               <td><p>Date Started:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->date_started }}</p></td>
             </tr>
 
             <tr>
               <td><p>Employeement Type:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->employment_type }}</p></td>
             </tr>
 
             <tr>
               <td><p>Payroll Type:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->payroll_type }}</p></td>
             </tr>
 
             <tr>
               <td><p>Referred By:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->referred_by }}</p></td>
             </tr>
 
             <tr>
               <td><p>Walk-in:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->walk_in }}</p></td>
             </tr>
 
             <tr>
               <td><p>ATM Account Number:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->account_number }}</p></td>
             </tr>
 
             <tr>
               <td> <p>Biometric Number ID:</p> </td>
-              <td> <p>Biometric Number ID:</p> </td>
+              <td> <p>{{ $employee->biometric_id }}</p> </td>
             </tr>
 
           </table>
@@ -196,22 +196,22 @@
 
             <tr>
               <td> <p>SSS ID:</p> </td>
-              <td> <p>Kelvin Macapagal</p></td>
+              <td> <p>{{ $employee->sss_id }}</p></td>
             </tr>
 
             <tr>
               <td><p>PHIC ID:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->phic_id }}</p></td>
             </tr>
 
             <tr>
               <td><p>HDMF ID:</p> </td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->hdmf_id }}</p></td>
             </tr>
 
             <tr>
               <td><p>TIN ID:</p></td>
-              <td><p>Kelvin Macapagal</p></td>
+              <td><p>{{ $employee->tin_id }}</p></td>
             </tr>
 
           </table>

@@ -129,12 +129,12 @@ class Employee extends GlobalModel
     
     public function position()
     {
-        return $this->belongsTo(Position::class, 'position_id');
+        return $this->belongsTo(Position::class, 'position_id')->withDefault();
     }
 
     public function project()
     {
-        return $this->belongsTo(Project::class, 'project_id');
+        return $this->belongsTo(Project::class, 'project_id')->withDefault();
     }
     
     public function getBirthdateAttribute($value)

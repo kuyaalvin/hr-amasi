@@ -23,4 +23,4 @@ Route::get('projects/transfer', 'ProjectController@viewTransfer');
 Route::get('data', 'ProjectController@data');
 
 
-Route::get('employees/profile/{employee_id}', 'EmployeeController@profile');
+Route::get('employees/{employee_id}/profile', 'EmployeeController@profile');

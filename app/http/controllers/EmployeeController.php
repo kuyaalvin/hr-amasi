@@ -53,6 +53,18 @@ $employee->save();
     }
 
     /**
+     * view a specific resource.
+     *
+     * @param  int $employee_id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(int $employee_id)
+{
+$employee =         Employee::with(['position', 'project'])->find($employee_id);
+return view('pages/view_employee_profile', ['employee'=>$employee]);
+}
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Employee  $employee

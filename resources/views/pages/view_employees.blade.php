@@ -142,7 +142,7 @@ $(document).ready(function(){
 
 var deleteForm;
 $(function() {
-var prefixUrl = "{{ url('employees/') . '/' }}";
+var prefixUrl = "{{ url('employees') . '/' }}";
 
 var table = $('.table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -156,7 +156,7 @@ order: [],
             {data: 'biometric_id', visible: false },
             {data: 'last_name',
                 render: function(data,type,row) {
-                return '<a href="{{url("employees/profile/") }}row.employee_id" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
+                return '<a href="'+prefixUrl+row.employee_id+'/profile" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
                 }
                 },
             {data: 'first_name' , visible: false},
@@ -164,13 +164,13 @@ order: [],
             {data: 'position.name', title: 'Position',
                 render: function(data, type, row) {
                 var position = row.position;
-                return position !== null ? position.name : '';
+return position.name == null ? '' : position.name;
                 }
                 },
             {data: 'project.name', title: 'Project',
                 render: function(data, type, row) {
                 var project = row.project;
-                return project !== null ? project.name : '';
+return project.name == null ? '' : project.name;
                 }
                 },
             {data: 'account_number', visible: false },
