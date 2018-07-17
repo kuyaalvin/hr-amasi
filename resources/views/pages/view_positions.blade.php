@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 
 $(function() {
-var prefixUrl = "{{ url('positions/') . '/' }}";
+var prefixUrl = "{{ url('positions') . '/' }}";
 
 var table = $('.table').DataTable({
         serverSide: true,

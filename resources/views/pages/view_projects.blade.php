@@ -86,7 +86,7 @@ $(document).ready(function(){
 
   
 $(function() {
-	var prefixUrl = "{{ url('projects/') . '/' }}";
+	var prefixUrl = "{{ url('projects') . '/' }}";
 	var headers = $(".table th");
   var filter = '<div class="row"><div class="col"><label for="search">Search:</label>'+
                 '<input type="search" class="search form-control" id="search"></div>'+
