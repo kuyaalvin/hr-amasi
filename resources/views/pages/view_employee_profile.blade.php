@@ -39,7 +39,7 @@
 
   <tr>
     <td><p>Birthdate:</p> </td>
-    <td><p>{{ $employee->birthdate }}</p></td>
+    <td><p>{{ date ('m/d/Y', strtotime($employee->birthdate)) }}</p></td>
   </tr>
 
   <tr>
@@ -149,12 +149,12 @@
 
             <tr>
               <td> <p>Dated Hired:</p> </td>
-              <td> <p>{{ $employee->date_hired }}</p></td>
+              <td> <p>{{ date ('m/d/Y', strtotime($employee->date_hired)) }}</p></td>
             </tr>
 
             <tr>
               <td><p>Date Started:</p></td>
-              <td><p>{{ $employee->date_started }}</p></td>
+              <td><p>{{ date ('m/d/Y', strtotime($employee->date_started)) }}</p></td>
             </tr>
 
             <tr>
