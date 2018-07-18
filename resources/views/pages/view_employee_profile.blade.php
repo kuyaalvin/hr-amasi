@@ -9,7 +9,9 @@
 <div>
   <span id="emp_title">Employee Profile</span>
   <button id="btn_emp_print">PRINT</button>
-  <button id="btn_emp_edit"> Edit</button>
+	<form action="{{ url('employees/' . $employee->employee_id . '/edit') }}">
+  <input type="submit" id="btn_emp_edit" value="Edit"/>
+</form>
 
   
 
