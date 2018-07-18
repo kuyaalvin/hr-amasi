@@ -29,7 +29,7 @@
 
   <tr>
     <td><p>Name:</p> </td>
-    <td><p class="capitalize">{{ $employee->first_name }} {{ $employee->middle_name }} {{ $employee->last_name }} </p></td>
+    <td><p class="capitalize">{{ $employee->first_name }} {{ substr ($employee->middle_name, 0,1 ) }}. {{ $employee->last_name }} </p></td>
   </tr>
 
   <tr>
