@@ -27,7 +27,7 @@
 
   <tr>
     <td><p>Name:</p> </td>
-    <td><p>{{ $employee->first_name }} {{ $employee->last_name }}</p></td>
+    <td><p>{{ $employee->first_name }} {{ $employee->last_name }} {{ $employee->middle_name }}</p></td>
   </tr>
 
   <tr>
@@ -48,11 +48,6 @@
   <tr>
     <td><p>Project assigned:</p> </td>
     <td><p>{{ $employee->project->name }}</p></td>
-  </tr>
-
-  <tr>
-    <td><p>Name:</p> </td>
-    <td><p>{{ $employee->first_name }} {{ $employee->last_name }}</p></td>
   </tr>
 
 
