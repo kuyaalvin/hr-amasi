@@ -106,30 +106,45 @@ h1 {
 }
 
 #emp_main_details  {
-  width: 60%;
+  width: 30%;
   margin-top: 30px;
 }
-#emp_main_details tr {
-}
-#emp_main_details td {
+
+#emp_sub_details_1  {
+  width: 70%;
 }
 
+#emp_sub_details_2  {
+  width: 80%;
+}
+
+#emp_sub_details_3  {
+  width: 50%;
+}
+#emp_sub_details_4  {
+  width: 50%;
+}
+
+
+
+
 #emp_sub_details  {
-  width: 90%;
+  width: 80%;
+}
+
+#emp_sub_details td  {
+  width: 50%
 }
 
  #btn_emp_print,#btn_emp_edit {
-  width: 120px;
-  height: 40px;
-  border: none ;
-  border-radius: 20px;
+  width: 100px;
   color: white;
   font-size: 20px;
-  background-color: #2e9afe;
   float: right;
   font-weight: bold;
   margin-left: 20px;
   cursor: pointer;
+  margin-top: -45px;
 
 }
 

@@ -8,9 +8,11 @@
 
 <div>
   <span id="emp_title">Employee Profile</span>
-  <button id="btn_emp_print">Print</button>
+  
 	<form action="{{ url('employees/' . $employee->employee_id . '/edit') }}">
-  <input type="submit" id="btn_emp_edit" value="Edit"/>
+  <input class="btn btn-primary btn-lg" type="" id="btn_emp_print" value="Print"/>
+  <input class="btn btn-primary btn-lg" type="submit" id="btn_emp_edit" value="Edit"/>
+
 </form>
 
   
@@ -28,28 +30,28 @@
 <table class="" id="emp_main_details">
 
   <tr>
-    <td><p>Name:</p> </td>
-    <td><p class="capitalize">{{ $employee->first_name }} {{ substr ($employee->middle_name, 0,1 ) }}. {{ $employee->last_name }} </p></td>
+    <td><span>Name:</span> </td>
+    <td><span class="capitalize">{{ $employee->first_name }} {{ substr ($employee->middle_name, 0,1 ) }}. {{ $employee->last_name }} </span></td>
   </tr>
 
   <tr>
-    <td><p>Employee ID:</p> </td>
-    <td><p >{{ $employee->id_number }}</p></td>
+    <td><span>Employee ID:</span> </td>
+    <td><span >{{ $employee->id_number }}</span></td>
   </tr>
 
   <tr>
-    <td><p>Birthdate:</p> </td>
-    <td><p>{{ date ('m/d/Y', strtotime($employee->birthdate)) }}</p></td>
+    <td><span>Birthdate:</span> </td>
+    <td><span>{{ date ('m/d/Y', strtotime($employee->birthdate)) }}</span></td>
   </tr>
 
   <tr>
-    <td><p>Position:</p> </td>
-    <td><p class="capitalize">{{ $employee->position->name }}</p></td>
+    <td><span>Position:</span> </td>
+    <td><span class="capitalize">{{ $employee->position->name }}</span></td>
   </tr>
 
   <tr>
-    <td><p>Project assigned:</p> </td>
-    <td><p class="capitalize">{{ $employee->project->name }}</p></td>
+    <td><span>Project assigned:</span> </td>
+    <td><span class="capitalize">{{ $employee->project->name }}</span></td>
   </tr>
 
 
@@ -66,7 +68,7 @@
 
         <p id="emp_profile_title">Personal Information</p>
 
-          <table class="" id="emp_sub_details">
+          <table class="" id="emp_sub_details_1">
 
             <tr>
               <td> <p>Place of Birth:</p> </td>
@@ -101,7 +103,7 @@
           </table>
         <p id="emp_profile_title">Contact Information</p>
 
-          <table class="" id="emp_sub_details">
+          <table class="" id="emp_sub_details_2">
 
             <tr>
               <td><p>City Address:</p> </td>
@@ -145,7 +147,7 @@
       <td> -->
         <div id="emp_details_tab_2">
         <p id="emp_profile_title">Employee Information</p>
-          <table class="" id="emp_sub_details">
+          <table class="" id="emp_sub_details_3">
 
             <tr>
               <td> <p>Dated Hired:</p> </td>
@@ -189,7 +191,7 @@
 
           </table>
         <p id="emp_profile_title">Goverment ID Information</p>
-          <table class="" id="emp_sub_details">
+          <table class="" id="emp_sub_details_4">
 
             <tr>
               <td> <p>SSS ID:</p> </td>
