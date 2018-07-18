@@ -8,7 +8,7 @@
 
 <div>
   <span id="emp_title">Employee Profile</span>
-  <button id="btn_emp_print">PRINT</button>
+  <button id="btn_emp_print">Print</button>
 	<form action="{{ url('employees/' . $employee->employee_id . '/edit') }}">
   <input type="submit" id="btn_emp_edit" value="Edit"/>
 </form>
@@ -29,12 +29,12 @@
 
   <tr>
     <td><p>Name:</p> </td>
-    <td><p>{{ $employee->first_name }} {{ $employee->last_name }} {{ $employee->middle_name }}</p></td>
+    <td><p class="capitalize">{{ $employee->first_name }} {{ $employee->middle_name }} {{ $employee->last_name }} </p></td>
   </tr>
 
   <tr>
     <td><p>Employee ID:</p> </td>
-    <td><p>{{ $employee->id_number }}</p></td>
+    <td><p >{{ $employee->id_number }}</p></td>
   </tr>
 
   <tr>
@@ -44,12 +44,12 @@
 
   <tr>
     <td><p>Position:</p> </td>
-    <td><p>{{ $employee->position->name }}</p></td>
+    <td><p class="capitalize">{{ $employee->position->name }}</p></td>
   </tr>
 
   <tr>
     <td><p>Project assigned:</p> </td>
-    <td><p>{{ $employee->project->name }}</p></td>
+    <td><p class="capitalize">{{ $employee->project->name }}</p></td>
   </tr>
 
 
@@ -70,32 +70,32 @@
 
             <tr>
               <td> <p>Place of Birth:</p> </td>
-              <td><p>{{ $employee->birth_place }}</p></td>
+              <td><p class="capitalize">{{ $employee->birth_place }}</p></td>
             </tr>
 
             <tr>
               <td><p>Gender:</p></td>
-              <td><p>{{ $employee->gender }}</p></td>
+              <td><p class="capitalize">{{ $employee->gender }}</p></td>
             </tr>
 
             <tr>
               <td><p>Civil Status:</p> </td>
-              <td><p>{{ $employee->civil_status }}</p></td>
+              <td><p class="capitalize">{{ $employee->civil_status }}</p></td>
             </tr>
 
             <tr>
               <td><p>Citizenship:</p></td>
-              <td><p>{{ $employee->citizenship }}</p></td>
+              <td><p class="capitalize">{{ $employee->citizenship }}</p></td>
             </tr>
 
             <tr>
               <td><p>Religion:</p> </td>
-              <td><p>{{ $employee->religion }}</p></td>
+              <td><p class="capitalize">{{ $employee->religion }}</p></td>
             </tr>
 
             <tr>
               <td><p>Mother's Maiden Name:</p> </td>
-              <td><p>{{ $employee->mothers_maiden_name }}</p></td>
+              <td><p class="capitalize">{{ $employee->mothers_maiden_name }}</p></td>
             </tr>
 
           </table>
@@ -105,17 +105,17 @@
 
             <tr>
               <td><p>City Address:</p> </td>
-              <td><p>{{ $employee->city_address }}</p></td>
+              <td><p class="capitalize">{{ $employee->city_address }}</p></td>
             </tr>
 
             <tr>
               <td><p>Provincial Address:</p></td>
-              <td><p>{{ $employee->provincial_address }}</p></td>
+              <td><p class="capitalize">{{ $employee->provincial_address }}</p></td>
             </tr>
 
             <tr>
               <td><p>Primary Mobile Number:</p> </td>
-              <td><p>{{ $employee->mobile_number1 }}</p></td>
+              <td><p >{{ $employee->mobile_number1 }}</p></td>
             </tr>
 
             <tr>
@@ -125,7 +125,7 @@
 
             <tr>
               <td><p>Emergency Contact Name:</p> </td>
-              <td><p>{{ $employee->emergency_contact_name }}</p></td>
+              <td><p class="capitalize">{{ $employee->emergency_contact_name }}</p></td>
             </tr>
 
             <tr>
@@ -135,7 +135,7 @@
 
             <tr>
               <td><p>Emergency Contact Address:</p> </td>
-              <td><p>{{ $employee->emergency_contact_address }}</p></td>
+              <td><p class="capitalize">{{ $employee->emergency_contact_address }}</p></td>
             </tr>
 
           </table>
@@ -159,22 +159,22 @@
 
             <tr>
               <td><p>Employeement Type:</p> </td>
-              <td><p>{{ $employee->employment_type }}</p></td>
+              <td><p class="capitalize">{{ $employee->employment_type }}</p></td>
             </tr>
 
             <tr>
               <td><p>Payroll Type:</p></td>
-              <td><p>{{ $employee->payroll_type }}</p></td>
+              <td><p class="capitalize">{{ $employee->payroll_type }}</p></td>
             </tr>
 
             <tr>
               <td><p>Referred By:</p> </td>
-              <td><p>{{ $employee->referred_by }}</p></td>
+              <td><p class="capitalize">{{ $employee->referred_by }}</p></td>
             </tr>
 
             <tr>
               <td><p>Walk-in:</p> </td>
-              <td><p>{{ $employee->walk_in }}</p></td>
+              <td><p class="capitalize">{{ $employee->walk_in }}</p></td>
             </tr>
 
             <tr>
@@ -252,6 +252,10 @@ $(document).ready(function(){
   $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
 
+});
+
+$("#btn_emp_print").on("click", function(){
+  window.print();
 });
 
 

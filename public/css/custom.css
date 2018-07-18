@@ -64,7 +64,7 @@ h1 {
 }
 
 
-#full_name{
+#full_name, .capitalize{
   text-transform:capitalize;
 }
 
