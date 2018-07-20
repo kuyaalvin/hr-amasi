@@ -10,13 +10,10 @@
   <span id="emp_title">Employee Profile</span>
   
 	<form action="{{ url('employees/' . $employee->employee_id . '/edit') }}">
-  <input class="btn btn-primary btn-lg" type="" id="btn_emp_print" value="Print"/>
+  <input class="btn btn-primary btn-lg" type="button" id="btn_emp_print" value="Print"/>
   <input class="btn btn-primary btn-lg" type="submit" id="btn_emp_edit" value="Edit"/>
 
 </form>
-
-  
-
 </div>
 
 
@@ -30,7 +27,7 @@
 <table class="" id="emp_main_details">
 
   <tr>
-    <td><span>Name:</span> </td>
+    <td class="data_width_main"><span>Name:</span> </td>
     <td><span class="capitalize">{{ $employee->first_name }} {{ substr ($employee->middle_name, 0,1 ) }}. {{ $employee->last_name }} </span></td>
   </tr>
 
@@ -71,7 +68,7 @@
           <table class="" id="emp_sub_details_1">
 
             <tr>
-              <td> <p>Place of Birth:</p> </td>
+              <td class="data_width_sub_1" > <p>Place of Birth:</p> </td>
               <td><p class="capitalize">{{ $employee->birth_place }}</p></td>
             </tr>
 
@@ -106,7 +103,7 @@
           <table class="" id="emp_sub_details_2">
 
             <tr>
-              <td><p>City Address:</p> </td>
+              <td class="data_width_sub_2"><p>City Address:</p> </td>
               <td><p class="capitalize">{{ $employee->city_address }}</p></td>
             </tr>
 
@@ -150,7 +147,7 @@
           <table class="" id="emp_sub_details_3">
 
             <tr>
-              <td> <p>Dated Hired:</p> </td>
+              <td class="data_width_sub_3"> <p>Dated Hired:</p> </td>
               <td> <p>{{ date ('m/d/Y', strtotime($employee->date_hired)) }}</p></td>
             </tr>
 
@@ -194,7 +191,7 @@
           <table class="" id="emp_sub_details_4">
 
             <tr>
-              <td> <p>SSS ID:</p> </td>
+              <td class="data_width_sub_4"> <p>SSS ID:</p> </td>
               <td> <p>{{ $employee->sss_id }}</p></td>
             </tr>
 

@@ -72,7 +72,7 @@ h1 {
   padding-left: 250px;
 }
 
-#emp_title{
+#emp_title,#proj_title{
   font-size: 35px;
   font-weight: bold;
 }
@@ -86,14 +86,7 @@ h1 {
   width: 50%;
 }
 
-#emp_details_tab_1{
-  margin-top: 20px;
-  width: 50%;
-  float: left;
-
-}
-
-#emp_details_tab_2{
+#emp_details_tab_1,#emp_details_tab_2{
   margin-top: 20px;
   width: 50%;
   float: left;
@@ -106,24 +99,47 @@ h1 {
 }
 
 #emp_main_details  {
-  width: 30%;
+  width: 100%;
   margin-top: 30px;
 }
 
-#emp_sub_details_1  {
-  width: 70%;
+#emp_sub_details_1, #emp_sub_details_2, #emp_sub_details_3,
+#emp_sub_details_4 {
+  width: 100%;
 }
 
-#emp_sub_details_2  {
-  width: 80%;
+.data_width_sub_1{
+  width: 35%;
 }
 
-#emp_sub_details_3  {
-  width: 50%;
+.data_width_sub_2{
+  width: 40%;
 }
-#emp_sub_details_4  {
-  width: 50%;
+
+.data_width_sub_3{
+  width: 35%;
 }
+
+.data_width_sub_4{
+  width: 15%;
+}
+
+.data_width_sub_5{
+  width: 25%;
+}
+.data_width_sub_6{
+  width: 30%;
+}
+
+
+#proj_profile_details  {
+  width: 100%;
+  margin-top: 30px;
+}
+.data_width_main{
+  width: 15%;
+}
+
 
 
 
@@ -148,12 +164,39 @@ h1 {
 
 }
 
+#btn_proj_transfer{
+  width: 200px;
+  color: white;
+  font-size: 20px;
+  float: right;
+  font-weight: bold;
+  margin-left: 20px;
+  cursor: pointer;
+  margin-top: -45px;
+}
+
+
+
 #project_his{
   clear: both;
   margin-top: 60px;
 }
 #proj_table{
   border: solid;
+}
+
+/* project*/
+
+
+#proj_profile_details_tab_1,#proj_profile_details_tab_2{
+  margin-top: 20px;
+  width: 50%;
+  float: left;
+
+}
+
+#proj_profile_sub_details_1, #proj_profile_sub_details_2 {
+  width: 100%;
 }
 
 

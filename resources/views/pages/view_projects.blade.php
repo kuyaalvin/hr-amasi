@@ -110,7 +110,11 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         ajax: '',
         order: [],
         columns: [
-        	{data: 'name'},
+        	{data: 'name',
+                render: function(data,type,row) {
+                return '<a href="{{ url ("view_project_profile") }}" id="full_name">' + row.project_id+ '.</a>';
+                }
+          },
         	{data: 'address'},
         	{data: 'time_in'},
         	{data: 'time_out'},

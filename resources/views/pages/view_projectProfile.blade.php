@@ -40,7 +40,7 @@
   </div>
 </div>
 
-<!-- Insert datatables here containing the ff: Name and Position.  table should only see employees from current selected project-->
+ Insert datatables here containing the ff: Name and Position.  table should only see employees from current selected project
 
 <!-- Start Modal -->
 
