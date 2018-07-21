@@ -112,7 +112,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         columns: [
         	{data: 'name',
                 render: function(data,type,row) {
-                return '<a href="{{ url ("view_project_profile") }}" id="full_name">' + row.project_id+ '.</a>';
+                return '<a href="'+prefixUrl+row.project_id+'/profile" id="full_name">' + row.project_id+ '.</a>';
                 }
           },
         	{data: 'address'},

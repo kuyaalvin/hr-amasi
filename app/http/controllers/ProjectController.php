@@ -51,6 +51,17 @@ $project->save();
     }
 
     /**
+     * view a specific resource.
+     *
+     * @param  \App\Models\Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(Project $project)
+{
+return view('pages/view_project_profile', ['project'=>$project]);
+}
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Project $project

@@ -24,7 +24,4 @@ Route::get('data', 'ProjectController@data');
 
 
 Route::get('employees/{employee_id}/profile', 'EmployeeController@profile');
-
-Route::get('/view_project_profile', function () {
-    return view('pages/view_project_profile');
-});
+Route::get('projects/{project}/profile', 'ProjectController@profile');
