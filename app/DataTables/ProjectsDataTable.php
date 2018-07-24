@@ -26,7 +26,7 @@ class ProjectsDataTable extends DataTable
      */
     public function query(Project $model)
     {
-        return $model->query();
+        return $model->query()->withCount('employees');
     }
 
     /**
