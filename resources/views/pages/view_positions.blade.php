@@ -63,7 +63,7 @@ var table = $('.table').DataTable({
 order: [],
         columns: [
         	{data: 'name'},
-          {data: 'name'},
+          {data: 'type'},
         	{data: 'edit',
         searchable: false,
         orderable: false,

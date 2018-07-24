@@ -39,6 +39,7 @@ protected static function boot()
     {
         $rules = [
             'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],
+            'type'=>['required', 'in:Staff,Worker'],
         ];
         
         $validator = validator($this->attributes, $rules);

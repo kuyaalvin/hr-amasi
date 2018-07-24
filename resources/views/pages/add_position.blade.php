@@ -25,10 +25,10 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Type: *</label>
-				<select class="form-control" name="gender" id="gender0">
+				<select class="form-control" name="type" id="gender0">
 				  <option value="">Select Position Type</option>
-			      <option value=""  >Staff</option>
-			      <option value="">Worker</option>
+			      <option value="Staff" @if (old('type') == 'Staff') selected @endif>Staff</option>
+			      <option value="Worker" @if (old('type') == 'Worker') selected @endif>Worker</option>
 			    </select>
 			</div>
 		</div>
