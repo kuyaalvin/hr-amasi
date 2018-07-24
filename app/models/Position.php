@@ -32,7 +32,7 @@ protected static function boot()
 
     public function employees()
     {
-    return $this->hasMany(Employee::class);
+    return $this->hasMany(Employee::class, 'employee_id');
     }
 
     public function validate()
