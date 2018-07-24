@@ -95,7 +95,7 @@
     </tr>
   </tfoot>
 </table>
-  </div>
+</div>
 
     <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -158,7 +158,7 @@ order: [],
                 render: function(data,type,row) {
                 return '<a href="'+prefixUrl+row.employee_id+'/profile" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
                 }
-                },
+            },
             {data: 'first_name' , visible: false},
             {data: 'middle_name' , visible: false},
             {data: 'position.name', title: 'Position',

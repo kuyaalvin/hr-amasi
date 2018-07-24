@@ -201,6 +201,12 @@ h1 {
 
 
 
+#datatables_div{
+  clear: both;
+  float: none;
+  border: solid;
+}
+
 
 
 

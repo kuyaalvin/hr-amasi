@@ -97,6 +97,16 @@
 	
 </div>
 
+<div class="row" id="datatables_div">
+<table id="admin_table">
+  <thead>
+    <tr>
+      <th>last_name</th>
+    </tr>
+  </thead>
+</table>
+</div>
+
 
     
 @endsection
@@ -111,6 +121,8 @@ $(document).ready(function(){
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
 
+  alert(" {{ url('projects/4/employees/agency') }} ");
+
 });
 
 $("#btn_emp_print").on("click", function(){
@@ -118,6 +130,16 @@ $("#btn_emp_print").on("click", function(){
 });
 
 
+var table = $('#admin_table').DataTable({
+dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-11'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+    	serverSide: true,
+        processing: true,
+        ajax: " {{ url('projects/4/employees/agency') }} ",
+        order: [],
+        columns: [
+        	{data: 'last_name'}
+        ]
+    });
 
 
 
