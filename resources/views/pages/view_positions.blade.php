@@ -28,6 +28,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -62,6 +63,7 @@ var table = $('.table').DataTable({
 order: [],
         columns: [
         	{data: 'name'},
+          {data: 'name'},
         	{data: 'edit',
         searchable: false,
         orderable: false,

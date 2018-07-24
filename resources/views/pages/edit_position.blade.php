@@ -13,8 +13,19 @@
 		{{ method_field('patch') }}
 		<div class="form-row">
 			<div class="form-group col-md-4">
-				<label for="positionName">Position Name</label>
+				<label for="positionName">Position Name:</label>
 				<input type="text" class="form-control" name="name" placeholder="edit position here" value="{{ old('name', $position->name) }}">
+			</div>
+
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="positionName">Position Type: *</label>
+				<select class="form-control" name="gender" id="gender0">
+				  <option value="">Select Position Type</option>
+			      <option value=""  >Staff</option>
+			      <option value="">Worker</option>
+			    </select>
 			</div>
 		</div>
 		<input class="btn btn-primary" type="submit" value="Submit">
