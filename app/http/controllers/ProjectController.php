@@ -24,12 +24,16 @@ return $dataTable->render('pages/view_projects');
 
 public function getAgencyEmployees(int $project_id)
 {
-return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'agency')->get())->make(true);
+return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'agency')->whereHas('position', function($query) {
+$query->where('type', 'worker');
+})->get())->make(true);
 }
 
 public function getRegularEmployees(int $project_id)
 {
-return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'regular')->get())->make(true);
+return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'regular')->get())->whereHas('position', function($query) {
+$query->where('type', 'worker');
+})->make(true);
 }
 
     /**
