@@ -25,3 +25,5 @@ Route::get('data', 'ProjectController@data');
 
 Route::get('employees/{employee_id}/profile', 'EmployeeController@profile');
 Route::get('projects/{project}/profile', 'ProjectController@profile');
+Route::get('projects/{project_id}/employees/agency', 'ProjectController@getAgencyEmployees');
+Route::get('projects/{project_id}/employees/regular', 'ProjectController@getRegularEmployees');

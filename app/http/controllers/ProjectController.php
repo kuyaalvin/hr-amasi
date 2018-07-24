@@ -22,6 +22,16 @@ class ProjectController extends GlobalController
 return $dataTable->render('pages/view_projects');
     }
 
+public function getAgencyEmployees(int $project_id)
+{
+return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'agency')->get())->make(true);
+}
+
+public function getRegularEmployees(int $project_id)
+{
+return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'regular')->get())->make(true);
+}
+
     /**
      * Show the form for creating a new resource.
      *
