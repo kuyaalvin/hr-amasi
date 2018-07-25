@@ -37,7 +37,7 @@
   </tr>
 </table>
 
-<p id="emp_profile_title">STAFF - insert Number or number of people?</p>
+<p id="prof_profile_title">STAFF - insert Number or number of people?</p>
 
 
 <div id="proj_profile_details_tab_1">
@@ -67,9 +67,8 @@
 	</table>
 
 </div>
-      <!-- </td>
 
-      <td> -->
+
 <div id="proj_profile_details_tab_2">
 
 	<table class="" id="proj_profile_sub_details_2">
@@ -98,13 +97,33 @@
 </div>
 
 <div class="row" id="datatables_div">
-<table id="admin_table">
-  <thead>
-    <tr>
-      <th>last_name</th>
-    </tr>
-  </thead>
-</table>
+	
+	<p id="table_title">Admin - insert Number or number of people?</p>
+
+	<table class="table table-hover" id="admin_table">
+	  <thead>
+	    <tr>
+	      <th>Full Name</th>
+	      <th>Position</th>
+	    </tr>
+	  </thead>
+	</table>
+</div>
+
+
+
+<div class="row" id="datatables_div">
+
+	<p id="table_title">Agency - insert Number or number of people?</p>
+
+	<table class="table table-hover" id="agency_table">
+	  <thead>
+	    <tr>
+	      <th>Full Name</th>
+	      <th>Position</th>
+	    </tr>
+	  </thead>
+	</table>
 </div>
 
 
@@ -121,7 +140,7 @@ $(document).ready(function(){
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
 
-  alert(" {{ url('projects/4/employees/agency') }} ");
+  
 
 });
 
@@ -131,13 +150,38 @@ $("#btn_emp_print").on("click", function(){
 
 
 var table = $('#admin_table').DataTable({
-dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-11'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
-        ajax: " {{ url('projects/4/employees/agency') }} ",
+        ajax: "{{url('projects/4/employees/agency')}}",
         order: [],
+        lengthMenu: [[5, 10, 15, 20, 30, -1], [5, 10, 15, 20, 30, 'All']],
+
         columns: [
-        	{data: 'last_name'}
+        	{data: 'last_name',
+        		render: function(data,type,row) {
+                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
+                }
+        	},
+        	{data: 'employee_id'}
+        ]
+    });
+
+
+var table2 = $('#agency_table').DataTable({
+dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+    	serverSide: true,
+        processing: true,
+        ajax: "{{url('projects/4/employees/agency')}}",
+        order: [],
+        lengthMenu: [[5, 10, 15, 20, 30, -1], [5, 10, 15, 20, 30, 'All']],
+        columns: [
+        	{data: 'last_name',
+        		render: function(data,type,row) {
+                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
+                }
+        	},
+        	{data: 'employee_id'}
         ]
     });
 

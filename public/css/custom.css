@@ -204,10 +204,24 @@ h1 {
 #datatables_div{
   clear: both;
   float: none;
-  border: solid;
+  padding-top: 50px;
 }
 
+#admin_table th{
+  width: 50%
 
+}
+
+#prof_profile_title{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#table_title{
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 15px;
+}
 
 
 
