@@ -43,7 +43,7 @@ protected static function boot()
 
     public function employees()
     {
-        return $this->hasMany(Employee::class, 'employee_id');
+        return $this->hasMany(Employee::class, 'project_id');
     }
 
     public function getTimeInAttribute($value)
