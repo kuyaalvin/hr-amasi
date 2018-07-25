@@ -23,6 +23,7 @@ class CreatePositionsTable extends Migration
         $this->schema->create('positions', function (Blueprint $table) {
             $table->increments('position_id');
             $table->string('name', 50)->unique();
+            $table->enum('type', ['Staff', 'Worker']);
         });
     }
 

@@ -118,7 +118,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         	{data: 'address'},
         	{data: 'time_in'},
         	{data: 'time_out'},
-          {data: 'name'},
+          {data: 'employees_count'},
         	{data: 'edit', searchable: false, orderable: false,
         		render: function(data, type, row) {
         		return '<a class="btn btn-dark" href="'+prefixUrl+row.project_id+'/edit">Edit</a>';

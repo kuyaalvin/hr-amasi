@@ -32,13 +32,14 @@ protected static function boot()
 
     public function employees()
     {
-    return $this->hasMany(Employee::class);
+    return $this->hasMany(Employee::class, 'employee_id');
     }
 
     public function validate()
     {
         $rules = [
             'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],
+            'type'=>['required', 'in:Staff,Worker'],
         ];
         
         $validator = validator($this->attributes, $rules);
