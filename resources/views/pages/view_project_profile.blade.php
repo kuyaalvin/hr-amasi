@@ -39,7 +39,7 @@
 
 <p id="prof_profile_title">STAFF - insert Number or number of people?</p>
 
-
+<div>
 <div id="proj_profile_details_tab_1">
 
 	<table class="" id="proj_profile_sub_details_1">
@@ -94,6 +94,7 @@
 		</tr>
 	</table>
 	
+</div>
 </div>
 
 <div class="row" id="datatables_div">
