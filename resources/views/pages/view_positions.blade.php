@@ -29,6 +29,8 @@
     <tr>
       <th>Name</th>
       <th>Type</th>
+      <th>Position Level</th>
+      <th>Department </th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -63,6 +65,8 @@ var table = $('.table').DataTable({
 order: [],
         columns: [
         	{data: 'name'},
+          {data: 'type'},
+          {data: 'type'},
           {data: 'type'},
         	{data: 'edit',
         searchable: false,

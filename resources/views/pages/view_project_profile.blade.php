@@ -46,22 +46,22 @@
 
 		<tr>
 			<td class="data_width_sub_5"><span>PM:</span> </td>
-			<td><span class="capitalize"> Last_name M. First_name  </span></td>
+			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal, frank chong  </span></td>
 		</tr>
 
 		<tr>
 			<td class=""><span>PIC:</span> </td>
-			<td><span class="capitalize"> Last_name M. First_name </span></td>
+			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal, frank chong, frank chong </span></td>
 		</tr>
 
 		<tr>
 			<td class=""><span>QA/QC:</span> </td>
-			<td><span class="capitalize"> Last_name M. First_name, Last_name M. First_name </span></td>
+			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal, alvin david, frank chong </span></td>
 		</tr>
 
 		<tr>
 			<td class=""><span>SAFETY OFFICER:</span> </td>
-			<td><span class="capitalize">  Last_name M. First_name </span></td>
+			<td><span class="capitalize">  kelvin M. macapagal, kelvin macapagal </span></td>
 		</tr>
 
 	</table>
@@ -75,22 +75,22 @@
 
 		<tr>
 			<td class="data_width_sub_6"><span>CAD OPERATOR:</span> </td>
-			<td><span class="capitalize"> Last_name M. First_name  </span></td>
+			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal  </span></td>
 		</tr>
 
 		<tr>
 			<td class=""><span>WAREHOUSEMAN:</span> </td>
-			<td><span class="capitalize"> Last_name M. First_name </span></td>
+			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal </span></td>
 		</tr>
 
 		<tr>
 			<td class=""><span>FOREMAN:</span> </td>
-			<td><span class="capitalize"> Last_name M. First_name </span></td>
+			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal </span></td>
 		</tr>
 
 		<tr>
 			<td class=""><span>DOCS CONTROLLER:</span> </td>
-			<td><span class="capitalize">  Last_name M. First_name </span></td>
+			<td><span class="capitalize">  kelvin M. macapagal, kelvin macapagal </span></td>
 		</tr>
 	</table>
 	
