@@ -58,9 +58,9 @@ $employee->save();
      * @param  int $employee_id
      * @return \Illuminate\Http\Response
      */
-    public function profile(int $employee_id)
+    public function profile(Employee $employee)
 {
-$employee =         Employee::with(['position', 'project'])->find($employee_id);
+$employee->load('position', 'project');
 return view('pages/view_employee_profile', ['employee'=>$employee]);
 }
 

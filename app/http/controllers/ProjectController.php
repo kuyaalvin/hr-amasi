@@ -70,8 +70,9 @@ $project->save();
      * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
-    public function profile(Project $project)
+    public function profile(int $project_id)
 {
+$project = Project::withCount('employees')->find($project_id);
 return view('pages/view_project_profile', ['project'=>$project]);
 }
 
