@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Position whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Position wherePositionId($value)
  * @mixin \Eloquent
+ * @property string $type
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Position whereType($value)
  */
 class Position extends GlobalModel
 {
