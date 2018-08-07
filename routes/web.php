@@ -17,6 +17,7 @@ Route::view('/home', 'pages/home')->middleware(['authenticate', 'token']);
     Route::post('/logout', 'AuthController@logout');
     
 Route::resource('positions', 'PositionController')->except('show');
+Route::resource('departments', 'DepartmentController')->except('show');
 Route::resource('projects', 'ProjectController')->except('show');
 Route::resource('employees', 'EmployeeController')->except('show');
 Route::get('projects/transfer', 'ProjectController@viewTransfer');
