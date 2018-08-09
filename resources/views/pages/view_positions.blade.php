@@ -50,6 +50,7 @@ $(document).ready(function(){
   $("#header_position").css("color","#fff");
   $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_department").css("color","rgba(255, 255, 255, 0.5)");
 
 });
 
@@ -66,8 +67,8 @@ order: [],
         columns: [
         	{data: 'name'},
           {data: 'type'},
-          {data: 'type'},
-          {data: 'type'},
+          {data: 'level'},
+          {data: 'department'},
         	{data: 'edit',
         searchable: false,
         orderable: false,
