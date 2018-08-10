@@ -4,19 +4,6 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 
-/**
- * App\Models\User
- *
- * @property int $user_id
- * @property string $username
- * @property string $password
- * @property string|null $token
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUsername($value)
- * @mixin \Eloquent
- */
 class User extends GlobalModel implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;

@@ -4,15 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 
-/**
- * App\Models\Department
- *
- * @property int $department_id
- * @property string $name
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Department whereDepartmentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Department whereName($value)
- * @mixin \Eloquent
- */
 class Department extends GlobalModel
 {
     protected $primaryKey = 'department_id';
