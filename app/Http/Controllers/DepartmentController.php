@@ -85,8 +85,9 @@ return $this->successResponse($request, 'departments', 'Department has been edit
      */
     public function destroy(Request $request, Department $department)
     {
+$departmentName = $department->name;
         $department->delete();
-    return $this->successResponse($request, 'departments', 'Department has been deleted.', false);
+    return $this->successResponse($request, 'departments', 'Department ' . $departmentName . ' has been deleted.', false);
     }
     
 }
