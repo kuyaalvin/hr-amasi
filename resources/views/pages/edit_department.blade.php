@@ -14,7 +14,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Name:</label>
-				<input type="text" class="form-control" name="name" placeholder="edit position here" value="{{ old('name', $department->name) }}">
+				<input type="text" class="form-control" name="name" placeholder="edit department here" value="{{ old('name', $department->name) }}">
 			</div>
 
 		</div>
