@@ -35,11 +35,11 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Position Level: *</label>
-				<select class="form-control" name="type" id="gender0">
+				<select class="form-control" name="level" id="gender0">
 					<option value="">Select Position Level</option>
-					<option value="">1</option>
-					<option value="">2</option>
-					<option value="">3</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
 					<option value="">4</option>
 					<option value="">5</option>
 					<option value="">6</option>
@@ -64,17 +64,11 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="positionName">Department: *</label>
-				<select class="form-control" name="type" id="gender0">
-					<option value="">Select Depeartment</option>
-					<option value="">Accounting</option>
-					<option value="">Admin</option>
-					<option value="">Director</option>
-					<option value="">Engineering</option>
-					<option value="">Fabrication</option>
-					<option value="">Human Resources</option>
-					<option value="">Operations</option>
-					<option value="">Purchasing</option>
-					<option value="">Quality Assurance </option>
+				<select class="form-control" name="department_id" id="gender0">
+					<option value="">Select Department</option>
+				@foreach ($departments as $department)
+				<option value="{{ $department->department_id }}" @if (old('department_id') == $department->department_id) selected @endif>{{ $department->name }}</option>
+				@endforeach
 			    </select>
 			</div>
 		</div>
