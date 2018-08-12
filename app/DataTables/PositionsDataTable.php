@@ -26,7 +26,7 @@ class PositionsDataTable extends DataTable
      */
     public function query(Position $model)
     {
-        return $model->query()->with(['departments'])->select('positions.*');
+        return $model->query()->with('department')->select('positions.*');
     }
     
     /**
