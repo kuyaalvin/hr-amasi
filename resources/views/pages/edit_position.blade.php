@@ -64,7 +64,7 @@
 				<select class="form-control" name="department_id" id="gender0">
 					<option value="">Select Department</option>
 				@foreach ($departments as $department)
-				<option value="{{ $department->department_id }}" @if (old('department_id') == $department->department_id) selected @endif>{{ $department->name }}</option>
+			      <option value="{{ $department->department_id }}" @if (old('department_id', $department->department_id) == $department->department_id) selected @endif>{{ $department->name }}</option>
 				@endforeach
 			    </select>
 			</div>

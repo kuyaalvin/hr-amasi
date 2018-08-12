@@ -175,9 +175,9 @@
 			<label class="col-sm-2 col-form-label">Assigned position:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="position_id">
-				<option value="{{ old('position_id', $employee->position_id) }}">{{ old('position_id', $employee->position_id) }}</option>
+				<option value="">Select Position</option>
 				@foreach ($positions as $position)
-				<option value="{{ $position->position_id }}" @if (old('position_id') == $position->position_id) selected @endif>{{ $position->name }}</option>
+			      <option value="{{ $position->position_id }}" @if (old('position_id', $employee->position_id) == $position->position_id) selected @endif>{{ $position->name }}</option>
 				@endforeach
 				</select>
 			</div>
@@ -186,9 +186,9 @@
 			<label class="col-sm-2 col-form-label">Assigned project:</label>
 			<div class="col-sm-10">
 				<select class="form-control" name="project_id">
-				<option value="{{ old('project_id', $employee->project_id) }}">{{ old('project_id', $employee->project_id) }}</option>
+				<option value="">Select Project</option>
 				@foreach ($projects as $project)
-				<option value="{{ $project->project_id }}" @if (old('project_id') == $project->project_id) selected @endif>{{ $project->name }}</option>
+			      <option value="{{ $project->project_id }}" @if (old('project_id', $employee->project_id) == $project->project_id) selected @endif>{{ $project->name }}</option>
 				@endforeach
 				</select>
 			</div>
