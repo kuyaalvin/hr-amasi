@@ -29,8 +29,8 @@ return $dataTable->render('pages/view_employees');
      */
     public function create()
     {
-        $positions = Position::orderBy('position_id')->get();
-        $projects = Project::orderBy('project_id')->get();
+        $positions = Position::all();
+        $projects = Project::all();
 return view('pages/add_employee', ['positions'=>$positions, 'projects'=>$projects]);
     }
 
@@ -72,8 +72,8 @@ return view('pages/view_employee_profile', ['employee'=>$employee]);
      */
     public function edit(Employee $employee)
     {
-        $positions = Position::orderBy('position_id')->get();
-        $projects = Project::orderBy('project_id')->get();
+        $positions = Position::all();
+        $projects = Project::all();
 return view('pages/edit_employee', ['employee'=>$employee, 'positions'=>$positions, 'projects'=>$projects]);
     }
 
