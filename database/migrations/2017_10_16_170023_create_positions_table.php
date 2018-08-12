@@ -24,6 +24,8 @@ class CreatePositionsTable extends Migration
             $table->increments('position_id');
             $table->string('name', 50)->unique();
             $table->enum('type', ['Staff', 'Worker']);
+$table->unsignedInteger('level');
+            $table->unsignedInteger('department_id')->nullable();
         });
     }
 

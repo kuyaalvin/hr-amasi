@@ -20,6 +20,10 @@ class AddForeignKeys extends Migration
      */
     public function up()
     {
+        $this->schema->table('positions', function (Blueprint $table) {
+            $table->foreign('department_id')->references('department_id')->on('departments');
+        });
+
         $this->schema->table('employees', function (Blueprint $table) {
             $table->foreign('position_id')->references('position_id')->on('positions')->nullable()->onDelete('set null');
             $table->foreign('project_id')->references('project_id')->on('projects')->nullable()->onDelete('set null');
@@ -33,6 +37,10 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
+        $this->schema->table('departments', function (Blueprint $table) {
+            $table->dropForeign(['department_id']);
+        });
+
         $this->schema->table('employees', function (Blueprint $table) {
             $table->dropForeign(['position_id']);
             $table->dropForeign(['project_id']);

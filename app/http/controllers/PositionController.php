@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;;;;;
 use App\Models\Position;
+use App\Models\Department;
 use App\DataTables\PositionsDataTable;
 
 class PositionController extends GlobalController
@@ -26,7 +27,8 @@ class PositionController extends GlobalController
      */
     public function create()
     {
-return view('pages/add_position');
+        $departments = Department::all();
+return view('pages/add_position')->with(['departments'=>$departments]);
     }
 
     /**
@@ -55,7 +57,8 @@ $position->save();
      */
     public function edit(Position $position)
     {
-return view('pages/edit_position')->with('position', $position);
+        $departments = Department::all();
+return view('pages/edit_position')->with(['position'=>$position, 'departments'=>$departments]);
     }
 
     /**
