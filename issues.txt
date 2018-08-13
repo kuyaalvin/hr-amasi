@@ -1,4 +1,1 @@
-required fields in employees no *
-The date started field is required.
-
-the x_id field is requred.
+validation message - the x_id field is required.
