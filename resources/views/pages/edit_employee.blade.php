@@ -166,7 +166,7 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2 col-form-label">Date started:</label>
+			<label class="col-sm-2 col-form-label">Date started *:</label>
 			<div class="col-sm-10">
 				<input type="date" class="form-control" id="date_started" name="date_started" value="{{ old('date_started', $employee->date_started) }}">
 			</div>
