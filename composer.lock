@@ -560,16 +560,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3"
+                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/8790f594151ca6a2010c6218e09d96df67173ad3",
-                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/54859fabea8b3beecbb1a282888d5c990036b9e3",
+                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3",
                 "shasum": ""
             },
             "require": {
@@ -613,7 +613,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-04-10T10:11:19+00:00"
+            "time": "2018-08-16T20:49:45+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -3253,16 +3253,16 @@
         },
         {
             "name": "yajra/laravel-datatables-buttons",
-            "version": "v3.2.2",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-buttons.git",
-                "reference": "d7ee45d911c8d7224b4f7cb0b76541bfc046c463"
+                "reference": "cdc787c1f786506cce985929e02fb27f78f97a69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/d7ee45d911c8d7224b4f7cb0b76541bfc046c463",
-                "reference": "d7ee45d911c8d7224b4f7cb0b76541bfc046c463",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/cdc787c1f786506cce985929e02fb27f78f97a69",
+                "reference": "cdc787c1f786506cce985929e02fb27f78f97a69",
                 "shasum": ""
             },
             "require": {
@@ -3313,7 +3313,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2018-07-31T08:07:35+00:00"
+            "time": "2018-08-15T11:57:53+00:00"
         },
         {
             "name": "yajra/laravel-datatables-html",
