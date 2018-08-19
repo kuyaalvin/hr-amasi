@@ -8,7 +8,7 @@ class Position extends GlobalModel
 {
     protected $primaryKey = 'position_id';
     public $timestamps = false;
-    protected $guarded = ['position_id'];
+    protected $guarded = ['position_id', 'level'];
 
 protected static function boot()
 {
@@ -35,7 +35,7 @@ protected static function boot()
         $rules = [
             'name'=>['required', $this->uniqueRule(), 'string', 'max:50'],
             'type'=>['required', 'in:Staff,Worker'],
-            'level'=>['required', 'integer', 'min:0', 'max:20'],
+//            'level'=>['required', 'integer', 'min:0', 'max:20'],
             'department_id'=>['required', 'exists:departments'],
         ];
         

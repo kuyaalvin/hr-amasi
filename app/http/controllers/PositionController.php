@@ -20,6 +20,11 @@ class PositionController extends GlobalController
         return $dataTable->render('pages/view_positions');
     }
 
+public function getHierarchy()
+{
+return view('');
+}
+
     /**
      * Show the form for creating a new resource.
      *
