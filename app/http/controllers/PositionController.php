@@ -101,7 +101,7 @@ return $this->successResponse($request, 'positions', 'Position has been edited.'
 
 public function getPositionsByDepartments($department_id)
 {
-return Datatables::of(Position::query())->make(true);
+return Datatables::of(Position::query()->where('department_id', $department_id)->get())->make(true);
 }
     
 }
