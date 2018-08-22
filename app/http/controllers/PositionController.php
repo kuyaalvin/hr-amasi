@@ -6,6 +6,7 @@ use Illuminate\Http\Request;;;;;
 use App\Models\Position;
 use App\Models\Department;
 use App\DataTables\PositionsDataTable;
+use Yajra\Datatables\Datatables;
 
 class PositionController extends GlobalController
 {
@@ -97,5 +98,10 @@ return $this->successResponse($request, 'positions', 'Position has been edited.'
         $position->delete();
     return $this->successResponse($request, 'positions', 'Position has been deleted.', false);
     }
+
+public function getPositionsByDepartments($department_id)
+{
+return Datatables::of(Position::query())->make(true);
+}
     
 }

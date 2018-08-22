@@ -18,6 +18,8 @@ Route::view('/home', 'pages/home')->middleware(['authenticate', 'token']);
     
 Route::resource('positions', 'PositionController')->except('show');
 Route::get('positions/hierarchy', 'PositionController@getHierarchy');
+Route::get('positions/{department_id}', 'PositionController@getPositionsByDepartments');
+
 // Route::post('positions/hierarchy', 'PositionController@updateHierarchy');
 Route::resource('departments', 'DepartmentController')->except('show');
 Route::resource('projects', 'ProjectController')->except('show');
