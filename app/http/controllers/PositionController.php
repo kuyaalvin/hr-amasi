@@ -22,7 +22,8 @@ class PositionController extends GlobalController
 
 public function getHierarchy()
 {
-return view('');
+    $departments = Department::all();
+    return view('pages/view_position_heirarchy')->with(['departments'=>$departments]);
 }
 
     /**
