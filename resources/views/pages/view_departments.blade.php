@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Department List</h1>
+<h1>Department</h1>
 
 <div class="row">
   <div class="col">
@@ -10,8 +10,8 @@
       <li class="nav-item">
         <button type="button"  class="btn btn-primary" onclick="location.href='{{ url('departments/create') }}'">+ Add Department</button>
       </li>
-  </div>
     </nav>
+  </div>
 </div>
 
 <hr/>
@@ -43,11 +43,12 @@
 <script>
 
 $(document).ready(function(){
-  
+   
   $("#header_department").css("color","#fff");
   $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_heirarchy").css("color","rgba(255, 255, 255, 0.5)");
 
 });
 
@@ -62,26 +63,26 @@ var table = $('.table').DataTable({
         ajax: '',
 order: [],
         columns: [
-        	{data: 'name'},
-        	{data: 'edit',
+          {data: 'name'},
+          {data: 'edit',
         searchable: false,
         orderable: false,
         render: function(data, type, row) {
         return '<a class="btn btn-sm btn-dark" href="'+prefixUrl+row.department_id+'/edit">Edit</a>';
         }
         },
-        	{data: 'delete',
+          {data: 'delete',
             searchable: false,
             orderable: false,
             render: function(data, type, row) {
-            	return '<form action="'+prefixUrl+row.department_id+'" method="post">'+
-            	'{{ csrf_field() }}'+
-            	'{{ method_field('delete') }}'+
-            	'<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" type="submit" value="Delete"/>'+
-            	'</form>';	
+              return '<form action="'+prefixUrl+row.department_id+'" method="post">'+
+              '{{ csrf_field() }}'+
+              '{{ method_field('delete') }}'+
+              '<input class="btn btn-sm btn-danger" onclick=\"return confirm(\'Do you want to delete this record?\')\" type="submit" value="Delete"/>'+
+              '</form>';  
             }
-            	}
-        	]
+              }
+          ]
     });
 
 });

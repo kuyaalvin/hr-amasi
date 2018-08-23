@@ -56,7 +56,7 @@ $(document).ready(function(){
 
 
 
-$(function() {
+// $(function() {
 var prefixUrl = "{{ url('positions') . '/' }}";
 
 var table = $('.table').DataTable({
@@ -90,6 +90,6 @@ order: [],
         	]
     });
 
-});
+// });
 </script>
 @endpush
