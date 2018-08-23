@@ -223,7 +223,18 @@ h1 {
   margin-left: 15px;
 }
 
-
+#heirarchy_select_dept{
+  height:35px;
+  border-radius: 10px;
+  width: 350px;
+  text-align-last: center; 
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
 
 
 /* modal */
