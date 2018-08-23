@@ -36,6 +36,8 @@
 </div>
 @endif
 
+<form id="editForm" action="{{ url('positions/hierarchy/update') }}" method="post">
+		{{ csrf_field() }}
 <div class="row">
   <div class="col">
 <table class="table">
@@ -43,15 +45,14 @@
     <tr>
       <th>Position Name </th>
       <th>Level </th>
-    </tr>
-
-    
+    </tr>    
   </thead>
 </table>
   </div>
 </div>
+</form>
 <br>
-<button type="button" style="float: right;" class="btn btn-primary" onclick="location.href=''">Save Changes
+<button type="button" style="float: right;" id="save" class="btn btn-primary">Save Changes
         </button>
 
 
@@ -74,27 +75,34 @@ $(document).ready(function(){
 });
 
 $(function() {
-var prefixUrl = "{{ url('positions') . '/' }}";
 
+var i = 0;
 
 var table = $('.table').DataTable({
   dom: "<'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         serverSide: true,
         processing: true,
-        ajax: prefixUrl,
+        ajax: "{{ url('positions/by_departments/' . $department_id . '/data') }}",
 order: [],
         columns: [
           {data: 'name'},
           {data: 'level',
           render: function(data,type,row) {
-                return '<input class="form-control col-md-4" type="number" name="level[]" value="'+row.level+'">';
-
-
+                var input = '<input type="hidden" name="positions['+i+'][position_id]" value="'+row.position_id+'"/>'+
+'<input class="form-control col-md-4" type="number" name="positions['+i+'][level]" value="'+row.level+'"/>';
+i++;
+return input;
                 }
 
           }
           ]
     });
+
+$("#save").on("click", function(event) {
+event.preventDefault();
+$("#editForm").submit();
+
+});
 
 });
 

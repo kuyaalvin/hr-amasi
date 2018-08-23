@@ -19,8 +19,9 @@ Route::view('/home', 'pages/home')->middleware(['authenticate', 'token']);
 Route::resource('positions', 'PositionController')->except('show');
 Route::get('positions/hierarchy', 'PositionController@getHierarchy');
 Route::get('positions/by_departments/{department_id}/data', 'PositionController@getPositionsByDepartments');
+Route::get('positions/hierarchy/{department_id}/edit', 'PositionController@editHierarchy');
+Route::post('positions/hierarchy/update', 'PositionController@updateHierarchy');
 
-// Route::post('positions/hierarchy', 'PositionController@updateHierarchy');
 Route::resource('departments', 'DepartmentController')->except('show');
 Route::resource('projects', 'ProjectController')->except('show');
 Route::resource('employees', 'EmployeeController')->except('show');
@@ -32,9 +33,3 @@ Route::get('employees/{employee}/profile', 'EmployeeController@profile');
 Route::get('projects/{project_id}/profile', 'ProjectController@profile');
 Route::get('projects/{project_id}/employees/agency', 'ProjectController@getAgencyEmployees');
 Route::get('projects/{project_id}/employees/regular', 'ProjectController@getRegularEmployees');
-
-
-
-Route::get('positions/hierarchy/{department_id}/edit', function ($department_id) {
-    return view('pages/edit_position_heirarchy');
-});

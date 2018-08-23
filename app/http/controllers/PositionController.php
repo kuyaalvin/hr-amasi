@@ -103,5 +103,19 @@ public function getPositionsByDepartments($department_id)
 {
 return Datatables::of(Position::query()->where('department_id', $department_id)->get())->make(true);
 }
+
+public function editHierarchy($department_id)
+{
+    return view('pages/edit_position_hierarchy')->with(['department_id'=>$department_id]);
+}
+
+public function updateHierarchy(Request $request)
+{
+foreach ($request->input('positions') as $position)
+{
+Position::where('position_id', $position['position_id'])->update(['level'=>$position['level']]);
+}
+}
+
     
 }
