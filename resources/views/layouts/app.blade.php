@@ -39,6 +39,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url('departments') }}" id="header_department">Department</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('positions/hierarchy') }}" id="header_heirarchy">Position Hierarchy</a>
+        </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input type="submit" class="nav-link btn btn-sm btn-outline-success my-2 my-sm-0" form="logoutForm" value="Log Out"></form>
