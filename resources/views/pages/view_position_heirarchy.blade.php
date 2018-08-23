@@ -100,7 +100,15 @@ $("#heirarchy_select_dept").on("change",function(){
 //  alert("{{ url('positions/by_departments')}}/"+department_id+"/data/");
   // 
 
-  if (typeof table == "undefined") {
+  
+  if(department_id == ""){
+    table
+    .clear()
+    .draw();
+    table.ajax.url( get_url(0) ).load();
+  }else{
+
+    if (typeof table == "undefined") {
         table = $('.table').DataTable({
         dom: "<'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         serverSide: true,
@@ -119,6 +127,10 @@ $("#heirarchy_select_dept").on("change",function(){
     table.ajax.url( get_url(department_id) ).load();
     
   }
+
+  }
+
+  
 
 
   });
