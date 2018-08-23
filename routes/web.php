@@ -35,6 +35,6 @@ Route::get('projects/{project_id}/employees/regular', 'ProjectController@getRegu
 
 
 
-Route::get('hierarchy', function () {
-    return view('../pages/edit_position_heirarchy');
+Route::get('positions/hierarchy/{department_id}/edit', function ($department_id) {
+    return view('pages/edit_position_heirarchy');
 });
