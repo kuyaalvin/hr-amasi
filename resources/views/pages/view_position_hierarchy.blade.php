@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Position Heirarchy</h1>
+<h1>Position Hierarchy</h1>
 
 <div class="row">
   <div class="col">
@@ -11,14 +11,14 @@
 
         
         <label class=" ">Select Department</label>
-        <select id="heirarchy_select_dept">
+        <select id="hierarchy_select_dept">
           <option value="">Select Department</option>
         @foreach ($departments as $department)
         <option value="{{ $department->department_id }}" @if (old('department_id') == $department->department_id) selected @endif>{{ $department->name }}</option>
         @endforeach
         </select>
 
-        <button type="button" style="float: right;" class="btn btn-primary"  id="edit">Edit Heirarchy
+        <button type="button" style="float: right;" class="btn btn-primary"  id="edit">Edit Hierarchy
         </button>
 
        
@@ -63,7 +63,7 @@
 
 $(document).ready(function(){
   
-  $("#header_heirarchy").css("color","#fff");
+  $("#header_hierarchy").css("color","#fff");
   $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
@@ -91,7 +91,7 @@ $("#edit").on("click",function(){
   }
 });
 
-$("#heirarchy_select_dept").on("change",function(){
+$("#hierarchy_select_dept").on("change",function(){
   // alert(table);
   department_id = $(this).val();
   // alert(department_id);

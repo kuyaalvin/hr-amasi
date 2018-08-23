@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Position Heirarchy</h1>
+<h1>Position Hierarchy</h1>
 
 <div class="row">
   <div class="col">
@@ -11,13 +11,13 @@
 
         
         <!-- <label class=" ">Select Department</label>
-        <select id="heirarchy_select">
+        <select id="hierarchy_select">
           <option>Select department</option>
           <option>Insert department</option>
           <option>Select department</option>
         </select>
 
-        <button type="button" style="float: right;" class="btn btn-primary" onclick="location.href='{{ url('departments/create') }}'">Edit Heirarchy
+        <button type="button" style="float: right;" class="btn btn-primary" onclick="location.href='{{ url('departments/create') }}'">Edit Hierarchy
         </button> -->
 
        
@@ -65,7 +65,7 @@
 
 $(document).ready(function(){
   
-  $("#header_heirarchy").css("color","#fff");
+  $("#header_hierarchy").css("color","#fff");
   $("#header_project").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
   $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
