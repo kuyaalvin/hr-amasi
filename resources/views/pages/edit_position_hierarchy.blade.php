@@ -36,6 +36,8 @@
 </div>
 @endif
 
+<form id="editForm" action="{{ url('positions/hierarchy/update') }}" method="post">
+		{{ csrf_field() }}
 <div class="row">
   <div class="col">
 <table class="table">
@@ -48,6 +50,7 @@
 </table>
   </div>
 </div>
+</form>
 <br>
 <button type="button" style="float: right;" id="save" class="btn btn-primary">Save Changes
         </button>
@@ -94,6 +97,12 @@ return input;
           }
           ]
     });
+
+$("#save").on("click", function(event) {
+event.preventDefault();
+$("#editForm").submit();
+
+});
 
 });
 
