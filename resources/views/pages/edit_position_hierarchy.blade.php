@@ -52,7 +52,7 @@
 </div>
 </form>
 <br>
-<button type="button" style="float: right;" id="save" class="btn btn-primary">Save Changes
+<button type="button" style="float: right;" id="save" class="btn btn-primary" form="editForm">Save Changes
         </button>
 
 
@@ -98,11 +98,6 @@ return input;
           ]
     });
 
-$("#save").on("click", function(event) {
-event.preventDefault();
-$("#editForm").submit();
-
-});
 
 });
 
