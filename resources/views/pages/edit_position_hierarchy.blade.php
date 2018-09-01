@@ -74,6 +74,31 @@ $(document).ready(function(){
 
 });
 
+$("#save").click(function() {
+
+  var trigger = 0;
+
+  $(".level").each(function() {
+
+    if($(this).val() === "0" || $(this).val() <= -1){
+      alert("no negative or zero value");
+      trigger = 0;
+      return false;
+
+    }else{
+      trigger = 1;
+    }
+
+    
+  });
+
+  if(trigger == 1){
+    alert("send data");
+  }
+
+
+});
+
 $(function() {
 
 var i = 0;
@@ -89,8 +114,8 @@ order: [],
           {data: 'level',
           render: function(data,type,row) {
                 var input = '<input type="hidden" name="positions['+i+'][position_id]" value="'+row.position_id+'"/>'+
-'<input class="form-control col-md-4" type="number" name="positions['+i+'][level]" value="'+row.level+'"/>';
-i++;
+                '<input class="form-control col-md-4 level" type="number" name="positions['+i+'][level]" min="1" value="'+row.level+'"/>';
+                  i++;
 return input;
                 }
 
