@@ -37,69 +37,27 @@
   </tr>
 </table>
 
-<p id="prof_profile_title">STAFF - insert Number or number of people?</p>
-
-<div>
-<div id="proj_profile_details_tab_1">
-
-	<table class="" id="proj_profile_sub_details_1">
-
-		<tr>
-			<td class="data_width_sub_5"><span>PM:</span> </td>
-			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal, frank chong  </span></td>
-		</tr>
-
-		<tr>
-			<td class=""><span>PIC:</span> </td>
-			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal, frank chong, frank chong </span></td>
-		</tr>
-
-		<tr>
-			<td class=""><span>QA/QC:</span> </td>
-			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal, alvin david, frank chong </span></td>
-		</tr>
-
-		<tr>
-			<td class=""><span>SAFETY OFFICER:</span> </td>
-			<td><span class="capitalize">  kelvin M. macapagal, kelvin macapagal </span></td>
-		</tr>
-
-	</table>
-
-</div>
 
 
-<div id="proj_profile_details_tab_2">
 
-	<table class="" id="proj_profile_sub_details_2">
 
-		<tr>
-			<td class="data_width_sub_6"><span>CAD OPERATOR:</span> </td>
-			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal  </span></td>
-		</tr>
-
-		<tr>
-			<td class=""><span>WAREHOUSEMAN:</span> </td>
-			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal </span></td>
-		</tr>
-
-		<tr>
-			<td class=""><span>FOREMAN:</span> </td>
-			<td><span class="capitalize"> kelvin M. macapagal, kelvin macapagal </span></td>
-		</tr>
-
-		<tr>
-			<td class=""><span>DOCS CONTROLLER:</span> </td>
-			<td><span class="capitalize">  kelvin M. macapagal, kelvin macapagal </span></td>
-		</tr>
-	</table>
+<div class="row" id="datatables_div">
 	
-</div>
+	<p id="table_title">Staff - 11</p>
+
+	<table class="table table-hover" id="staff_table">
+	  <thead>
+	    <tr>
+	      <th>Full Name</th>
+	      <th>Position</th>
+	    </tr>
+	  </thead>
+	</table>
 </div>
 
 <div class="row" id="datatables_div">
 	
-	<p id="table_title">Admin - insert Number or number of people?</p>
+	<p id="table_title">Admin - 11</p>
 
 	<table class="table table-hover" id="admin_table">
 	  <thead>
@@ -149,14 +107,13 @@ $("#btn_emp_print").on("click", function(){
   window.print();
 });
 
-
-var table = $('#admin_table').DataTable({
+var table = $('#staff_table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
         ajax: "{{url('projects/4/employees/agency')}}",
         order: [],
-        lengthMenu: [[5, 10, 15, 20, 30, -1], [5, 10, 15, 20, 30, 'All']],
+        lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
 
         columns: [
         	{data: 'last_name',
@@ -167,6 +124,26 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         	{data: 'employee_id'}
         ]
     });
+
+
+var table1 = $('#admin_table').DataTable({
+dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+    	serverSide: true,
+        processing: true,
+        ajax: "{{url('projects/4/employees/agency')}}",
+        order: [],
+        lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
+
+        columns: [
+        	{data: 'last_name',
+        		render: function(data,type,row) {
+                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
+                }
+        	},
+        	{data: 'employee_id'}
+        ]
+    });
+
 
 
 var table2 = $('#agency_table').DataTable({
@@ -175,7 +152,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         processing: true,
         ajax: "{{url('projects/4/employees/agency')}}",
         order: [],
-        lengthMenu: [[5, 10, 15, 20, 30, -1], [5, 10, 15, 20, 30, 'All']],
+        lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
         columns: [
         	{data: 'last_name',
         		render: function(data,type,row) {
@@ -185,6 +162,9 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         	{data: 'employee_id'}
         ]
     });
+
+
+
 
 
 
