@@ -52,7 +52,8 @@
 </div>
 </form>
 <br>
-<button type="button" style="float: right;" id="save" class="btn btn-primary" form="editForm">Save Changes
+
+<button type="submit" style="float: right;" id="save" class="btn btn-primary" form="editForm">Save Changes
         </button>
 
 
@@ -74,30 +75,30 @@ $(document).ready(function(){
 
 });
 
-$("#save").click(function() {
+// $("#save").click(function() {
 
-  var trigger = 0;
+//   var trigger = 0;
 
-  $(".level").each(function() {
+//   $(".level").each(function() {
 
-    if($(this).val() === "0" || $(this).val() <= -1){
-      alert("no negative or zero value");
-      trigger = 0;
-      return false;
+//     if($(this).val() === "0" || $(this).val() <= -1){
+//       alert("no negative or zero value");
+//       trigger = 0;
+//       return false;
 
-    }else{
-      trigger = 1;
-    }
+//     }else{
+//       trigger = 1;
+//     }
 
     
-  });
+//   });
 
-  if(trigger == 1){
-    alert("send data");
-  }
+//   if(trigger == 1){
+//     alert("send data");
+//   }
 
 
-});
+// });
 
 $(function() {
 
