@@ -52,7 +52,7 @@ $table->string('emergency_contact_address', 255)->nullable();
             $table->date('date_started');
 $table->date('date_hired')->nullable();
             $table->date('date_terminated')->nullable();
-            $table->enum('employment_type', ['Agency', 'Regular']);
+            $table->enum('employment_type', ['Agency', 'Admin']);
 $table->string('referred_by', 50)->nullable();
 $table->string('walk_in', 50)->nullable();
 $table->enum('status', ['Active', 'Terminated', 'AWOL', 'Deceased', 'Others'])->default('active');

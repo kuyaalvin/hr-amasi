@@ -88,7 +88,7 @@ class Employee extends GlobalModel
             'date_hired'=>['nullable', 'date_format:' . $this->getDateFormat()],
             'account_number'=>['nullable', $this->uniqueRule(), 'digits_between:1,25'],
             'biometric_id'=>['nullable', $this->uniqueRule(), 'digits_between:1,4'],
-'employment_type'=>['required', 'in:Agency,Regular'],
+'employment_type'=>['required', 'in:Agency,Admin'],
             'referred_by'=>['nullable', 'string', 'max:50'],
             'walk_in'=>['nullable', 'string', 'max:50'],
             'position_id'=>['nullable', 'exists:positions'],

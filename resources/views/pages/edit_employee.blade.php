@@ -199,7 +199,7 @@
 				<select class="form-control" name="employment_type">
 					<option ></option>
 			      <option value="Agency" @if (old('employment_type', $employee->employment_type) == 'Agency') selected @endif>Agency</option>
-			      <option value="Regular" @if (old('employment_type', $employee->employment_type) == 'Regular') selected @endif>Regular</option>
+			      <option value="Admin" @if (old('employment_type', $employee->employment_type) == 'Admin') selected @endif>Admin</option>
 				</select>
 			</div>
 		</div>
