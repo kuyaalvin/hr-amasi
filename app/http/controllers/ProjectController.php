@@ -22,18 +22,25 @@ class ProjectController extends GlobalController
 return $dataTable->render('pages/view_projects');
     }
 
-public function getAgencyEmployees(int $project_id)
+public function getWorkerAgencyEmployees(int $project_id)
 {
 return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'agency')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->with('position'))->make(true);
 }
 
-public function getRegularEmployees(int $project_id)
+public function getWorkerAdminEmployees(int $project_id)
 {
-return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'regular')->get())->with('positions')->whereHas('position', function($query) {
+return Datatables::of(Employee::query()->where('project_id', $project_id)->where('employment_type', 'admin')->whereHas('position', function($query) {
 $query->where('type', 'worker');
-})->with('position')->make(true);
+})->with('position'))->make(true);
+}
+
+public function getStaffEmployees(int $project_id)
+{
+return Datatables::of(Employee::query()->where('project_id', $project_id)->whereHas('position', function($query) {
+$query->where('type', 'staff');
+})->with('position'))->make(true);
 }
 
     /**

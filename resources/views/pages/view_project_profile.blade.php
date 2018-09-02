@@ -7,7 +7,7 @@
 
 
 <div>
-  <span id="proj_title">NAME - Project Page</span>
+  <span id="proj_title">NAME - {{ $project->name }}</span>
   <form >
   <input class="btn btn-primary btn-lg" type="button" id="btn_emp_print" value="Print"/>
   <input class="btn btn-primary btn-lg" type="submit" id="btn_proj_transfer" value="Project Transfer"/>
@@ -23,17 +23,17 @@
 
   <tr>
     <td class="data_width_main"><span>Address:</span> </td>
-    <td><span class="capitalize"> insert address  </span></td>
+    <td><span class="capitalize">{{ $project->address }}</span></td>
   </tr>
 
   <tr>
     <td><span>Total man Power:</span> </td>
-    <td><span > insert man Power</span></td>
+    <td><span >{{ $project->employees_count }}</span></td>
   </tr>
 
   <tr>
     <td><span>Time:</span> </td>
-    <td><span> insert time</span></td>
+    <td><span>{{ $project->time_in}} - {{ $project->time_out }}</span></td>
   </tr>
 </table>
 
@@ -107,11 +107,13 @@ $("#btn_emp_print").on("click", function(){
   window.print();
 });
 
+	var prefixUrl = "{{ url('projects') . '/' . $project->project_id . '/employees/' }}";
+
 var table = $('#staff_table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
-        ajax: "{{url('projects/4/employees/agency')}}",
+        ajax: prefixUrl+"staff/data",
         order: [],
         lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
 
@@ -130,7 +132,7 @@ var table1 = $('#admin_table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
-        ajax: "{{url('projects/4/employees/agency')}}",
+        ajax: prefixUrl+"worker/admin/data",
         order: [],
         lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
 
@@ -150,7 +152,7 @@ var table2 = $('#agency_table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
     	serverSide: true,
         processing: true,
-        ajax: "{{url('projects/4/employees/agency')}}",
+        ajax: prefixUrl+"worker/agency/data",
         order: [],
         lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
         columns: [

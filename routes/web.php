@@ -24,6 +24,9 @@ Route::post('positions/hierarchy/update', 'PositionController@updateHierarchy');
 
 Route::resource('departments', 'DepartmentController')->except('show');
 Route::resource('projects', 'ProjectController')->except('show');
+Route::get('projects/{project_id}/employees/staff/data', 'ProjectController@getStaffEmployees');
+Route::get('projects/{project_id}/employees/worker/admin/data', 'ProjectController@getWorkerAdminEmployees');
+Route::get('projects/{project_id}/employees/worker/agency/data', 'ProjectController@getWorkerAgencyEmployees');
 Route::resource('employees', 'EmployeeController')->except('show');
 Route::get('projects/transfer', 'ProjectController@viewTransfer');
 Route::get('data', 'ProjectController@data');
