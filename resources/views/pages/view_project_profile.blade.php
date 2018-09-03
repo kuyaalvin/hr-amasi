@@ -28,7 +28,7 @@
 
   <tr>
     <td><span>Total man Power:</span> </td>
-    <td><span >{{ $project->employees_count }}</span></td>
+    <td><span >{{ $countEmployees }}</span></td>
   </tr>
 
   <tr>
@@ -43,7 +43,7 @@
 
 <div class="row" id="datatables_div">
 	
-	<p id="table_title">Staff - 11</p>
+	<p id="table_title">Staff - {{ $countStaffEmployees }}</p>
 
 	<table class="table table-hover" id="staff_table">
 	  <thead>
@@ -57,7 +57,7 @@
 
 <div class="row" id="datatables_div">
 	
-	<p id="table_title">Admin - 11</p>
+	<p id="table_title">Admin - {{ $countWorkerAdminEmployees }}</p>
 
 	<table class="table table-hover" id="admin_table">
 	  <thead>
@@ -73,7 +73,7 @@
 
 <div class="row" id="datatables_div">
 
-	<p id="table_title">Agency - insert Number or number of people?</p>
+	<p id="table_title">Agency - {{ $countWorkerAgencyEmployees }}</p>
 
 	<table class="table table-hover" id="agency_table">
 	  <thead>

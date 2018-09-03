@@ -79,8 +79,24 @@ $project->save();
      */
     public function profile(int $project_id)
 {
-$project = Project::withCount('employees')->find($project_id);
-return view('pages/view_project_profile', ['project'=>$project]);
+$project = Project::find($project_id);
+$employeesCollection = Employee::where('project_id', $project_id);
+
+$countWorkerAgencyEmployees = $employeesCollection->where('employment_type', 'agency')->whereHas('position', function($query) {
+$query->where('type', 'worker');
+})->count();
+
+$countWorkerAdminEmployees = $employeesCollection->where('employment_type', 'admin')->whereHas('position', function($query) {
+$query->where('type', 'worker');
+})->count();
+
+$countStaffEmployees = $employeesCollection->whereHas('position', function($query) {
+$query->where('type', 'staff');
+})->count();
+
+$countEmployees = $employeesCollection->count();
+
+return view('pages/view_project_profile', ['project'=>$project, 'countWorkerAgencyEmployees'=>$countWorkerAgencyEmployees, 'countWorkerAdminEmployees'=>$countWorkerAdminEmployees, 'countStaffEmployees'=>$countStaffEmployees, 'countEmployees'=>$countEmployees]);
 }
 
     /**
