@@ -39,7 +39,7 @@ $query->where('type', 'worker');
 public function getStaffEmployees(int $project_id)
 {
 return Datatables::of(Employee::query()->where('project_id', $project_id)->whereHas('position', function($query) {
-$query->where('type', 'staff');
+$query->where('type', 'staff')->orderBy('level');
 })->with('position'))->make(true);
 }
 
