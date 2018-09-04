@@ -125,7 +125,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         	},
         	{data: 'position',
         		render: function(data,type,row) {
-                return '<span class="capitalize" > '+row.position.name+'</span>';
+                return '<span class="capitalize" > '+row.position_name+'</span>';
                 }
 
         	}

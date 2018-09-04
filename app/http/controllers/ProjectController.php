@@ -38,9 +38,7 @@ $query->where('type', 'worker');
 
 public function getStaffEmployees(int $project_id)
 {
-return Datatables::of(Employee::query()->where('project_id', $project_id)->whereHas('position', function($query) {
-$query->where('type', 'staff')->orderBy('level');
-})->with('position'))->make(true);
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'positions.type'=>'staff', 'employees.status'=>'active'])->orderBy('positions.level')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))->make(true);
 }
 
     /**
