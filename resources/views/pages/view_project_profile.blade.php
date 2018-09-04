@@ -120,7 +120,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         columns: [
         	{data: 'full_name',
         		render: function(data,type,row) {
-                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
+                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.last_name+'</span>';
                 }
         	},
         	{data: 'position',
@@ -144,7 +144,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         columns: [
         	{data: 'full_name',
         		render: function(data,type,row) {
-                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
+                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.last_name+'</span>';
                 }
         	},
         	{data: 'position',
@@ -168,7 +168,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         columns: [
         	{data: 'full_name',
         		render: function(data,type,row) {
-                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
+                return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.last_name+'</span>';
                 }
         	},
         	{data: 'position',
