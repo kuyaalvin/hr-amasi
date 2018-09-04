@@ -115,6 +115,7 @@ foreach ($request->input('positions') as $position)
 {
 Position::where('position_id', $position['position_id'])->update(['level'=>$position['level']]);
 }
+return $this->getHierarchy();
 }
 
     
