@@ -7,7 +7,7 @@
 
 
 <div>
-  <span id="proj_title">NAME - {{ $project->name }}</span>
+  <span id="proj_title">{{ $project->name }}</span>
   <form >
   <input class="btn btn-primary btn-lg" type="button" id="btn_emp_print" value="Print"/>
   <input class="btn btn-primary btn-lg" type="submit" id="btn_proj_transfer" value="Project Transfer"/>
@@ -118,12 +118,17 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
 
         columns: [
-        	{data: 'last_name',
+        	{data: 'full_name',
         		render: function(data,type,row) {
                 return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
                 }
         	},
-        	{data: 'employee_id'}
+        	{data: 'position',
+        		render: function(data,type,row) {
+                return '<span class="capitalize" > '+row.position.name+'</span>';
+                }
+
+        	}
         ]
     });
 
@@ -137,12 +142,17 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
 
         columns: [
-        	{data: 'last_name',
+        	{data: 'full_name',
         		render: function(data,type,row) {
                 return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
                 }
         	},
-        	{data: 'employee_id'}
+        	{data: 'position',
+        		render: function(data,type,row) {
+                return '<span class="capitalize" > '+row.position.name+'</span>';
+                }
+
+        	}
         ]
     });
 
@@ -156,12 +166,17 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         order: [],
         lengthMenu: [[10, 15, 20, 30, -1], [10, 15, 20, 30, 'All']],
         columns: [
-        	{data: 'last_name',
+        	{data: 'full_name',
         		render: function(data,type,row) {
                 return '<span class="capitalize" > '+row.first_name+' '+row.middle_name.charAt(0)+ '. '+row.first_name+'</span>';
                 }
         	},
-        	{data: 'employee_id'}
+        	{data: 'position',
+        		render: function(data,type,row) {
+                return '<span class="capitalize" > '+row.position.name+'</span>';
+                }
+
+        	}
         ]
     });
 
