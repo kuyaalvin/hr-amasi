@@ -80,21 +80,21 @@ $project->save();
     public function profile(int $project_id)
 {
 $project = Project::find($project_id);
-$employeesCollection = Employee::where('project_id', $project_id);
+$projectWhereArg = ['project_id'=>$project_id];
 
-$countWorkerAgencyEmployees = $employeesCollection->where('employment_type', 'agency')->whereHas('position', function($query) {
+$countWorkerAgencyEmployees = Employee::where($projectWhereArg)->where('employment_type', 'agency')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->count();
 
-$countWorkerAdminEmployees = $employeesCollection->where('employment_type', 'admin')->whereHas('position', function($query) {
+$countWorkerAdminEmployees = Employee::where($projectWhereArg)->where('employment_type', 'admin')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->count();
 
-$countStaffEmployees = $employeesCollection->whereHas('position', function($query) {
+$countStaffEmployees = Employee::where($projectWhereArg)->whereHas('position', function($query) {
 $query->where('type', 'staff');
 })->count();
 
-$countEmployees = $employeesCollection->count();
+$countEmployees = Employee::where($projectWhereArg)->count();
 
 return view('pages/view_project_profile', ['project'=>$project, 'countWorkerAgencyEmployees'=>$countWorkerAgencyEmployees, 'countWorkerAdminEmployees'=>$countWorkerAdminEmployees, 'countStaffEmployees'=>$countStaffEmployees, 'countEmployees'=>$countEmployees]);
 }
