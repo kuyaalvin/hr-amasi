@@ -37,7 +37,7 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
-        $this->schema->table('departments', function (Blueprint $table) {
+        $this->schema->table('positions', function (Blueprint $table) {
             $table->dropForeign(['department_id']);
         });
 
