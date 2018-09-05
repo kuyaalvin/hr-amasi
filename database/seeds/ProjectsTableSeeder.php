@@ -18,7 +18,7 @@ class ProjectsTableSeeder extends Seeder
     {
         $timeFormat = 'H:i:s';
 $con->transaction(function() use($timeFormat, $faker) {
-for ($i = 0; $i < 1000; $i++)
+for ($i = 0; $i < 10; $i++)
 {
         $timeInHour = rand(0, 23);
         $timeInMinutes = rand(0, 59);

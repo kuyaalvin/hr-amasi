@@ -17,7 +17,7 @@ class DepartmentsTableSeeder extends Seeder
     public function run(Connection $con, Generator $faker)
     {
 $con->transaction(function() use($faker) {
-for ($i = 0; $i < 1000; $i++)
+for ($i = 0; $i < 10; $i++)
 {        
         do {
             $name = str_random(rand(2, 5));

@@ -20,7 +20,7 @@ $departmentIds = Department::pluck('department_id')->toArray();
 $types = ['Staff', 'Worker'];
 
         $con->transaction(function() use($departmentIds, $types, $faker) {
-for ($i = 0; $i < 1000; $i++)
+for ($i = 0; $i < 10; $i++)
 {
     do {
         $name = str_random(rand(2, 5));
