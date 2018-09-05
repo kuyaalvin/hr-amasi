@@ -37,7 +37,7 @@ $fakerStrRandom = function($length, $optional = false) use($faker) {
 };
 
 $con->transaction(function() use($dateFormat, $civilStatuses, $genders, $payrollTypes, $employmentTypes, $positionIds, $projectIds, $randomLength, $fakerStrRandom, $faker) {
-for ($i = 0; $i < 5000; $i++)
+for ($i = 0; $i < 1000; $i++)
 {
 do {
     $accountNumber = $faker->optional()->regexify('^\d{' . $randomLength() . '}$');
