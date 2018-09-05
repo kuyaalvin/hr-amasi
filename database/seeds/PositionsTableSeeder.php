@@ -29,6 +29,7 @@ for ($i = 0; $i < 10; $i++)
     Position::create([
         'name'=>$name,
 'type'=>$faker->randomElement($types),
+    'level'=>$faker->optional()->numberBetween(1, 10),
 'department_id'=>$faker->randomElement($departmentIds),
     ]);
     
