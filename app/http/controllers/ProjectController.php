@@ -22,23 +22,46 @@ class ProjectController extends GlobalController
 return $dataTable->render('pages/view_projects');
     }
 
-public function getWorkerAgencyEmployees(int $project_id)
+public function getWorkerAgencyEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->where(['project_id'=>$project_id, 'employment_type'=>'agency'])->whereHas('position', function($query) {
-$query->where('type', 'worker');
-})->with('position'))->make(true);
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'employees.employment_type'=>'agency', 'positions.type'=>'worker', 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
+->filter(function($query) use($request)
+{
+if ($request->has('search') && !empty($request->input('search')['value']))
+{
+$searchValue = $request->input('search')['value'];
+$query->whereRaw("(LOWER(`employees`.`first_name`) LIKE '%$searchValue%' or LOWER(`employees`.`middle_name`) LIKE '%$searchValue%' or LOWER(`employees`.`last_name`) LIKE '%$searchValue%' or LOWER(`positions`.`name`) LIKE '%$searchValue%')");
+}
+})
+->make(true);
 }
 
-public function getWorkerAdminEmployees(int $project_id)
+public function getWorkerAdminEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->where(['project_id'=>$project_id, 'employment_type'=>'admin'])->whereHas('position', function($query) {
-$query->where('type', 'worker');
-})->with('position'))->make(true);
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'employees.employment_type'=>'admin', 'positions.type'=>'worker', 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
+->filter(function($query) use($request)
+{
+if ($request->has('search') && !empty($request->input('search')['value']))
+{
+$searchValue = $request->input('search')['value'];
+$query->whereRaw("(LOWER(`employees`.`first_name`) LIKE '%$searchValue%' or LOWER(`employees`.`middle_name`) LIKE '%$searchValue%' or LOWER(`employees`.`last_name`) LIKE '%$searchValue%' or LOWER(`positions`.`name`) LIKE '%$searchValue%')");
+}
+})
+->make(true);
 }
 
-public function getStaffEmployees(int $project_id)
+public function getStaffEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'positions.type'=>'staff', 'employees.status'=>'active'])->orderBy('positions.level')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))->make(true);
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'positions.type'=>'staff', 'employees.status'=>'active'])->orderBy('positions.level')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
+->filter(function($query) use($request)
+{
+if ($request->has('search') && !empty($request->input('search')['value']))
+{
+$searchValue = $request->input('search')['value'];
+$query->whereRaw("(LOWER(`employees`.`first_name`) LIKE '%$searchValue%' or LOWER(`employees`.`middle_name`) LIKE '%$searchValue%' or LOWER(`employees`.`last_name`) LIKE '%$searchValue%' or LOWER(`positions`.`name`) LIKE '%$searchValue%')");
+}
+})
+->make(true);
 }
 
     /**
