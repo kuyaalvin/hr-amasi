@@ -24,7 +24,7 @@ class EmployeesTableSeeder extends Seeder
         $genders = ['Male', 'Female'];
         $payrollTypes = ['Weekly', 'Monthly'];
         $employmentTypes = ['Admin', 'Agency'];
-        $positionIds = Position::pluck('position_id')->toArray();
+        $positionIds = Position::whereNotNull('level')->pluck('position_id')->toArray();
 $projectIds = Project::pluck('project_id')->toArray();
 
 $randomLength = function() {
