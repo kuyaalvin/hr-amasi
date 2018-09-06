@@ -107,7 +107,9 @@ $("#btn_emp_print").on("click", function(){
   window.print();
 });
 
-	var prefixUrl = "{{ url('projects') . '/' . $project->project_id . '/employees/' }}";
+$(function() {
+
+var prefixUrl = "{{ url('projects') . '/' . $project->project_id . '/employees/' }}";
 
 var table = $('#staff_table').DataTable({
 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -180,7 +182,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>
         ]
     });
 
-
+});
 
 
 
