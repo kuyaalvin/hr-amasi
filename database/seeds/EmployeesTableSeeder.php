@@ -23,7 +23,8 @@ class EmployeesTableSeeder extends Seeder
         $civilStatuses = ['Single', 'Married'];
         $genders = ['Male', 'Female'];
         $payrollTypes = ['Weekly', 'Monthly'];
-        $positionIds = Position::pluck('position_id')->toArray();
+        $employmentTypes = ['Admin', 'Agency'];
+        $positionIds = Position::whereNotNull('level')->pluck('position_id')->toArray();
 $projectIds = Project::pluck('project_id')->toArray();
 
 $randomLength = function() {
@@ -35,7 +36,7 @@ $fakerStrRandom = function($length, $optional = false) use($faker) {
     return $optional ? $faker->optional()->lexify($str) : $faker->lexify($str);
 };
 
-$con->transaction(function() use($dateFormat, $civilStatuses, $genders, $payrollTypes, $positionIds, $projectIds, $randomLength, $fakerStrRandom, $faker) {
+$con->transaction(function() use($dateFormat, $civilStatuses, $genders, $payrollTypes, $employmentTypes, $positionIds, $projectIds, $randomLength, $fakerStrRandom, $faker) {
 for ($i = 0; $i < 5000; $i++)
 {
 do {
@@ -54,18 +55,22 @@ break;
 }
 } while (Employee::where('biometric_id', $biometricId)->exists());
 
-$agency = $faker->boolean;
-
 Employee::create([
     'last_name'=>$fakerStrRandom($randomLength()),
     'middle_name'=>$fakerStrRandom($randomLength()),
     'first_name'=>$fakerStrRandom($randomLength()),
+    'first_name'=>$fakerStrRandom($randomLength()),
+    'mothers_maiden_name'=>$fakerStrRandom($randomLength(), true),
     'city_address'=>$fakerStrRandom($randomLength()),
+    'provincial_address'=>$fakerStrRandom($randomLength(), true),
     'telephone_number'=>$faker->optional()->regexify('^\d{3}-\d{2}-\d{2}$'),
     'mobile_number1'=>$faker->optional()->regexify('^\d{4}-\d{3}-\d{4}$'),
     'mobile_number2'=>$faker->optional()->regexify('^\d{4}-\d{3}-\d{4}$'),
-    'provincial_address'=>$fakerStrRandom($randomLength(), true),
     'birthdate'=>$faker->date($dateFormat, Carbon::yesterday()->format($dateFormat)),
+    'birth_place'=>$fakerStrRandom($randomLength()),
+    'emergency_contact_name'=>$fakerStrRandom($randomLength(), true),
+    'emergency_contact_number'=>$fakerStrRandom($randomLength(), true),
+    'emergency_contact_address'=>$fakerStrRandom($randomLength(), true),
     'civil_status'=>$faker->randomElement($civilStatuses),
     'number_of_dependencies'=>$faker->optional()->numberBetween(0, 20),
     'citizenship'=>$fakerStrRandom($randomLength()),
@@ -75,12 +80,16 @@ Employee::create([
     'phic_id'=>$faker->optional()->regexify('^\d{2}-\d{9}-\d$'),
     'hdmf_id'=>$faker->optional()->regexify('^\d{4}-\d{4}-\d{4}$'),
     'tin_id'=>$faker->optional()->regexify('^\d{3}-\d{3}-\d{3}-000$'),
-    'payroll_type'=>$faker->randomElement($payrollTypes),
-    'date_started'=>$faker->date($dateFormat),
     'account_number'=>$accountNumber,
     'biometric_id'=>$biometricId,
-    'agency'=>$agency,
-    'regular'=>$agency ? false : true,
+    'payroll_type'=>$faker->randomElement($payrollTypes),
+    'date_started'=>$faker->date($dateFormat),
+    'date_hired'=>$faker->optional()->date($dateFormat),
+    'date_terminated'=>$faker->optional()->date($dateFormat),
+    'employment_type'=>$faker->randomElement($employmentTypes),
+    'referred_by'=>$fakerStrRandom($randomLength(), true),
+    'walk_in'=>$fakerStrRandom($randomLength(), true),
+'status'=>'active',
     'position_id'=>$faker->optional()->randomElement($positionIds),
     'project_id'=>$faker->optional()->randomElement($projectIds),
     ]);

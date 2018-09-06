@@ -35,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        $this->schema->dropIfExists('logins');
+        $this->schema->dropIfExists('users');
     }
 }
