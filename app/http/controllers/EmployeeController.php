@@ -7,20 +7,24 @@ use Illuminate\Http\Request;;;;
 use App\Models\Employee;
 use App\Models\Position;
 use App\Models\Project;
-use App\DataTables\EmployeesDataTable;
+use Yajra\Datatables\Datatables;
 
 class EmployeeController extends GlobalController
 {
     /**
      * Display a listing of the resource.
      *
-     * @param \App\DataTables\EmployeesDataTable dataTable
      * @return \Illuminate\Http\Response
      */
-    public function index(EmployeesDataTable $dataTable)
+    public function index()
     {
-return $dataTable->render('pages/view_employees');
+return view('pages/view_employees');
     }
+
+public function getData()
+{
+return Datatables::of(Employee::query()->with(['position', 'project'])->select('employees.*'))->make(true);
+}
 
     /**
      * Show the form for creating a new resource.

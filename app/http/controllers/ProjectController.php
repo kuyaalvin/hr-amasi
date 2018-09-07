@@ -6,21 +6,24 @@ use Illuminate\Http\Request;;;
 use App\Models\Project;
 use App\Models\Employee;
 use Illuminate\Database\Connection;
-use App\DataTables\ProjectsDataTable;
 use Yajra\Datatables\Datatables;
 
 class ProjectController extends GlobalController
 {
     /**
      * Display a listing of the resource.
-     * @param \App\DataTables\ProjectsDataTable $dataTable
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProjectsDataTable $dataTable)
+    public function index()
     {
-return $dataTable->render('pages/view_projects');
+return view('pages/view_projects');
     }
+
+public function getData()
+{
+return Datatables::of(Project::query()->withCount('employees'))->make(true);
+}
 
 public function getWorkerAgencyEmployees(Request $request, int $project_id)
 {

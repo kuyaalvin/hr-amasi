@@ -60,7 +60,7 @@ var prefixUrl = "{{ url('departments') . '/' }}";
 var table = $('.table').DataTable({
         serverSide: true,
         processing: true,
-        ajax: '',
+        ajax: prefixUrl+'data',
 order: [],
         columns: [
           {data: 'name'},

@@ -4,20 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;;;;;
 use App\Models\Department;
-use App\DataTables\DepartmentsDataTable;
+use Yajra\Datatables\Datatables;
 
 class DepartmentController extends GlobalController
 {
     /**
      * Display a listing of the resource.
      *
-     * @param  \App\DataTables\DepartmentsDataTable $dataTable
      * @return \Illuminate\Http\Response
      */
-    public function index(DepartmentsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('pages/view_departments');
+        return view('pages/view_departments');
     }
+
+public function getData()
+{
+return Datatables::of(Department::query())->make(true);
+}
 
     /**
      * Show the form for creating a new resource.

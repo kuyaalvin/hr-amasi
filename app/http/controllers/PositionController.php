@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;;;;;
 use App\Models\Position;
 use App\Models\Department;
-use App\DataTables\PositionsDataTable;
 use Yajra\Datatables\Datatables;
 
 class PositionController extends GlobalController
@@ -13,13 +12,17 @@ class PositionController extends GlobalController
     /**
      * Display a listing of the resource.
      *
-     * @param  \App\DataTables\PositionsDataTable $dataTable
      * @return \Illuminate\Http\Response
      */
-    public function index(PositionsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('pages/view_positions');
+        return view('pages/view_positions');
     }
+
+public function getData()
+{
+return Datatables::of(Position::query()->with('department')->select('positions.*'))->make(true);
+}
 
 public function getHierarchy()
 {
