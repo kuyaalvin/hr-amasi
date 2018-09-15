@@ -2,9 +2,19 @@
 
 @section('content')
 
+<h1>Project Transfer Page</h1>
 
+<div class="row">
+  <div class="col">
+    <nav class="nav flex-column">
+      <li class="nav-item">
+        
+      </li>
+    </nav>
+  </div>
+</div>
 
-<h1>Employee Project Transfer</h1>
+<hr/>
 
 @if (session('message'))
 <div class="alert alert-info" role="alert">
@@ -12,102 +22,325 @@
 </div>
 @endif
 
-<div class="row">
-	<p>The Employee Project Transfer allows user to reassign employees to different projects</p>
-</div>
-<div class="row">
-	<p>Instructions:  
-1.	Select from dropdown which you want to transfer/get from.
-2.	Select the employees you want to transfer
-3.	Input the date of transfer
-4.	Click on transfer button
-5.	Review transferred employee then once satisfied select confirm button.
-	</p>
-</div>
-<hr/>
-<div class="row">
-<div class="col-md-5">
-  <div class="form-group">
-    <label class="  col-form-label">From Project:</label>
-        <select class="form-control" name="" id="">
-          <option></option>
-          <option></option>
-        </select>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Employee 1</td>
-        </tr>
-        <tr>
-          <td>Employee 1</td>
-        </tr>
-        <tr>
-          <td>Employee 1</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="" name="" placeholder="" value="Search">
+    <form class="form-inline">
+      <div class="form-group">
+          <label class="col-md-1 control-label">From</label>
+          <div class="col-md-4">
+            <input class="form-control" id="focusedInput" type="date">
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-1 control-label">To</label>
+          <div class="col-md-4">
+            <input class="form-control" id="focusedInput" type="date">
+          </div>
+      </div>
+
+    </form>
+
+    <br>
+    <div class="form-group row">
+
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col">
+
+              <label>Select Project</label>
+              <select class="form-control">
+                <option>Insert List of project Here</option>
+              </select>
+
+
+              <br>
+              <table class="table" id="project_1">
+                    <thead>
+                    <tr>
+                      <th>Name </th>
+                      <th>Position </th>
+                      <th><input type="checkbox" name=""></th>
+                    </tr>
+          
+                  </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <button type="button" class="btn btn-primary" style="width: 100%;" id="transfer_to_project2"> ------------></button>
+
+          <br>
+          <br>
+          <br>
+          <br>
+
+
+          <button type="button" class="btn btn-primary" style="width: 100%;" id="transfer_to_project1"> <------------</button>
+        </div>
+
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col">
+              <label>Select Project</label>
+              <select class="form-control">
+                <option>Insert List of project Here</option>
+              </select>
+              <br>
+
+              <table class="table" id="project_2">
+                    <thead>
+                    <tr>
+                      <th>Name </th>
+                      <th>Position </th>
+                      <th><input type="checkbox" name=""></th>
+                    </tr>
+          
+                  </thead>
+              </table>
+            </div>
+          </div>
+        </div>
     </div>
+
+    <button type="button" style="float: right;" class="btn btn-primary"  id="save" data-toggle="modal" data-target="#confirm_modal">Confirm
+        </button>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+<div class="container">
+    <div class="modal fade" id="confirm_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header" >
+                <h4 class="modal-title font-weight-bold">Transferred Employees</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>Date: FROM: 11/11/1111 TO: 11/11/1111</p>
+              <div>
+                <h4>Transfer to Sample Project A</h4>
+                <p>asdkjasdklj</p>
+                <p>asdkjasdklj</p>
+                <p>asdkjasdklj</p>
+              </div>
+
+              <div>
+                <h4>Transfer to Sample Project B</h4>
+                <p>asdkjasdklj</p>
+                <p>asdkjasdklj</p>
+                <p>asdkjasdklj</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="close" class="btn btn-default btn_hris_color_blue" data-dismiss="modal" id="btn_save">Save</button>
+                <button type="button" id="close" class="btn btn-default btn_hris_color_blue" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
     </div>
-</div>
-<div class="col-md-2">
-  <div class="form-group">
-    <label class="col-form-label">Transfer Date:</label>
-        <input type="date" class="form-control" id="" name="" value="" >
   </div>
 
-  <br/><br/>
-  <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="Transfer">
-  </div>
- </div> 
-<div class="col-md-5">
-  <div class="form-group">
-    <label class="  col-form-label">From Project:</label>
-        <select class="form-control" name="" id="">
-          <option></option>
-          <option></option>
-        </select>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Employee 1</td>
-        </tr>
-        <tr>
-          <td>Employee 1</td>
-        </tr>
-        <tr>
-          <td>Employee 1</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="" name="" placeholder="" value="Search">
-    </div>
-    </div>
-</div>
-</div>
-<div class="form-group row">
-  <div class="col-sm-12">
-    <input class="btn btn-secondary" type="submit" value="Back"> <input class="btn btn-primary" type="submit" value="Confirm">
-  </div>
-</div>
+
+
+@endsection
+
+
+
+@push('scripts')
+<script>
+
+$(document).ready(function(){
+  
+  $("#header_project").css("color","#fff");
+  $("#header_hierarchy").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_employee").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_position").css("color","rgba(255, 255, 255, 0.5)");
+  $("#header_department").css("color","rgba(255, 255, 255, 0.5)");
+
+});
+$(function() {
+
+
+
+
+var data = [
+    [
+        "Tiger Nixon",
+        "System Architect",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ]
+]
+
+
+var table = $('#project_1').DataTable({
+        dom: "<'row'<'col-sm-12 col-md-12'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-12'p>>",
+        ajax: '',
+        data: data
+    });
+
+
+
+
+
+
+});
+
+$(function() {
+
+
+
+
+var data = [
+    [
+        "Tiger Nixon",
+        "System Architect",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ],
+    [
+        "Garrett Winters",
+        "Director",
+        ""
+    ]
+]
+
+
+var table = $('#project_2').DataTable({
+        dom: "<'row'<'col-sm-12 col-md-12'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-12'p>>",
+        ajax: '',
+        lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
+        data: data
+    });
+
+
+
+});
+
+
+
+
+  
+
+
+
+
+</script>
+@endpush
