@@ -30,6 +30,7 @@ Route::get('projects/data', 'ProjectController@getData');
 Route::get('projects/{project_id}/employees/staff/data', 'ProjectController@getStaffEmployees');
 Route::get('projects/{project_id}/employees/worker/admin/data', 'ProjectController@getWorkerAdminEmployees');
 Route::get('projects/{project_id}/employees/worker/agency/data', 'ProjectController@getWorkerAgencyEmployees');
+Route::get('projects/{project}/transfer', 'ProjectController@employeeTransfer');
 Route::resource('employees', 'EmployeeController')->except('show');
 Route::get('employees/data', 'EmployeeController@getData');
 Route::get('projects/transfer', 'ProjectController@viewTransfer');
