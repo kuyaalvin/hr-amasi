@@ -92,7 +92,7 @@
               </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="close" class="btn btn-default btn_hris_color_blue" data-dismiss="modal" id="btn_save">Save</button>
+                <button type="button" id="close" class="btn btn-success btn_hris_color_blue" data-dismiss="modal" id="btn_save">Save</button>
                 <button type="button" id="close" class="btn btn-default btn_hris_color_blue" data-dismiss="modal">Close</button>
             </div>
         </div>
