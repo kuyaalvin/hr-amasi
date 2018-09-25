@@ -66,7 +66,7 @@
     <div class="form-group row">
 
         <div class="col-md-3">
-            <button class="btn btn-primary" id="transfer_preview">PREVIEW</button>
+            <button class="btn btn-primary" id="transfer_preview" data-toggle="modal" data-target="#confirm_modal">PREVIEW</button>
         </div>
 
     </div>
@@ -85,14 +85,7 @@
             <div class="modal-body">
               <p>Date: FROM: 11/11/1111 TO: 11/11/1111</p>
               <div>
-                <h4>Transfer to Sample Project A</h4>
-                <p>asdkjasdklj</p>
-                <p>asdkjasdklj</p>
-                <p>asdkjasdklj</p>
-              </div>
-
-              <div>
-                <h4>Transfer to Sample Project B</h4>
+                <h4>Transfer from Project A to Project B</h4>
                 <p>asdkjasdklj</p>
                 <p>asdkjasdklj</p>
                 <p>asdkjasdklj</p>
