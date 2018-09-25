@@ -217,22 +217,66 @@
           <p id="emp_profile_title">Project History</p>
           <table class="table" id="proj_table">
             <tr>
-              <td id="emp_profile_title">Project</td>
-              <td id="emp_profile_title">Period Date</td>
+              <td id="emp_profile_title">Assigned Project</td>
+              <td id="emp_profile_title">Period of Employment</td>
+              <td id="emp_profile_title">Edit</td>
             </tr>
 
             <tr>
-              <td > <p> Project name </p></td>
-              <td > <p> Period Date </p></td>
+              <td > <p> Project A </p></td>
+              <td > <p> 11/11/1111 <!-- from --> - 11/11/1111 <!-- to --></p></td>
+              <td > <button class="btn btn-primary" data-toggle="modal" data-target="#edit_modal">Edit</button></td>
+
             </tr>
 
             <tr>
-              <td > <p> Project name </p></td>
-              <td > <p> Period Date </p></td>
+              <td > <p> Project b </p></td>
+              <td > <p> 11/11/1111 <!-- from --> - Current <!-- to --></p></td>
+              <td > <button class="btn btn-primary" data-toggle="modal" data-target="#edit_modal">Edit</button></td>
             </tr>
           </table>
           
         </div>
+
+  <div class="container">
+    <div class="modal fade" id="edit_modal" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header" >
+                <h4 class="modal-title font-weight-bold">Transferred Employees</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+              <div class="form-group row">
+                  <div class="col-md-1"></div>
+
+                  <div class="col-md-6">
+                      <label >From: </label>
+                      <input type="date" name="" class="form-control">
+                  </div>
+
+              </div>
+
+              <div class="form-group row">
+  
+                  <div class="col-md-1"></div>
+                  <div class="col-md-6">
+                      <label >To: </label>
+                      <input type="date" name="" class="form-control" >
+                  </div>
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="close" class="btn btn-success btn_hris_color_blue" data-dismiss="modal" id="btn_save">Save</button>
+                <button type="button" id="close" class="btn btn-default btn_hris_color_blue" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
       <!-- </td>
     </tr>
   </thead>
