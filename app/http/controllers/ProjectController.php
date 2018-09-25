@@ -170,10 +170,9 @@ $project->save();
     return $this->successResponse($request, 'projects', 'Project has been deleted.', false);
     }
 
-public function viewTransfer()
+public function employeeTransfer(Project $project)
 {
-        $projects = Project::orderBy('project_id')->get();
-return view('pages/employee_transfer', ['projects'=>$projects]);
+return view('pages/employee_transfer', ['project'=>$project]);
 }
 
 }

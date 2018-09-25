@@ -7,7 +7,7 @@
 <h1>Project Transfer Page</h1>
 
 <div>
-  <span class="form-control">Selecting Employees from *insert Prj Name*</span>
+  <span class="form-control">Selecting Employees from {{ $project->name }}</span>
 </div>
 
 
