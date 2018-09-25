@@ -122,7 +122,7 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
           {data: 'employees_count', searchable: false, orderable: false},
           {data: 'transfer', searchable: false, orderable: false,
             render: function(data, type, row) {
-            return '<a class="btn btn-success" href="'+prefixUrl+row.project_id+'/transfer">Transfer</a>';
+            return '<a class="btn btn-success" href="">Transfer</a>';
             }
             },
         	{data: 'edit', searchable: false, orderable: false,
