@@ -1,38 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 
 <h1>Project Transfer Page</h1>
 
-<div class="row">
-  <div class="col">
-    <nav class="nav flex-column">
-      <li class="nav-item">
-        
-      </li>
-    </nav>
-  </div>
+<div>
+  <span class="form-control">Selecting Employees from *insert Prj Name*</span>
 </div>
 
-<hr/>
 
-@if (session('message'))
+<!-- @if (session('message'))
 <div class="alert alert-info" role="alert">
 {{ session('message') }}
 </div>
-@endif
+@endif -->
+<br>
 
+<div class="ui-widget form-group row">
+  
+
+    <div class="col-md-6">
+        <label for="tags">Employees: </label>
+        <input id="tags" class="form-control">
+    </div>
+
+</div>
+
+<div id="transfer_details">
     <form class="form-inline">
       <div class="form-group">
           <label class="col-md-1 control-label">From</label>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <input class="form-control" id="focusedInput" type="date">
           </div>
       </div>
 
       <div class="form-group">
           <label class="col-md-1 control-label">To</label>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <input class="form-control" id="focusedInput" type="date">
           </div>
       </div>
@@ -41,85 +48,31 @@
 
     <br>
     <div class="form-group row">
+  
 
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col">
-
-              <label>Select Project</label>
-              <select class="form-control">
-                <option>Insert List of project Here</option>
-              </select>
-
-
-              <br>
-              <table class="table" id="project_1">
-                    <thead>
-                    <tr>
-                      <th>Name </th>
-                      <th>Position </th>
-                      <th><input type="checkbox" name=""></th>
-                    </tr>
-          
-                  </thead>
-              </table>
-            </div>
-          </div>
+        <div class="col-md-6">
+            <label >Transfer to project: </label>
+            <select class="form-control">
+                <option>insert prject lish here</option>
+                <option>insert prject lish here</option>
+                <option>insert prject lish here</option>
+                <option>insert prject lish here</option>
+                <option>insert prject lish here</option>
+            </select>
         </div>
 
-        <div class="col-md-2">
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-
-          <button type="button" class="btn btn-primary" style="width: 100%;" id="transfer_to_project2"> ------------></button>
-
-          <br>
-          <br>
-          <br>
-          <br>
-
-
-          <button type="button" class="btn btn-primary" style="width: 100%;" id="transfer_to_project1"> <------------</button>
-        </div>
-
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col">
-              <label>Select Project</label>
-              <select class="form-control">
-                <option>Insert List of project Here</option>
-              </select>
-              <br>
-
-              <table class="table" id="project_2">
-                    <thead>
-                    <tr>
-                      <th>Name </th>
-                      <th>Position </th>
-                      <th><input type="checkbox" name=""></th>
-                    </tr>
-          
-                  </thead>
-              </table>
-            </div>
-          </div>
-        </div>
     </div>
 
-    <button type="button" style="float: right;" class="btn btn-primary"  id="save" data-toggle="modal" data-target="#confirm_modal">Confirm
-        </button>
-        <br>
-        <br>
-        <br>
-        <br>
+    <div class="form-group row">
 
+        <div class="col-md-3">
+            <button class="btn btn-primary" id="transfer_preview">PREVIEW</button>
+        </div>
+
+    </div>
+
+</div>
+   
 
 <div class="container">
     <div class="modal fade" id="confirm_modal" role="dialog">
@@ -161,6 +114,8 @@
 
 
 @push('scripts')
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 
 $(document).ready(function(){
@@ -172,171 +127,63 @@ $(document).ready(function(){
   $("#header_department").css("color","rgba(255, 255, 255, 0.5)");
 
 });
-$(function() {
 
 
 
-
-var data = [
-    [
-        "Tiger Nixon",
-        "System Architect",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ]
-]
-
-
-var table = $('#project_1').DataTable({
-        dom: "<'row'<'col-sm-12 col-md-12'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-12'p>>",
-        ajax: '',
-        data: data
-    });
-
-
-
-
-
-
-});
-
-$(function() {
-
-
-
-
-var data = [
-    [
-        "Tiger Nixon",
-        "System Architect",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        ""
-    ]
-]
-
-
-var table = $('#project_2').DataTable({
-        dom: "<'row'<'col-sm-12 col-md-12'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-12'p>>",
-        ajax: '',
-        lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
-        data: data
-    });
-
-
-
-});
-
-
-
-
+$( function() {
+    var availableTags = [
+      "kelvin",
+      "frank",
+      "kelvs",
+      "alvin",
+      "menard",
+      "nard",
+      "ced",
+      "cedric",
+      "ace",
+      "ramos",
+      "calire",
+      "jessin"
+    ];
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#tags" )
+      // don't navigate away from the field on tab when selecting an item
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          // delegate back to autocomplete, but extract the last term
+          response( $.ui.autocomplete.filter(
+            availableTags, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  } );
   
 
 

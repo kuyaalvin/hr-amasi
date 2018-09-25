@@ -31,6 +31,7 @@
       <th>Time In</th>
       <th>Time Out</th>
       <th>Total Man Power</th>
+      <th>Transfer Employee</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -119,6 +120,11 @@ dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<\"#filter\">>><'row'<'c
         	{data: 'time_in'},
         	{data: 'time_out'},
           {data: 'employees_count', searchable: false, orderable: false},
+          {data: 'transfer', searchable: false, orderable: false,
+            render: function(data, type, row) {
+            return '<a class="btn btn-success" href="">Transfer</a>';
+            }
+            },
         	{data: 'edit', searchable: false, orderable: false,
         		render: function(data, type, row) {
         		return '<a class="btn btn-dark" href="'+prefixUrl+row.project_id+'/edit">Edit</a>';
