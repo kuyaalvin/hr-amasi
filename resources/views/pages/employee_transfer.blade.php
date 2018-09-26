@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
+
+ 
+
 
 <h1>Project Transfer Page</h1>
 
@@ -18,15 +20,26 @@
 @endif -->
 <br>
 
-<div class="ui-widget form-group row">
-  
 
-    <div class="col-md-6">
-        <label for="tags">Employees: </label>
-        <input id="tags" class="form-control">
-    </div>
 
-</div>
+<table class="table" id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>employee_id</th>
+                <th>Name</th>
+                <th>Position</th>
+            </tr>
+        </thead>
+    </table>
+
+<button id="slect">asdasd</button>
+
+
+
+
+
+
+
 
 <div id="transfer_details">
     <form class="form-inline">
@@ -107,8 +120,9 @@
 
 
 @push('scripts')
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
 <script>
 
 $(document).ready(function(){
@@ -123,61 +137,105 @@ $(document).ready(function(){
 
 
 
-$( function() {
-    var availableTags = [
-      "kelvin",
-      "frank",
-      "kelvs",
-      "alvin",
-      "menard",
-      "nard",
-      "ced",
-      "cedric",
-      "ace",
-      "ramos",
-      "calire",
-      "jessin"
-    ];
-    function split( val ) {
-      return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-      return split( term ).pop();
-    }
- 
-    $( "#tags" )
-      // don't navigate away from the field on tab when selecting an item
-      .on( "keydown", function( event ) {
-        if ( event.keyCode === $.ui.keyCode.TAB &&
-            $( this ).autocomplete( "instance" ).menu.active ) {
-          event.preventDefault();
-        }
-      })
-      .autocomplete({
-        minLength: 0,
-        source: function( request, response ) {
-          // delegate back to autocomplete, but extract the last term
-          response( $.ui.autocomplete.filter(
-            availableTags, extractLast( request.term ) ) );
-        },
-        focus: function() {
-          // prevent value inserted on focus
-          return false;
-        },
-        select: function( event, ui ) {
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          terms.push( "" );
-          this.value = terms.join( ", " );
-          return false;
-        }
-      });
-  } );
+$(document).ready(function() {
   
+  var select_employees = [];
+
+  var prefixUrl = "{{ url('employees') . '/' }}";
+
+  var table = $('#example').DataTable({
+  dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        
+        serverSide: true,
+        processing: true,
+        ajax: prefixUrl+'data',
+        lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
+        order: [],
+        columns: [
+            {data: 'employee_id', visible:false , searchable:false },
+            {data: 'last_name',
+                render: function(data,type,row) {
+                return '<a href="'+prefixUrl+row.employee_id+'/profile" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
+                }
+            },
+            {data: 'position.name',
+                render: function(data,type,row) {
+                return '<a href="'+prefixUrl+row.employee_id+'/profile" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
+                }
+                }
+           
+            ],
+            rowId:"employee_id",
+            
+            rowCallback : function( row, data ) {
+                // alert(row);
+                
+                if($.inArray(data.employee_id, select_employees) != -1 ){
+                  $(row).addClass("selected");
+                }
+              }
+            });
+
+  function add_selection(row){
+    // alert(indexes);
+    // var emp_id = table.rows(indexes).data().pluck("employee_id");
+
+    var emp_id = row.attr('id');
+
+    if ($.inArray(emp_id, select_employees) != -1) {
+      return false;
+    }
+
+
+    select_employees.push(emp_id);
+
+
+
+  }
+
+
+
+  function remove_selection(row){
+    // alert(indexes);
+    // var emp_id = table.rows(indexes).data().pluck("employee_id");
+    // select_employees.push(data[0]);
+
+    var emp_id = row.attr('id');
+    alert(emp_id);
+    select_employees.splice($.inArray(emp_id, select_employees),1);
+
+
+  }
+
+  $("body").on("click","#example tr", function(e){
+      
+    var row = $(this);
+    row.toggleClass("selected");
+
+    if (row.hasClass("selected")) {
+      add_selection(row);
+    }else{
+      remove_selection(row);
+    }
+  });
+
+  $("#slect").click(function(){
+    console.log(select_employees);
+  });
+
+
+
+    // $('#example tbody').on( 'click', 'tr', function () {
+    //     $(this).toggleClass('selected');
+    // } );
+
+    // $('#button').click( function () {
+    //     console.log( table.rows('.selected').data());
+
+    // } );
+
+} );
+
 
 
 
