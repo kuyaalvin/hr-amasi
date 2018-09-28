@@ -26,8 +26,13 @@ class AddForeignKeys extends Migration
 
         $this->schema->table('employees', function (Blueprint $table) {
             $table->foreign('position_id')->references('position_id')->on('positions')->nullable()->onDelete('set null');
-            $table->foreign('project_id')->references('project_id')->on('projects')->nullable()->onDelete('set null');
         });
+
+        $this->schema->table('employeesProjects', function (Blueprint $table) {
+            $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
+            $table->foreign('project_id')->references('project_id')->on('projects')->onDelete('cascade');
+        });
+
     }
 
     /**
@@ -43,7 +48,12 @@ class AddForeignKeys extends Migration
 
         $this->schema->table('employees', function (Blueprint $table) {
             $table->dropForeign(['position_id']);
+        });
+
+        $this->schema->table('employeesProjects', function (Blueprint $table) {
+            $table->dropForeign(['employee_id']);
             $table->dropForeign(['project_id']);
         });
+
     }
 }

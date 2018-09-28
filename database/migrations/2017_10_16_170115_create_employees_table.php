@@ -57,7 +57,6 @@ $table->string('referred_by', 50)->nullable();
 $table->string('walk_in', 50)->nullable();
 $table->enum('status', ['Active', 'Terminated', 'AWOL', 'Deceased', 'Others'])->default('active');
             $table->unsignedInteger('position_id')->nullable();
-            $table->unsignedInteger('project_id')->nullable();
         });
     }
 
