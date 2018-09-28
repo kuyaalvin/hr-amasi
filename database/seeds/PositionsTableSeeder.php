@@ -16,10 +16,11 @@ class PositionsTableSeeder extends Seeder
      */
     public function run(Connection $con, Generator $faker)
     {
-$departmentIds = Department::pluck('department_id')->toArray();
 $types = ['Staff', 'Worker'];
 
         $con->transaction(function() use($departmentIds, $types, $faker) {
+$departmentIds = Department::pluck('department_id')->toArray();
+
 for ($i = 0; $i < 10; $i++)
 {
     do {
