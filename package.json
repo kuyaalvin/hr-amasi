@@ -20,8 +20,5 @@
         "jszip": "^3.1.5",
         "laravel-mix": "^1.0",
         "popper.js": "^1.12.9"
-    },
-    "dependencies": {
-        "datatables.net-select-bs4": "^1.2.7"
     }
 }
