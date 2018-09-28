@@ -22,7 +22,7 @@
 
 
 
-    <table class="table" id="example" class="display" style="width:100%">
+    <table class="table table-hover" id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>employee_id</th>
@@ -231,13 +231,7 @@ $(document).ready(function() {
 
     // $( "#list" ).append( "<div id='list_of_emp'>asdasd</div>" );
 
-    if($("#transfer_date_from").val()==""){
-      $("#from_date").text("Please Select a Date");
-    }
-    if($("#transfer_date_to").val()==""){
-      $("#to_date").text("Please Select a Date");
-    }
-  });
+    });
 
 
 
