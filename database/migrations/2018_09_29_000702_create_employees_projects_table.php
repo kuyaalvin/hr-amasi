@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Builder;
 
-class CreateEmployeesProjectsTable extends Migration
+class create_employees_projectsTable extends Migration
 {
     private $schema;
     
@@ -20,7 +20,7 @@ class CreateEmployeesProjectsTable extends Migration
      */
     public function up()
     {
-        $this->schema->create('EmployeesProjects', function (Blueprint $table) {
+        $this->schema->create('employees_projects', function (Blueprint $table) {
             $table->increments('EmployeeProject_id');
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('project_id');
@@ -37,6 +37,6 @@ class CreateEmployeesProjectsTable extends Migration
      */
     public function down()
     {
-        $this->schema->dropIfExists('EmployeesProjects');
+        $this->schema->dropIfExists('employees_projects');
     }
 }
