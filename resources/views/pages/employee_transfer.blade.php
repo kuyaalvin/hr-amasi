@@ -22,7 +22,7 @@
 
 
 
-<table class="table" id="example" class="display" style="width:100%">
+    <table class="table" id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>employee_id</th>
@@ -32,13 +32,6 @@
         </thead>
     </table>
 
-<button id="slect">asdasd</button>
-
-
-
-
-
-
 
 
 <div id="transfer_details">
@@ -46,14 +39,14 @@
       <div class="form-group">
           <label class="col-md-1 control-label">From</label>
           <div class="col-md-5">
-            <input class="form-control" id="focusedInput" type="date">
+            <input class="form-control" id="transfer_date_from" type="date">
           </div>
       </div>
 
       <div class="form-group">
           <label class="col-md-1 control-label">To</label>
           <div class="col-md-5">
-            <input class="form-control" id="focusedInput" type="date">
+            <input class="form-control" id="transfer_date_to" type="date">
           </div>
       </div>
 
@@ -96,12 +89,14 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-              <p>Date: FROM: 11/11/1111 TO: 11/11/1111</p>
-              <div>
+              
+              <p class="form-control">FROM: <span id="from_date"></span></p> 
+              <p class="form-control">TO: <span id="to_date"></span></p>
+              
+              
                 <h4>Transfer from Project A to Project B</h4>
-                <p>asdkjasdklj</p>
-                <p>asdkjasdklj</p>
-                <p>asdkjasdklj</p>
+              <div id="list">
+
               </div>
             </div>
             <div class="modal-footer">
@@ -139,7 +134,8 @@ $(document).ready(function(){
 
 $(document).ready(function() {
   
-  var select_employees = [];
+  var select_employees_id = [];
+  var select_employees_name = [];
 
   var prefixUrl = "{{ url('employees') . '/' }}";
 
@@ -155,22 +151,22 @@ $(document).ready(function() {
             {data: 'employee_id', visible:false , searchable:false },
             {data: 'last_name',
                 render: function(data,type,row) {
-                return '<a href="'+prefixUrl+row.employee_id+'/profile" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
+                return '<span id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</span>';
+
                 }
             },
             {data: 'position.name',
                 render: function(data,type,row) {
-                return '<a href="'+prefixUrl+row.employee_id+'/profile" id="full_name">' +row.last_name+', '+row.first_name+' '+row.middle_name.charAt(0)+ '.</a>';
+                return '<span id="full_name">' +row.position.name+ '.</span>';
                 }
                 }
            
             ],
             rowId:"employee_id",
-            
             rowCallback : function( row, data ) {
                 // alert(row);
                 
-                if($.inArray(data.employee_id, select_employees) != -1 ){
+                if($.inArray(data.employee_id, select_employees_id) != -1 ){
                   $(row).addClass("selected");
                 }
               }
@@ -181,15 +177,15 @@ $(document).ready(function() {
     // var emp_id = table.rows(indexes).data().pluck("employee_id");
 
     var emp_id = row.attr('id');
-
-    if ($.inArray(emp_id, select_employees) != -1) {
+    var emp_name = row.find("td").eq(0).text();
+    if ($.inArray(emp_id, select_employees_id) != -1) {
       return false;
     }
 
 
-    select_employees.push(emp_id);
-
-
+    select_employees_id.push(emp_id);
+    select_employees_name.push(emp_name);
+    
 
   }
 
@@ -201,8 +197,9 @@ $(document).ready(function() {
     // select_employees.push(data[0]);
 
     var emp_id = row.attr('id');
-    alert(emp_id);
-    select_employees.splice($.inArray(emp_id, select_employees),1);
+    var emp_name = row.find("td").eq(0).text();
+    select_employees_id.splice($.inArray(emp_id, select_employees_id),1);
+    select_employees_name.splice($.inArray(emp_name, select_employees_name),1);
 
 
   }
@@ -219,8 +216,27 @@ $(document).ready(function() {
     }
   });
 
-  $("#slect").click(function(){
-    console.log(select_employees);
+
+  $("#transfer_preview").click(function(){
+    
+    $("#from_date").text($("#transfer_date_from").val());
+    $("#to_date").text($("#transfer_date_to").val());
+    $("#list_of_emp").remove();
+    $( "#list" ).append( "<div id='list_of_emp'></div>" );
+    var i;
+    for (i = 0; i < select_employees_name.length; i++) { 
+        
+        $( "#list_of_emp" ).append( "<p id='full_name'>"+select_employees_name[i]+"</p>" );
+    }
+
+    // $( "#list" ).append( "<div id='list_of_emp'>asdasd</div>" );
+
+    if($("#transfer_date_from").val()==""){
+      $("#from_date").text("Please Select a Date");
+    }
+    if($("#transfer_date_to").val()==""){
+      $("#to_date").text("Please Select a Date");
+    }
   });
 
 
