@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Builder;
 
-class create_employees_projects_table extends Migration
+class CreateEmployeesProjectsTable extends Migration
 {
     private $schema;
     
