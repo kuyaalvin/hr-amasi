@@ -26,8 +26,6 @@ class CreateProjectsTable extends Migration
             $table->string('address', 255)->nullable();
             $table->time('time_in')->nullable();
             $table->time('time_out')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
             $table->boolean('active')->default(1);
         });
     }

@@ -24,6 +24,8 @@ class CreateEmployeesProjectsTable extends Migration
             $table->increments('EmployeeProject_id');
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('project_id');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->boolean('active')->default(1);
         });
     }
