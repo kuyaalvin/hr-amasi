@@ -44,7 +44,7 @@ class Employee extends GlobalModel
 
     public function project()
     {
-        return $this->belongsTo(Project::class, 'project_id')->withDefault();
+        return $this->belongsToMany(Project::class, 'project_id')->as('employees_projects');
     }
     
     public function getBirthdateAttribute($value)

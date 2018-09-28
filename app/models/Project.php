@@ -25,7 +25,7 @@ protected static function boot()
 
     public function employees()
     {
-        return $this->hasMany(Employee::class, 'project_id');
+        return $this->belongsToMany(Employee::class, 'employee_id')->as('employees_projects');
     }
 
     public function getTimeInAttribute($value)
