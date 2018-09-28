@@ -18,7 +18,7 @@ class PositionsTableSeeder extends Seeder
     {
 $types = ['Staff', 'Worker'];
 
-        $con->transaction(function() use($departmentIds, $types, $faker) {
+        $con->transaction(function() use($types, $faker) {
 $departmentIds = Department::pluck('department_id')->toArray();
 
 for ($i = 0; $i < 10; $i++)
