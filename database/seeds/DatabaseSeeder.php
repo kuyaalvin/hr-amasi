@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             PositionsTableSeeder::class,
             ProjectsTableSeeder::class,
             EmployeesTableSeeder::class,
+            EmployeesProjectsTableSeeder::class,
+
         ]);
     }
 }

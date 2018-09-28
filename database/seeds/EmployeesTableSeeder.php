@@ -25,7 +25,6 @@ class EmployeesTableSeeder extends Seeder
         $payrollTypes = ['Weekly', 'Monthly'];
         $employmentTypes = ['Admin', 'Agency'];
         $positionIds = Position::whereNotNull('level')->pluck('position_id')->toArray();
-$projectIds = Project::pluck('project_id')->toArray();
 
 $randomLength = function() {
    return rand(2, 5);
@@ -91,7 +90,6 @@ Employee::create([
     'walk_in'=>$fakerStrRandom($randomLength(), true),
 'status'=>'active',
     'position_id'=>$faker->optional()->randomElement($positionIds),
-    'project_id'=>$faker->optional()->randomElement($projectIds),
     ]);
 }
 });
