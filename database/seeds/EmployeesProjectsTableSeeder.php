@@ -21,13 +21,12 @@ class EmployeesProjectsTableSeeder extends Seeder
         $con->transaction(function() use($faker) {
 $employeeIds = Employee::pluck('employee_id')->toArray();
 $projectIds = Project::pluck('project_id')->toArray();
-$countEmployeeIds = count($employeeIds);
 
-for ($i = 0; $i < $countEmployeeIds; $i++)
+foreach ($employeeIds as $employeeId)
 {
 
     EmployeeProject::create([
-'employee_id'=>$faker->randomElement($employeeIds),
+'employee_id'=>$employeeId,
 'project_id'=>$faker->randomElement($projectIds),
 
     ]);
