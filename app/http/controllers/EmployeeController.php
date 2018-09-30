@@ -7,6 +7,7 @@ use Illuminate\Http\Request;;;;
 use App\Models\Employee;
 use App\Models\Position;
 use App\Models\Project;
+use App\Models\EmployeeProject;
 use Yajra\Datatables\Datatables;
 
 class EmployeeController extends GlobalController
@@ -23,7 +24,7 @@ return view('pages/view_employees');
 
 public function getData()
 {
-return Datatables::of(Employee::query()->with(['position', 'project'])->select('employees.*'))->make(true);
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->join('projects', 'projects.project_id', '=', 'employees_projects.project_id')->where(['projects.active'=>1, 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'projects.name as project_name'))->make(true);
 }
 
     /**
@@ -51,6 +52,13 @@ $employee->fill($request->all());
         if ($employee->validate())
         {
 $employee->save();
+if (null !== $request->input('project_id'))
+{
+$employeeProject = new EmployeeProject();
+$employeeProject->employee_id = $employee->employee_id;
+$employeeProject->project_id = $employee_id;
+$employeeProject->save();
+}
             return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been added.');
         }
         return $this->failedResponse($request, $employee);
@@ -62,10 +70,10 @@ $employee->save();
      * @param  int $employee_id
      * @return \Illuminate\Http\Response
      */
-    public function profile(Employee $employee)
+    public function profile(int $employee)
 {
-$employee->load('position', 'project');
-return view('pages/view_employee_profile', ['employee'=>$employee]);
+$employee2  = Employee::withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->join('projects', 'projects.project_id', '=', 'employees_projects.project_id')->where(['employees.employee_id'=>$employee, 'projects.active'=>1, 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'projects.name as project_name')->first();
+return view('pages/view_employee_profile', ['employee'=>$employee2]);
 }
 
     /**
@@ -78,7 +86,8 @@ return view('pages/view_employee_profile', ['employee'=>$employee]);
     {
         $positions = Position::all();
         $projects = Project::all();
-return view('pages/edit_employee', ['employee'=>$employee, 'positions'=>$positions, 'projects'=>$projects]);
+$project_id = (EmployeeProject::where(['employee_id'=>$employee->employee_id, 'active'=>1]))->first()->project_id;
+return view('pages/edit_employee', ['employee'=>$employee, 'positions'=>$positions, 'projects'=>$projects, 'project_id'=>$project_id]);
     }
 
     /**
@@ -90,11 +99,22 @@ return view('pages/edit_employee', ['employee'=>$employee, 'positions'=>$positio
      */
     public function update(Request $request, Employee $employee)
     {
+$oldProjectId = (EmployeeProject::where(['employee_id'=>$employee->employee_id, 'active'=>1]))->first()->project_id;
+
 $employee->fill($request->all());
         if ($employee->validate())
         {
 $employee->save();
-            return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been edited.');
+if (null !== $request->input('project_id') && $oldProjectId !== $request->input('project_id'))
+{
+$employeeProject = new EmployeeProject();
+$employeeProject->update(['active'=>0]);
+$employeeProject->employee_id = $employee->employee_id;
+$employeeProject->project_id = $request->input('project_id');
+$employeeProject->save();
+}
+            
+return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been edited.');
         }
         return $this->failedResponse($request, $employee);
     }

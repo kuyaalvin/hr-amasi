@@ -43,12 +43,12 @@
 
   <tr>
     <td><span>Position:</span> </td>
-    <td><span class="capitalize">{{ $employee->position->name }}</span></td>
+    <td><span class="capitalize">{{ $employee->position_name }}</span></td>
   </tr>
 
   <tr>
     <td><span>Project assigned:</span> </td>
-    <td><span class="capitalize">{{ $employee->project->name }}</span></td>
+    <td><span class="capitalize">{{ $employee->project_name }}</span></td>
   </tr>
 
 

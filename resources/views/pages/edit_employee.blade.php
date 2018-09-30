@@ -188,7 +188,7 @@
 				<select class="form-control" name="project_id">
 				<option value="">Select Project</option>
 				@foreach ($projects as $project)
-			      <option value="{{ $project->project_id }}" @if (old('project_id', $employee->project_id) == $project->project_id) selected @endif>{{ $project->name }}</option>
+			      <option value="{{ $project->project_id }}" @if (old('project_id', $project_id) == $project->project_id) selected @endif>{{ $project->name }}</option>
 				@endforeach
 				</select>
 			</div>

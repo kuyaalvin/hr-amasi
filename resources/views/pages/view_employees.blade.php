@@ -161,16 +161,16 @@ order: [],
             },
             {data: 'first_name' , visible: false},
             {data: 'middle_name' , visible: false},
-            {data: 'position.name', title: 'Position',
+            {data: 'position',
                 render: function(data, type, row) {
-                var position = row.position;
-return position.name == null ? '' : position.name;
+                var position_name = row.position_name;
+return position_name == null ? '' : position_name;
                 }
                 },
-            {data: 'project.name', title: 'Project',
+            {data: 'project',
                 render: function(data, type, row) {
-                var project = row.project;
-return project.name == null ? '' : project.name;
+                var project_name = row.project_name;
+return project_name == null ? '' : project_name;
                 }
                 },
             {data: 'account_number', visible: false },

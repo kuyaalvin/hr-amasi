@@ -11,7 +11,7 @@ class Employee extends GlobalModel
     protected $primaryKey = 'employee_id';
     public $timestamps = false;
     protected $dateFormat = 'Y-m-d';
-    protected $guarded = ['employee_id', 'status'];
+    protected $guarded = ['employee_id', 'project_id', 'status'];
 
     protected static function boot()
     {
@@ -92,7 +92,6 @@ class Employee extends GlobalModel
             'referred_by'=>['nullable', 'string', 'max:50'],
             'walk_in'=>['nullable', 'string', 'max:50'],
             'position_id'=>['nullable', 'exists:positions'],
-            'project_id'=>['nullable', 'exists:projects'],
         ];
         
         $messages = [
