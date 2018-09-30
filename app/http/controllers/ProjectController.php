@@ -22,12 +22,12 @@ return view('pages/view_projects');
 
 public function getData()
 {
-return Datatables::of(Project::query()->withCount('employees'))->make(true);
+return Datatables::of(Project::query()->withoutGlobalScopes()->selectRaw('projects.*, count(employees_projects.employee_id) as employees_count')->join('employees_projects', 'projects.project_id', '=', 'employees_projects.project_id')->where('projects.active', 1)->groupBy('employees_projects.project_id'))->make(true);
 }
 
 public function getWorkerAgencyEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'employees.employment_type'=>'agency', 'positions.type'=>'worker', 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->where(['employees_projects.project_id'=>$project_id, 'employees.employment_type'=>'agency', 'positions.type'=>'worker', 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
 ->filter(function($query) use($request)
 {
 if ($request->has('search') && !empty($request->input('search')['value']))
@@ -41,7 +41,7 @@ $query->whereRaw("(LOWER(`employees`.`first_name`) LIKE '%$searchValue%' or LOWE
 
 public function getWorkerAdminEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'employees.employment_type'=>'admin', 'positions.type'=>'worker', 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->where(['employees_projects.project_id'=>$project_id, 'employees.employment_type'=>'admin', 'positions.type'=>'worker', 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
 ->filter(function($query) use($request)
 {
 if ($request->has('search') && !empty($request->input('search')['value']))
@@ -55,7 +55,7 @@ $query->whereRaw("(LOWER(`employees`.`first_name`) LIKE '%$searchValue%' or LOWE
 
 public function getStaffEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->where(['employees.project_id'=>$project_id, 'positions.type'=>'staff', 'employees.status'=>'active'])->orderBy('positions.level')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->where(['employees_projects.project_id'=>$project_id, 'positions.type'=>'staff', 'employees.status'=>'active'])->orderBy('positions.level')->select('employees.*', 'positions.name as position_name', 'positions.level as position_level'))
 ->filter(function($query) use($request)
 {
 if ($request->has('search') && !empty($request->input('search')['value']))
@@ -104,21 +104,21 @@ $project->save();
     public function profile(int $project_id)
 {
 $project = Project::find($project_id);
-$projectWhereArg = ['project_id'=>$project_id];
+$projectWhereArg = ['employees_projects.project_id'=>$project_id];
 
-$countWorkerAgencyEmployees = Employee::where($projectWhereArg)->where('employment_type', 'agency')->whereHas('position', function($query) {
+$countWorkerAgencyEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employees.employment_type', 'agency')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->count();
 
-$countWorkerAdminEmployees = Employee::where($projectWhereArg)->where('employment_type', 'admin')->whereHas('position', function($query) {
+$countWorkerAdminEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employment_type', 'admin')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->count();
 
-$countStaffEmployees = Employee::where($projectWhereArg)->whereHas('position', function($query) {
+$countStaffEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->whereHas('position', function($query) {
 $query->where('type', 'staff');
 })->count();
 
-$countEmployees = Employee::where($projectWhereArg)->count();
+$countEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->count();
 
 return view('pages/view_project_profile', ['project'=>$project, 'countWorkerAgencyEmployees'=>$countWorkerAgencyEmployees, 'countWorkerAdminEmployees'=>$countWorkerAdminEmployees, 'countStaffEmployees'=>$countStaffEmployees, 'countEmployees'=>$countEmployees]);
 }
@@ -162,11 +162,8 @@ $project->save();
      */
     public function destroy(Request $request, Connection $con, Project $project)
     {
-        $con->transaction(function() use($project) {
-            Employee::where('project_id', $project->project_id)->update(['project_id' => null]);
             $project->active = 0;
             $project->save();
-        });
     return $this->successResponse($request, 'projects', 'Project has been deleted.', false);
     }
 
