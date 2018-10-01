@@ -21,7 +21,7 @@ class CreateEmployeesProjectsTable extends Migration
     public function up()
     {
         $this->schema->create('employees_projects', function (Blueprint $table) {
-            $table->increments('EmployeeProject_id');
+            $table->increments('employee_project_id');
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('project_id');
             $table->date('start_date')->nullable();
