@@ -9,7 +9,7 @@
 <h1>Project Transfer Page</h1>
 
 <div>
-  <span class="form-control">Selecting Employees from *insert Prj Name*</span>
+  <span class="form-control">Selecting Employees from {{ $project->name }}</span>
 </div>
 
 
@@ -59,11 +59,9 @@
         <div class="col-md-6">
             <label >Transfer to project: </label>
             <select class="form-control">
-                <option>insert prject lish here</option>
-                <option>insert prject lish here</option>
-                <option>insert prject lish here</option>
-                <option>insert prject lish here</option>
-                <option>insert prject lish here</option>
+@foreach ($projects as $p):
+<option value="{{ $p->project_id }}">{{ $p->name }}</option>
+@endforeach
             </select>
         </div>
 
@@ -137,14 +135,14 @@ $(document).ready(function() {
   var select_employees_id = [];
   var select_employees_name = [];
 
-  var prefixUrl = "{{ url('employees') . '/' }}";
+  var prefixUrl = "{{ url('projects') . '/' }}";
 
   var table = $('#example').DataTable({
   dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         
         serverSide: true,
         processing: true,
-        ajax: prefixUrl+'data',
+        ajax: prefixUrl+"{{ $project->project_id }}/employees/data",
         lengthMenu: [[10, 25, 50, 100, 150, 200, 250, -1], [10, 25, 50, 100, 150, 200, 250, 'All']],
         order: [],
         columns: [
@@ -155,9 +153,9 @@ $(document).ready(function() {
 
                 }
             },
-            {data: 'position.name',
+            {data: 'position_name',
                 render: function(data,type,row) {
-                return '<span id="full_name">' +row.position.name+ '.</span>';
+                return '<span id="full_name">' +row.position_name+ '.</span>';
                 }
                 }
            
@@ -245,9 +243,6 @@ $(document).ready(function() {
     // } );
 
 } );
-
-
-
 
 
 </script>

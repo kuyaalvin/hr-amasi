@@ -73,7 +73,8 @@ $employeeProject->save();
     public function profile(int $employee)
 {
 $employee2  = Employee::withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->join('projects', 'projects.project_id', '=', 'employees_projects.project_id')->where(['employees.employee_id'=>$employee, 'projects.active'=>1, 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'projects.name as project_name')->first();
-return view('pages/view_employee_profile', ['employee'=>$employee2]);
+$projectHistory = EmployeeProject::where(['employee_id'=>$employee])->join('projects', 'projects.project_id', '=', 'employees_projects.project_id')->get();
+return view('pages/view_employee_profile', ['employee'=>$employee2, 'project_history'=>$projectHistory]);
 }
 
     /**
@@ -108,7 +109,7 @@ $employee->save();
 if (null !== $request->input('project_id') && $oldProjectId !== $request->input('project_id'))
 {
 $employeeProject = new EmployeeProject();
-$employeeProject->update(['active'=>0]);
+$employeeProject->where('employee_id', $employee->employee_id)->update(['active'=>0]);
 $employeeProject->employee_id = $employee->employee_id;
 $employeeProject->project_id = $request->input('project_id');
 $employeeProject->save();

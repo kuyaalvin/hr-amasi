@@ -221,19 +221,14 @@
               <td id="emp_profile_title">Period of Employment</td>
               <td id="emp_profile_title">Edit</td>
             </tr>
-
+@foreach ($project_history as $project):
             <tr>
-              <td > <p> Project A </p></td>
-              <td > <p> 11/11/1111 <!-- from --> - 11/11/1111 <!-- to --></p></td>
+              <td > <p> {{ $project->name }} </p></td>
+              <td > <p> {{ $project->start_date }} <!-- from --> - {{ $project->end_date }} <!-- to --></p></td>
               <td > <button class="btn btn-primary" data-toggle="modal" data-target="#edit_modal">Edit</button></td>
 
             </tr>
-
-            <tr>
-              <td > <p> Project b </p></td>
-              <td > <p> 11/11/1111 <!-- from --> - Current <!-- to --></p></td>
-              <td > <button class="btn btn-primary" data-toggle="modal" data-target="#edit_modal">Edit</button></td>
-            </tr>
+@endforeach
           </table>
           
         </div>

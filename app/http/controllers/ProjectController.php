@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;;;
 use App\Models\Project;
 use App\Models\Employee;
+use App\Models\EmployeeProject;
 use Illuminate\Database\Connection;
 use Yajra\Datatables\Datatables;
 
@@ -23,6 +24,20 @@ return view('pages/view_projects');
 public function getData()
 {
 return Datatables::of(Project::query()->withoutGlobalScopes()->selectRaw('projects.*, count(employees_projects.employee_id) as employees_count')->join('employees_projects', 'projects.project_id', '=', 'employees_projects.project_id')->where('projects.active', 1)->groupBy('employees_projects.project_id'))->make(true);
+}
+
+public function getEmployees(Request $request, int $project_id)
+{
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->where(['employees_projects.project_id'=>$project_id, 'employees.status'=>'active'])->select('employees.*', 'positions.name as position_name'))
+->filter(function($query) use($request)
+{
+if ($request->has('search') && !empty($request->input('search')['value']))
+{
+$searchValue = $request->input('search')['value'];
+$query->whereRaw("(LOWER(`employees`.`first_name`) LIKE '%$searchValue%' or LOWER(`employees`.`middle_name`) LIKE '%$searchValue%' or LOWER(`employees`.`last_name`) LIKE '%$searchValue%' or LOWER(`positions`.`name`) LIKE '%$searchValue%')");
+}
+})
+->make(true);
 }
 
 public function getWorkerAgencyEmployees(Request $request, int $project_id)
@@ -167,10 +182,26 @@ $project->save();
     return $this->successResponse($request, 'projects', 'Project has been deleted.', false);
     }
 
-public function viewTransfer()
+public function viewTransfer(Project $project)
 {
-        $projects = Project::orderBy('project_id')->get();
-return view('pages/employee_transfer', ['projects'=>$projects]);
+        $projects = Project::where('project_id', '<>', $project->project_id)->orderBy('project_id')->get();
+return view('pages/employee_transfer', ['project'=>$project, 'projects'=>$projects]);
 }
+
+    public function transfer(Request $request, int $old_project_id)
+    {
+$employeeProject = new EmployeeProject();
+foreach ($request->input('employee_ids') as $employee_id)
+{
+$employeeProject->where('employee_id', $employee_id)->update(['active'=>0]);
+$employeeProject->start_date = $request->input('start_date');
+$employeeProject->end_date = $request->input('end_date');
+$employeeProject->employee_id = $employee_id;
+$employeeProject->project_id = $request->input('project_id');
+$employeeProject->save();
+}
+            
+return $this->successResponse($request, 'projects/' . $old_project_id . '/view_transfer', '');
+    }
 
 }

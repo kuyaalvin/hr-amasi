@@ -27,12 +27,15 @@ Route::resource('departments', 'DepartmentController')->except('show');
 Route::get('departments/data', 'DepartmentController@getData');
 Route::resource('projects', 'ProjectController')->except('show');
 Route::get('projects/data', 'ProjectController@getData');
+Route::get('projects/{project_id}/employees/data', 'ProjectController@getEmployees');
 Route::get('projects/{project_id}/employees/staff/data', 'ProjectController@getStaffEmployees');
 Route::get('projects/{project_id}/employees/worker/admin/data', 'ProjectController@getWorkerAdminEmployees');
 Route::get('projects/{project_id}/employees/worker/agency/data', 'ProjectController@getWorkerAgencyEmployees');
 Route::resource('employees', 'EmployeeController')->except('show');
 Route::get('employees/data', 'EmployeeController@getData');
-Route::get('projects/transfer', 'ProjectController@viewTransfer');
+Route::get('projects/{project}/view_transfer', 'ProjectController@viewTransfer');
+Route::post('projects/{old_project_id}/transfer', 'ProjectController@transfer');
+
 Route::get('employees/{employee}/profile', 'EmployeeController@profile');
 Route::get('projects/{project_id}/profile', 'ProjectController@profile');
 Route::get('projects/{project_id}/employees/agency', 'ProjectController@getAgencyEmployees');
