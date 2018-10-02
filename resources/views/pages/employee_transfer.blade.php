@@ -58,7 +58,7 @@
 
         <div class="col-md-6">
             <label >Transfer to project: </label>
-            <select class="form-control">
+            <select class="form-control" id="project_id">
 @foreach ($projects as $p):
 <option value="{{ $p->project_id }}">{{ $p->name }}</option>
 @endforeach
@@ -98,7 +98,7 @@
               </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="close" class="btn btn-success btn_hris_color_blue" data-dismiss="modal" id="btn_save">Save</button>
+                <button type="button" class="btn btn-success btn_hris_color_blue" data-dismiss="modal" id="btn_save">Save</button>
                 <button type="button" id="close" class="btn btn-default btn_hris_color_blue" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -132,7 +132,7 @@ $(document).ready(function(){
 
 $(document).ready(function() {
   
-  var select_employees_id = [];
+  var selected_employee_ids = [];
   var select_employees_name = [];
 
   var prefixUrl = "{{ url('projects') . '/' }}";
@@ -164,7 +164,7 @@ $(document).ready(function() {
             rowCallback : function( row, data ) {
                 // alert(row);
                 
-                if($.inArray(data.employee_id, select_employees_id) != -1 ){
+                if($.inArray(data.employee_id, selected_employee_ids) != -1 ){
                   $(row).addClass("selected");
                 }
               }
@@ -176,12 +176,12 @@ $(document).ready(function() {
 
     var emp_id = row.attr('id');
     var emp_name = row.find("td").eq(0).text();
-    if ($.inArray(emp_id, select_employees_id) != -1) {
+    if ($.inArray(emp_id, selected_employee_ids) != -1) {
       return false;
     }
 
 
-    select_employees_id.push(emp_id);
+    selected_employee_ids.push(emp_id);
     select_employees_name.push(emp_name);
     
 
@@ -196,7 +196,7 @@ $(document).ready(function() {
 
     var emp_id = row.attr('id');
     var emp_name = row.find("td").eq(0).text();
-    select_employees_id.splice($.inArray(emp_id, select_employees_id),1);
+    selected_employee_ids.splice($.inArray(emp_id, selected_employee_ids),1);
     select_employees_name.splice($.inArray(emp_name, select_employees_name),1);
 
 
@@ -241,6 +241,19 @@ $(document).ready(function() {
     //     console.log( table.rows('.selected').data());
 
     // } );
+
+$("#btn_save").on("click", function(event) {
+event.preventDefault();
+$.ajax({
+type: "POST",
+url: prefixUrl+"{{ $project->project_id }}/transfer",
+data: {_token: "{{ csrf_token() }}", old_project_id: "{{ $project->project_id }}", start_date: $("#transfer_date_from").val(), end_date: $("#transfer_date_to").val(), employee_ids: selected_employee_ids, project_id: $("#project_id").val() }
+}).done(function(data) {
+alert(data.redirect);
+});
+
+
+});
 
 } );
 

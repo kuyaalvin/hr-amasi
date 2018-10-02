@@ -23,12 +23,12 @@ return view('pages/view_projects');
 
 public function getData()
 {
-return Datatables::of(Project::query()->withoutGlobalScopes()->selectRaw('projects.*, count(employees_projects.employee_id) as employees_count')->join('employees_projects', 'projects.project_id', '=', 'employees_projects.project_id')->where('projects.active', 1)->groupBy('employees_projects.project_id'))->make(true);
+return Datatables::of(Project::query()->withoutGlobalScopes()->selectRaw('projects.*, count(employees_projects.employee_id) as employees_count')->join('employees_projects', 'projects.project_id', '=', 'employees_projects.project_id')->where('projects.active', 1)->where('employees_projects.active', 1)->groupBy('employees_projects.project_id'))->make(true);
 }
 
 public function getEmployees(Request $request, int $project_id)
 {
-return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->where(['employees_projects.project_id'=>$project_id, 'employees.status'=>'active'])->select('employees.*', 'positions.name as position_name'))
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->where(['employees_projects.project_id'=>$project_id, 'employees.status'=>'active'])->where('employees_projects.active', 1)->select('employees.*', 'positions.name as position_name'))
 ->filter(function($query) use($request)
 {
 if ($request->has('search') && !empty($request->input('search')['value']))
@@ -121,19 +121,19 @@ $project->save();
 $project = Project::find($project_id);
 $projectWhereArg = ['employees_projects.project_id'=>$project_id];
 
-$countWorkerAgencyEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employees.employment_type', 'agency')->whereHas('position', function($query) {
+$countWorkerAgencyEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employees_projects.active', 1)->where('employees.employment_type', 'agency')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->count();
 
-$countWorkerAdminEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employment_type', 'admin')->whereHas('position', function($query) {
+$countWorkerAdminEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employees_projects.active', 1)->where('employment_type', 'admin')->whereHas('position', function($query) {
 $query->where('type', 'worker');
 })->count();
 
-$countStaffEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->whereHas('position', function($query) {
+$countStaffEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employees_projects.active', 1)->whereHas('position', function($query) {
 $query->where('type', 'staff');
 })->count();
 
-$countEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->count();
+$countEmployees = Employee::join('employees_projects', 'employees_projects.employee_id', '=', 'employees.employee_id')->where($projectWhereArg)->where('employees_projects.active', 1)->count();
 
 return view('pages/view_project_profile', ['project'=>$project, 'countWorkerAgencyEmployees'=>$countWorkerAgencyEmployees, 'countWorkerAdminEmployees'=>$countWorkerAdminEmployees, 'countStaffEmployees'=>$countStaffEmployees, 'countEmployees'=>$countEmployees]);
 }
@@ -190,9 +190,10 @@ return view('pages/employee_transfer', ['project'=>$project, 'projects'=>$projec
 
     public function transfer(Request $request, int $old_project_id)
     {
-$employeeProject = new EmployeeProject();
-foreach ($request->input('employee_ids') as $employee_id)
+$employee_ids = $request->input('employee_ids');
+foreach ($employee_ids as $employee_id)
 {
+$employeeProject = new EmployeeProject();
 $employeeProject->where('employee_id', $employee_id)->update(['active'=>0]);
 $employeeProject->start_date = $request->input('start_date');
 $employeeProject->end_date = $request->input('end_date');
