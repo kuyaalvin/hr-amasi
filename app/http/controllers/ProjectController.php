@@ -191,18 +191,27 @@ return view('pages/employee_transfer', ['project'=>$project, 'projects'=>$projec
     public function transfer(Request $request, int $old_project_id)
     {
 $employee_ids = $request->input('employee_ids');
+if (null !== $employee_ids)
+{
 foreach ($employee_ids as $employee_id)
 {
 $employeeProject = new EmployeeProject();
 $employeeProject->where('employee_id', $employee_id)->update(['active'=>0]);
+if (null !== $request->input('start_date'))
+{
 $employeeProject->start_date = $request->input('start_date');
+}
+if (null !== $request->input('end_date'))
+{
 $employeeProject->end_date = $request->input('end_date');
+}
 $employeeProject->employee_id = $employee_id;
 $employeeProject->project_id = $request->input('project_id');
 $employeeProject->save();
 }
-            
-return $this->successResponse($request, 'projects/' . $old_project_id . '/view_transfer', '');
+ }
+           
+return $this->successResponse($request, 'projects/', '');
     }
 
 }
