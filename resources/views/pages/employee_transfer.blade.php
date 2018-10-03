@@ -92,7 +92,7 @@
               <p class="form-control">TO: <span id="to_date"></span></p>
               
               
-                <h4>Transfer from Project A to Project B</h4>
+                <h4>Transfer from {{$project->name}} to <span id="prj_to"></span></h4>
               <div id="list">
 
               </div>
@@ -219,6 +219,7 @@ $(document).ready(function() {
     
     $("#from_date").text($("#transfer_date_from").val());
     $("#to_date").text($("#transfer_date_to").val());
+    $("#prj_to").text($("#project_id option:selected").text());
     $("#list_of_emp").remove();
     $( "#list" ).append( "<div id='list_of_emp'></div>" );
     var i;
@@ -249,7 +250,7 @@ type: "POST",
 url: prefixUrl+"{{ $project->project_id }}/transfer",
 data: {_token: "{{ csrf_token() }}", old_project_id: "{{ $project->project_id }}", start_date: $("#transfer_date_from").val(), end_date: $("#transfer_date_to").val(), employee_ids: selected_employee_ids, project_id: $("#project_id").val() }
 }).done(function(data) {
-alert(data.redirect);
+window.location.href = data.redirect;
 });
 
 
