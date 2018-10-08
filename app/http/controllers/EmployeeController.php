@@ -56,7 +56,7 @@ if (null !== $request->input('project_id'))
 {
 $employeeProject = new EmployeeProject();
 $employeeProject->employee_id = $employee->employee_id;
-$employeeProject->project_id = $employee_id;
+$employeeProject->project_id = $request->input('project_id');
 $employeeProject->save();
 }
             return $this->successResponse($request, 'employees', 'Employee ' . $employee->id_number . ' ' . $employee->first_name . ' ' . $employee->last_name . ' has been added.');
