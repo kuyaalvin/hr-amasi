@@ -24,7 +24,7 @@ return view('pages/view_employees');
 
 public function getData()
 {
-return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->join('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->join('projects', 'projects.project_id', '=', 'employees_projects.project_id')->where(['projects.active'=>1, 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'projects.name as project_name'))->make(true);
+return Datatables::of(Employee::query()->withoutGlobalScopes()->join('positions', 'employees.position_id', '=', 'positions.position_id')->leftJoin('employees_projects', 'employees.employee_id', '=', 'employees_projects.employee_id')->join('projects', 'projects.project_id', '=', 'employees_projects.project_id')->where(['employees_projects.active'=>1, 'employees.status'=>'active'])->orderBy('employees.first_name')->select('employees.*', 'positions.name as position_name', 'projects.name as project_name'))->make(true);
 }
 
     /**

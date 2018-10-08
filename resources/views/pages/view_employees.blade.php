@@ -162,12 +162,14 @@ order: [],
             {data: 'first_name' , visible: false},
             {data: 'middle_name' , visible: false},
             {data: 'position',
+searchable: false,
                 render: function(data, type, row) {
                 var position_name = row.position_name;
 return position_name == null ? '' : position_name;
                 }
                 },
             {data: 'project',
+searchable: false,
                 render: function(data, type, row) {
                 var project_name = row.project_name;
 return project_name == null ? '' : project_name;
