@@ -211,7 +211,7 @@ $employeeProject->save();
 }
  }
            
-return $this->successResponse($request, 'projects/', "Employee has been transferred successfully", false);
+return $this->successResponse($request, 'projects', "Employee has been transferred successfully");
     }
 
 }
